@@ -1,0 +1,53 @@
+<template name="User_Home_Page">
+  <div class="ui raised segment container">
+    <div class="ui pointing secondary menu">
+      <a class="item active" data-tab="MyCalendar">My Calendar</a>
+      <a class="item" data-tab="Notifications">Notifications</a>
+      <a class="item" data-tab="StudyPoints">StudyPoints</a>
+    </div>
+
+    <div class="ui tab segment active" data-tab="MyCalendar">
+      <iframe
+          src="https://calendar.google.com/calendar/embed?src=hawaii.edu_363jrgknofhsanehjf25pa0pno%40group.calendar.google.com&ctz=Pacific/Honolulu"
+          style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div class="ui tab segment" data-tab="Notifications">
+      <h2 class="ui header"><i class="ui student icon"></i>Grasshopper Requests</h2>
+      <div class="ui feed">
+        <div class="event">
+          <div class="label">
+            <img src="http://semantic-ui.com/images/avatar/small/elliot.jpg">
+          </div>
+          <div class="content">
+            <div class="summary">
+              <a>
+                Jake Denton-Kubo
+              </a> requested a <a href="/study-session/123">study session </a> for ICS 241
+              <div class="date">
+                1 Hour Ago
+              </div>
+              <a href="#"><div class="ui green horizontal label"><i class="ui icon checkmark"></i>Accept</div></a>
+              <a href="#"><div class="ui red horizontal label"><i class="ui icon remove"></i>Decline</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui tab segment" data-tab="StudyPoints">
+      <div class="ui green progress" data-percent="74" id="points">
+        <div class="bar"></div>
+        <div class="label">74/100 points</div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    $('.menu .item')
+        .tab()
+    ;
+  </script>
+  <script>
+    $('#points').progress();
+  </script>
+</template>

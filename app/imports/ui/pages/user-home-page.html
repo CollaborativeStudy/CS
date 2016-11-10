@@ -3,9 +3,7 @@
     <div class="ui pointing secondary menu">
       <a class="item active" data-tab="MyCalendar">My Calendar</a>
       <a class="item" data-tab="Notifications">Notifications</a>
-      <a class="item" data-tab="Groups">Groups</a>
-      <a class="item" data-tab="Reviews">Reviews</a>
-      <a class="item" data-tab="Messages">Messages</a>
+      <a class="item" data-tab="StudyPoints">StudyPoints</a>
     </div>
 
     <div class="ui tab segment active" data-tab="MyCalendar">
@@ -28,188 +26,17 @@
               <div class="date">
                 1 Hour Ago
               </div>
-              <a href="#">
-                <div class="ui green horizontal label"><i class="ui icon checkmark"></i>Accept</div>
-              </a>
-              <a href="#">
-                <div class="ui red horizontal label"><i class="ui icon remove"></i>Decline</div>
-              </a>
+              <a href="#"><div class="ui green horizontal label"><i class="ui icon checkmark"></i>Accept</div></a>
+              <a href="#"><div class="ui red horizontal label"><i class="ui icon remove"></i>Decline</div></a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="ui tab segment" data-tab="Groups">
-      <div class="ui internally celled grid">
-        <div class="row">
-          <div class="three wide centered align column">
-            <i class="huge circular red users icon" style="padding-left: 30px; margin-left: 30px"></i>
-          </div>
-          <div class="ten wide column">
-            <h1 style="align-content: center">ICS 314</h1>
-            <p style="align-content: center"> Study Buddy Project</p>
-          </div>
-          <div class="three wide column">
-            <i class="huge idea icon"><h3>Start a session</h3></i>
-          </div>
-        </div>
-        <div class="row">
-          <div class="three wide centered align column">
-            <i class="huge circular blue users icon" style="padding-left: 30px; margin-left: 30px"></i>
-          </div>
-          <div class="ten wide column">
-            <h1 style="align-content: center">ICS 311</h1>
-            <p style="align-content: center"> Algorithms Study Session </p>
-          </div>
-          <div class="three wide column">
-            <i class="huge idea icon"><h3>Start a session</h3></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="ui tab segment" data-tab="Reviews">
-      <div class="ui labeled button" tabindex="1" style="margin-bottom: 15px; color: #003c11">
-        <div class="ui green button" href="{{pathFor 'Make_Review_Page'}}">
-          <i class="star icon"></i> Submit a Review
-        </div>
-        <a class="ui basic green left pointing label">
-          4
-        </a>
-      </div>
-      <div class="ui stackable four cards">
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Always On Track!</div>
-            <div class="meta">
-              <span class="right floated time">2 days ago</span>
-              <span class="category">Review</span>
-            </div>
-            <div class="description">
-              <p>Mary kept the whole group on topic and was a great mediator when an argument got out of hand.</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating: <i class="star icon"></i> <i class="star icon"></i> <i class="star icon"></i> <i
-                class="star icon"></i> <i class="star icon"></i>
-              <!--<div class="ui rating" data-max-rating="5"></div>-->
-            </div>
-          </div>
-        </div>
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Not Cool</div>
-            <div class="meta">
-              <span class="right floated time">4 days ago</span>
-              <span class="category">Review</span>
-            </div>
-            <div class="description">
-              <p>My friend and I was talking and she interrupted me and started telling me what to do.. -_-</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating: <i class="star icon"></i>
-              <!--<div class="ui rating" data-max-rating="5"></div>-->
-            </div>
-          </div>
-        </div>
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Cool!</div>
-            <div class="meta">
-              <span class="right floated time">5 days ago</span>
-              <span class="category">Review</span>
-            </div>
-            <div class="description">
-              <p>No comment.</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating: <i class="star icon"></i> <i class="star icon"></i> <i class="star icon"></i> <i
-                class="star icon"></i>
-              <!--<div class="ui rating" data-max-rating="5"></div>-->
-            </div>
-          </div>
-        </div>
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Don't mind the bad reviews</div>
-            <div class="meta">
-              <span class="right floated time">6 days ago</span>
-              <span class="category">Review</span>
-            </div>
-            <div class="description">
-              <p>She's super cool. Idk what some people are talking about.</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating: <i class="star icon"></i> <i class="star icon"></i> <i class="star icon"></i> <i
-                class="star icon"></i> <i class="star icon"></i>
-              <!--<div class="ui rating" data-max-rating="5"></div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="ui tab segment" data-tab="Messages">
-      <div class="ui grid">
-        <div class="four wide column">
-          <div class="ui vertical fluid pointing menu" style="background-color: #003c11">
-            <a class="active item" style="background-color: white">
-              <h3>Jesus</h3>
-            </a>
-            <a class="item" style="color: white">
-              <h3>Tony</h3>
-            </a>
-            <a class="item" style="color: white">
-              <h3>Billy</h3>
-            </a>
-            <a class="item" style="color: white">
-              <h3>Mariah</h3>
-            </a>
-          </div>
-        </div>
-        <div class="twelve wide stretched column">
-          <div class="ui grid segment">
-            <div class="row">
-              <div class="left floated six wide column">
-                <div class="ui segment">
-                  <h4>Jesus: Have you been studying?</h4>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="right floated six wide column">
-                <div class="ui segment">
-                  <h4>Mary: I have! It's stressing me out. How about you?</h4>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="left floated six wide column">
-                <div class="ui segment">
-                  <h4>Jesus: Nahhh, I don't really need to but I can help you out. (:</h4>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="right floated six wide column">
-                <div class="ui segment">
-                  <h4>Mary: For real? Thanks!</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="right floated left aligned twelve wide column">
-          <div class="ui large fluid icon input">
-            <input type="text" placeholder="Message">
-            <i class="send icon"></i>
-          </div>
-        </div>
+    <div class="ui tab segment" data-tab="StudyPoints">
+      <div class="ui green progress" data-percent="74" id="points">
+        <div class="bar"></div>
+        <div class="label">74/100 points</div>
       </div>
     </div>
   </div>

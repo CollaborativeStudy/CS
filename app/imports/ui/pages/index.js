@@ -19,3 +19,7 @@ import './create-study-session-page.html';
 import './study-session-page.html';
 import './study-session-detail-page.html';
 import './calendar-page.html';
+
+import './submit-review-page.html';
+import './submit-review-page';
+

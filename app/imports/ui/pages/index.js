@@ -21,5 +21,5 @@ import './study-session-detail-page.html';
 import './calendar-page.html';
 
 import './submit-review-page.html';
-import './submit-review-page';
+import './submit-review-page.js';
 

@@ -1,11 +1,30 @@
 <template name="Submit_Review_Page">
   <div class="ui raised segment">
+    <p>*Required</p>
     <div class="ui form">
       <div class="field">
-        <label>Review Title</label>
+        <label>Review Title*</label>
         <input type="text" name="review-title" placeholder="Title of your review">
+      </div>
+      <div class="field">
+        <label>Rating*</label>
+        <div class="ui star rating"></div>
+      </div>
+      <div class="field">
+        <label>Comments</label>
+        <textarea></textarea>
       </div>
       <button class="ui teal button">Submit Review</button>
     </div>
   </div>
+
+  <script>
+    $('.ui.star.rating')
+        .rating({
+          initialRating: 0,
+          maxRating: 5
+        })
+    ;
+  </script>
 </template>
+

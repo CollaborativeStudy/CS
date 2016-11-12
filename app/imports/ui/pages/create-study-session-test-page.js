@@ -8,13 +8,13 @@ import { Sessions, SessionsSchema } from '../../api/sessions/sessions.js';
 
 const displayErrorMessages = 'displayErrorMessages';
 
-Template.Create_Study_Session_Page.onCreated(function onCreated() {
+Template.Create_Study_Session_Test_Page.onCreated(function onCreated() {
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displayErrorMessages, false);
   this.context = SessionsSchema.namedContext('Create_Study_Session_Page');
 });
 
-Template.Create_Study_Session_Page.helpers({
+Template.Create_Study_Session_Test_Page.helpers({
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
@@ -24,14 +24,14 @@ Template.Create_Study_Session_Page.helpers({
   },
 });
 
-Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
+Template.Create_Study_Session_Test_Page.onRendered(function enableSemantic() {
   const instance = this;
   instance.$('select.ui.dropdown').dropdown();
   instance.$('.ui.selection.dropdown').dropdown();
   instance.$('ui.fluid.search.dropdown').dropdown();
 });
 
-Template.Create_Study_Session_Page.events({
+Template.Create_Study_Session_Test_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
     // Get name (text field)

@@ -13,27 +13,31 @@ export const SessionsSchema = new SimpleSchema({
     label: 'Name',
     type: String,
     optional: false,
-    max: 20,
+    max: 200,
   },
   course: {
     label: 'Course',
     type: String,
     optional: false,
+    max: 200,
   },
   topic: {
     label: 'Topic',
     type: String,
     optional: false,
+    max: 200,
   },
   startTime: {
     label: 'Start Time',
     type: String,
     optional: false,
+    max: 200,
   },
   endTime: {
     label: 'End Time',
     type: String,
     optional: false,
+    max: 200,
   },
 });
 

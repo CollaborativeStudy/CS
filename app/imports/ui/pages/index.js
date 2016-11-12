@@ -22,8 +22,5 @@ import './study-session-page.html';
 import './study-session-detail-page.html';
 import './calendar-page.html';
 
-import './create-study-session-test-page.html';
-import './create-study-session-test-page.js';
-
 import './test-page.html';
 import './test-page.js';

@@ -51,7 +51,7 @@ Template.Create_Study_Session_Test_Page.events({
     if (instance.context.isValid()) {
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go('Create_Study_Session_Page');
+      FlowRouter.go('Home_Page');
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }

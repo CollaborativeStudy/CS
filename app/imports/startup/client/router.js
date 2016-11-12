@@ -10,9 +10,9 @@ FlowRouter.route('/', {
 });
 
 FlowRouter.route('/test', {
-  name: 'Create_Study_Session_Test_Page',
+  name: 'Test_Page',
   action() {
-    BlazeLayout.render('App_Body', { main: 'Create_Study_Session_Test_Page' });
+    BlazeLayout.render('App_Body', { main: 'Test_Page' });
   },
 });
 

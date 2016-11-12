@@ -1,13 +1,13 @@
-<template name="Create_Study_Session_Test_Page">
+<template name="Create_Study_Session_Page">
   <div class="ui raised segment container">
-    <form class="ui form session-data-form {{ errorClass }}">
+    <form class="ui form">
       <h2 class="ui dividing header">Create a Study Session</h2>
       <div class="field">
 
         <div class="two fields">
           <div class="field">
             <label>Course</label>
-            <select class="ui fluid search dropdown" name="course" id="course">
+            <select class="ui fluid search dropdown" name="course">
               <option value="">Select a Course</option>
               <option value="1">ICS 111 - Introduction to Computer Science I</option>
               <option value="1">ICS 141 - Discrete Mathematics for Computer Science I</option>
@@ -17,22 +17,12 @@
               <option value="5">MATH 242 - Calculus II</option>
               <option value="6">MATH 371 - Elementary Probability Theory</option>
             </select>
-            {{#if displayFieldError 'course' }}
-              <div class="ui error message">
-                <p>You must specify the course.</p>
-              </div>
-            {{/if}}
           </div>
           <div class="field">
             <label>Topic</label>
             <div class="field">
-              <input type="text" name="topic" id="topic" placeholder="Topic/Subject/Chapter to be discussed">
+              <input type="text" name="topic" placeholder="Topic/Subject/Chapter to be discussed">
             </div>
-            {{#if displayFieldError 'topic' }}
-              <div class="ui error message">
-                <p>You must specify the topic of this session.</p>
-              </div>
-            {{/if}}
           </div>
         </div>
       </div>
@@ -40,7 +30,7 @@
       <div class="two fields">
         <div class="field">
           <label>Start Time</label>
-          <select class="ui fluid search dropdown" name="startTime" id="startTime">
+          <select class="ui fluid search dropdown" name="course">
             <option value="">Select a Start Time</option>
             <option value="1">1:00AM</option>
             <option value="2">2:00AM</option>
@@ -67,16 +57,11 @@
             <option value="23">11:00PM</option>
             <option value="24">12:00AM</option>
           </select>
-          {{#if displayFieldError 'startTime' }}
-            <div class="ui error message">
-              <p>You must specify the start time of this session.</p>
-            </div>
-          {{/if}}
         </div>
 
         <div class="field">
           <label>End Time</label>
-          <select class="ui fluid search dropdown" name="endTime" id="endTime">
+          <select class="ui fluid search dropdown" name="course">
             <option value="">Select an End Time</option>
             <option value="1">1:00AM</option>
             <option value="2">2:00AM</option>
@@ -103,14 +88,9 @@
             <option value="23">11:00PM</option>
             <option value="24">12:00AM</option>
           </select>
-          {{#if displayFieldError 'endTime' }}
-            <div class="ui error message">
-              <p>You must specify the end time of this session.</p>
-            </div>
-          {{/if}}
         </div>
       </div>
-      <button class="ui teal button" type="submit">Create Study Session</button>
+      <button class="ui teal button">Create Study Session</button>
     </form>
   </div>
 

@@ -22,16 +22,6 @@ import './study-session-page.html';
 import './study-session-detail-page.html';
 import './calendar-page.html';
 
-
-
-
-
-
-
-
-
-
-
 import './group-page-ics311.html';
 import './group-page-ics314.html';
 import './group-page.html';

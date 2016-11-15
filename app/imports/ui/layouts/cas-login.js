@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 Template.Cas_Login.events({
   /**
@@ -10,6 +11,7 @@ Template.Cas_Login.events({
   'click .cas-logout': function casLogout(event) {
     event.preventDefault();
     Meteor.logout();
+    FlowRouter.go('Public_Landing_Page');
     return false;
   },
 

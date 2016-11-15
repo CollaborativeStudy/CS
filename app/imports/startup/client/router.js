@@ -73,6 +73,28 @@ FlowRouter.route('/calendar-page', {
   },
 });
 
+FlowRouter.route('/group-page', {
+  name: 'Group_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Group_Page' });
+  },
+});
+
+FlowRouter.route('/group-page-ics314', {
+  name: 'Group_Page_Ics314',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Group_Page_Ics314' });
+  },
+});
+
+FlowRouter.route('/group-page-ics311', {
+  name: 'Group_Page_Ics311',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Group_Page_Ics311' });
+  },
+});
+
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_Body', { main: 'App_Not_Found' });

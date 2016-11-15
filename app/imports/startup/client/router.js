@@ -9,6 +9,13 @@ FlowRouter.route('/', {
   },
 });
 
+FlowRouter.route('/test', {
+  name: 'Test_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Test_Page' });
+  },
+});
+
 FlowRouter.route('/login', {
   name: 'Login_Page',
   action() {

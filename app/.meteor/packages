@@ -55,3 +55,4 @@ atoy40:accounts-cas
 random@1.0.10
 momentjs:moment@=2.15.1
 fullcalendar:fullcalendar
+twbs:bootstrap

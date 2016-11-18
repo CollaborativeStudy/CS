@@ -31,7 +31,7 @@ import './test-page.js';
 
 //Change
 import './events.html';
-import './events.js';
+import './calendar-page.js';
 import './add-edit-event-modal.html';
 import './add-edit-event-modal.js';
 

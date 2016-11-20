@@ -58,6 +58,13 @@ FlowRouter.route('/create-study-session', {
   },
 });
 
+FlowRouter.route('/create-review', {
+  name: 'Create_Review_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Create_Review_Page' });
+  },
+});
+
 FlowRouter.route('/study-session', {
   name: 'Study_Session_Page',
   action() {

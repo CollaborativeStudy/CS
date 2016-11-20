@@ -20,3 +20,9 @@ body {
 a.login-close-text {
   color: black !important;
 }
+
+#create-review-botton {
+  background-color: #25A574;
+  color: white;
+  margin-bottom: 10px;
+}

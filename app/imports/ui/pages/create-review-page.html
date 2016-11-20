@@ -1,0 +1,26 @@
+<template name="Create_Review_Page">
+
+  <div class="ui raised segment container">
+    <div class="ui form">
+      <h3>Rating:</h3>
+      <div class="ui huge star rating" data-max-rating="5"></div>
+      <div class="field">
+        <label><h3>Title:</h3></label>
+        <textarea rows="1"></textarea>
+      </div>
+      <div class="field">
+        <label><h3>Review</h3></label>
+        <textarea></textarea>
+      </div>
+      <button style="background-color:#25A574" class="ui button">
+        Submit
+      </button>
+    </div>
+  </div>
+
+  <script>
+    $('.ui.rating')
+        .rating()
+    ;
+  </script>
+</template>

@@ -37,9 +37,9 @@ Template.Create_Study_Session_Page.events({
     // Get name (text field)
     const name = 'John Doe changeme';
     /* const course = event.target.course.value;
-    const topic = event.target.topic.value;
-    const startTime = event.target.startTime.value;
-    const endTime = event.target.endTime.value; */
+     const topic = event.target.topic.value;
+     const startTime = event.target.startTime.value;
+     const endTime = event.target.endTime.value; */
     const e = document.getElementById(event.target.course.id);
     let course = e.options[e.selectedIndex].text;
     if (course === 'Select a Course') {
@@ -73,4 +73,3 @@ Template.Create_Study_Session_Page.events({
     }
   },
 });
-

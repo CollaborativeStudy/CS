@@ -67,7 +67,7 @@ Template.Calendar_Page.onRendered( () => {
     // Modal.
     eventClick( event ) {
       Session.set( 'eventModal', { type: 'edit', event: event._id } );
-      FlowRouter.go(`study-session/${ event._id }`);
+      FlowRouter.go('Study_Session_Detail_Page', { _id: event._id });
       // $( '#add-edit-event-modal' ).modal( 'show' );
     }
   });

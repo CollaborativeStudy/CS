@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -35,11 +36,7 @@ Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
     // Get name (text field)
-    const name = 'John Doe changeme';
-    /* const course = event.target.course.value;
-     const topic = event.target.topic.value;
-     const startTime = event.target.startTime.value;
-     const endTime = event.target.endTime.value; */
+    const name = Meteor.user().profile.name;
     const e = document.getElementById(event.target.course.id);
     let course = e.options[e.selectedIndex].text;
     if (course === 'Select a Course') {

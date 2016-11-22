@@ -1,6 +1,6 @@
-<template name="Group_Page">
+<template name="Group_Page_Ics314">
   <div class="ui raised segment container">
-    <h1 style="color: teal">ICS 311 Group</h1>
+    <h1 style="color: teal">ICS 314 Group</h1>
     <table class="ui very basic collapsing celled table">
       <thead>
       <tr>
@@ -9,14 +9,13 @@
       </tr>
       </thead>
       <tbody>
-      {{#each sessions in sessionsList}}
       <tr>
         <td>
           <h4 class="ui image header">
             <img src="/images/avatar2/small/lena.png" class="ui mini rounded image">
             <div class="content">
-              {{sessions.name}}
-              <div class="sub header">ICS 311
+              Mary
+              <div class="sub header">ICS 314
               </div>
             </div>
           </h4></td>
@@ -29,13 +28,13 @@
           <h4 class="ui image header">
             <img src="/images/avatar2/small/matthew.png" class="ui mini rounded image">
             <div class="content">
-              {{sessions.name}}
-              <div class="sub header">ICS 311
+              Mariah
+              <div class="sub header">ICS 314
               </div>
             </div>
           </h4></td>
         <td>
-          Organizing
+          Organization
         </td>
       </tr>
       <tr>
@@ -43,8 +42,8 @@
           <h4 class="ui image header">
             <img src="/images/avatar2/small/lindsay.png" class="ui mini rounded image">
             <div class="content">
-              {{sessions.name}}
-              <div class="sub header">ICS 311
+              Chad
+              <div class="sub header">ICS 314
               </div>
             </div>
           </h4></td>
@@ -57,17 +56,15 @@
           <h4 class="ui image header">
             <img src="https://github.com/CollaborativeStudy/CS/blob/master/app/public/images/profile.png" class="ui mini rounded image">
             <div class="content">
-              {{sessions.name}}
-              <div class="sub header">ICS 311
+              Neal
+              <div class="sub header">ICS 314
               </div>
             </div>
           </h4></td>
         <td>
           Eating
         </td>
-
       </tr>
-      {{/each}}
       </tbody>
     </table>
   </div>

@@ -36,28 +36,31 @@ Template.Create_Study_Session_Page.events({
     event.preventDefault();
     // Get name (text field)
     const name = 'John Doe changeme';
+    /* const course = event.target.course.value;
+    const topic = event.target.topic.value;
+    const startTime = event.target.startTime.value;
+    const endTime = event.target.endTime.value; */
     const e = document.getElementById(event.target.course.id);
-    const course = e.options[e.selectedIndex].text;
+    let course = e.options[e.selectedIndex].text;
+    if (course === 'Select a Course') {
+      course = '';
+    }
     const topic = event.target.topic.value;
     const f = document.getElementById(event.target.startTime.id);
-    const startTime = f.options[f.selectedIndex].text;
+    let startTime = f.options[f.selectedIndex].text;
+    if (startTime === 'Select a Start Time') {
+      startTime = '';
+    }
     const g = document.getElementById(event.target.endTime.id);
-    const endTime = g.options[g.selectedIndex].text;
-
-    const startTimeC = event.target.startTime.value;
-    const endTimeC = event.target.endTime.value;
-
-    console.log(startTimeC);
-    console.log(endTimeC);
-
-    if (startTimeC >= endTimeC) {
-      console.log('endTime is earlier than startTime');
+    let endTime = g.options[g.selectedIndex].text;
+    if (endTime === 'Select an End Time') {
+      endTime = '';
     }
 
     const newSession = { name, course, topic, startTime, endTime };
     // Clear out any old validation errors.
     instance.context.resetValidation();
-    // Invoke clean so that newSessionData reflects what will be inserted.
+    // Invoke clean so that newSession reflects what will be inserted.
     SessionsSchema.clean(newSession);
     // Determine validity.
     instance.context.validate(newSession);

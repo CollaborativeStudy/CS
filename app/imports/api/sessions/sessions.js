@@ -38,7 +38,20 @@ export const SessionsSchema = new SimpleSchema({
     type: String,
     optional: false,
     max: 200,
+    custom: function() {
+      if (this.startTime > this.endTime) {
+
+      }
+    }
   },
 });
 
 Sessions.attachSchema(SessionsSchema);
+
+/* Sessions.addValidator(function checkStartAndEnd() {
+  if (this.startTime > this.endTime) {
+        return false;
+      }
+  return true;
+    }
+); */

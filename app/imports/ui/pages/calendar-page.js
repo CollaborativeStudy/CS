@@ -58,13 +58,14 @@ Template.Calendar_Page.onRendered( () => {
         Bert.alert( 'Sorry, you can\'t move items to the past!', 'danger' );
       }
     },
-    // Modal.
-    dayClick( date ) {
-      Session.set( 'eventModal', { type: 'add', date: date.format() } );
-      console.log("here");
-      $( '#add-edit-event-modal' ).modal( 'show' );
-    },
-    // Modal.
+    // Modal to add event when clicking on a day.
+    // dayClick( date ) {
+    //   Session.set( 'eventModal', { type: 'add', date: date.format() } );
+    //   console.log("here");
+    //   $( '#add-edit-event-modal' ).modal( 'show' );
+    // },
+
+    // Directs to study session detail page.
     eventClick( event ) {
       Session.set( 'eventModal', { type: 'edit', event: event._id } );
       FlowRouter.go('Study_Session_Detail_Page', { _id: event._id });

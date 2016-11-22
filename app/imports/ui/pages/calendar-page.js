@@ -10,12 +10,12 @@ let isPast = ( date ) => {
 };
 
 // Subscribe to the "events" collection.
-Template.events.onCreated( () => {
+Template.Calendar_Page.onCreated( () => {
   let template = Template.instance();
   template.subscribe( 'events' );
 });
 
-Template.events.onRendered( () => {
+Template.Calendar_Page.onRendered( () => {
   // Initialize the calendar.
   $( '#events-calendar' ).fullCalendar({
     // Add events to the calendar.

@@ -1,8 +1,20 @@
 <template name="Create_Study_Session_Page">
   <div class="ui raised segment container">
     <form class="ui form session-data-form {{ errorClass }}">
-      <h2 class="ui dividing header">Create a Study Session</h2>
+      <!--<h2 class="ui dividing header">Create a Study Session</h2>-->
       <div class="field">
+
+        <div class="field">
+          <label>Title</label>
+          <div class="field">
+            <input type="text" name="title" id="title" placeholder="A name for your study session.">
+          </div>
+          {{#if displayFieldError 'title' }}
+            <div class="ui error message">
+              <p>You must specify the title of this session.</p>
+            </div>
+          {{/if}}
+        </div>
 
         <div class="two fields">
           <div class="field">

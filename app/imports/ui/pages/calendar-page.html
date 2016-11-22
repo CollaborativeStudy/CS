@@ -3,6 +3,24 @@
     <!--Add the events calendar to the template.-->
     <div id="sessions-calendar"></div>
   </div>
+
+  <div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Create A Study Session
+    </div>
+    {{>Create_Study_Session_Page}}
+    <div class="actions">
+      <div class="ui black deny button">
+        Cancel
+      </div>
+      <div class="ui positive right labeled icon button">
+        Create Study Session
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
+
   <style>
     .fc-event-container {
       padding: 5px !important;

@@ -31,10 +31,8 @@ Template.Calendar_Page.onRendered( () => {
     },
     eventRender( session, element ) {
       element.find( '.fc-content' ).html(
-          `<h4>${ session.title }</h4>
-         <p class="course">${ session.course }</p>
+          `<h4 class="course">${ session.course }</h4>
          <p class="topic">${ session.topic }</p>
-         <p class="guest-count">${ session.guests } Guests</p>
         `
       );
     },

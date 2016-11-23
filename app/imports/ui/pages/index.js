@@ -13,6 +13,7 @@ import './create-study-session-page.html';
 import './create-study-session-page.js';
 
 import './create-review-page.html';
+import './create-review-page.js';
 
 import './review-page.html';
 import './review-page.js';

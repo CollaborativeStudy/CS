@@ -13,6 +13,7 @@ export const ReviewsSchema = new SimpleSchema({
     label: 'rating',
     type: Number,
     optional: false,
+    max: 5,
   },
   title: {
     label: 'title',

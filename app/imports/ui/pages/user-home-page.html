@@ -68,68 +68,7 @@
       </div>
     </div>
     <div class="ui tab segment" data-tab="Reviews">
-      <button id="create-review-botton" class="ui labeled icon button">
-        <i class="star icon"></i>
-        <a style="color:white" href="create-review">Submit a Review</a>
-      </button>
-      <div class="ui stackable four cards">
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Always On Track!</div>
-            <div class="description">
-              <p>Mary kept the whole group on topic and was a great mediator when an argument got out of hand.</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating:
-              <div class="ui rating" data-rating="5" data-max-rating="5"></div>
-            </div>
-          </div>
-        </div>
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Not Cool</div>
-            <div class="description">
-              <p>My friend and I was talking and she interrupted me and started telling me what to do.. -_-</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating:
-              <div class="ui rating" data-rating="1" data-max-rating="5"></div>
-            </div>
-          </div>
-        </div>
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Cool!</div>
-            <div class="description">
-              <p>No comment.</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating:
-              <div class="ui rating" data-rating="3" data-max-rating="5"></div>
-            </div>
-          </div>
-        </div>
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Don't mind the bad reviews</div>
-            <div class="description">
-              <p>She's super cool. Idk what some people are talking about.</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating:
-              <div class="ui rating" data-rating="5" data-max-rating="5"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {{>Review_Page}}
     </div>
     <div class="ui tab segment" data-tab="Messages">
       <div class="ui grid">
@@ -200,9 +139,5 @@
   <script>
     $('#points').progress();
   </script>
-  <script>
-    $('.ui.rating')
-        .rating('disable')
-    ;
-  </script>
+
 </template>

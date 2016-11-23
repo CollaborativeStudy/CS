@@ -14,6 +14,8 @@ import './create-study-session-page.js';
 
 import './create-review-page.html';
 
+import './review-page.html';
+
 import './public-landing-page.html';
 import './user-home-page.html';
 import './login-page.html';

@@ -7,12 +7,11 @@
           <p>Major: Computer Science</p>
           <p>Expected Graduation: Spring 2019</p>
           <p>GPA: 4.0</p>
-          <div class="extra">
-            Rating:
-            <div class="ui mini star rating" data-rating="5" maxRating="5"></div>
-            <button id="create-review-botton" class="ui right floated button">
-              <a style="color:white" href="reviews">Reviews</a>
-            </button>
+          <div class="extra">Rate:
+            <div class="ui centered huge star rating" data-rating="5" data-max-rating="5"></div>
+          </div>
+          <div class="ui bottom attached button">
+            <a href="reviews">Reviews</a>
           </div>
         </div>
       </div>
@@ -64,7 +63,7 @@
 
   <script>
     $('.ui.rating')
-        .rating()
+        .rating('disable')
     ;
   </script>
 </template>

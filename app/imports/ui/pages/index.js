@@ -31,3 +31,5 @@ import './test-page.js';
 import './calendar-page.html';
 import './calendar-page.js';
 
+import './add-edit-event-modal.html';
+import './add-edit-event-modal.js';

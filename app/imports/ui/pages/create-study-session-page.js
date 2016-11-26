@@ -36,6 +36,7 @@ Template.Create_Study_Session_Page.events({
     event.preventDefault();
     // Get name (text field)
     const name = 'John Doe changeme';
+    const title = event.target.title.value;
     const e = document.getElementById(event.target.course.id);
     const course = e.options[e.selectedIndex].text;
     const topic = event.target.topic.value;
@@ -44,7 +45,7 @@ Template.Create_Study_Session_Page.events({
     const g = document.getElementById(event.target.endTime.id);
     const endTime = g.options[g.selectedIndex].text;
 
-    const newSession = { name, course, topic, startTime, endTime };
+    const newSession = { name, title, course, topic, startTime, endTime };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newSessionData reflects what will be inserted.

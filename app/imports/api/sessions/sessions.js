@@ -38,6 +38,16 @@ export const SessionsSchema = new SimpleSchema({
     type: String,
     optional: false,
   },
+  startTime: {
+    label: 'startTime',
+    type: String,
+    optional: false,
+  },
+  endTime: {
+    label: 'endTime',
+    type: String,
+    optional: false,
+  },
   guests: {
     label: "The number of guests expected at this study session.",
     type: Number

@@ -19,7 +19,7 @@
             </select>
             {{#if displayFieldError 'course' }}
               <div class="ui error message">
-                <p>You must specify the course.</p>
+                <p>Please specify the course of this session.</p>
               </div>
             {{/if}}
           </div>
@@ -30,7 +30,7 @@
             </div>
             {{#if displayFieldError 'topic' }}
               <div class="ui error message">
-                <p>You must specify the topic of this session.</p>
+                <p>Please specify the topic of this session.</p>
               </div>
             {{/if}}
           </div>
@@ -69,7 +69,7 @@
           </select>
           {{#if displayFieldError 'startTime' }}
             <div class="ui error message">
-              <p>You must specify the start time of this session.</p>
+              <p>Please specify the start time of this session.</p>
             </div>
           {{/if}}
         </div>
@@ -105,10 +105,15 @@
           </select>
           {{#if displayFieldError 'endTime' }}
             <div class="ui error message">
-              <p>You must specify the end time of this session.</p>
+              <p>Please specify the end time of this session.</p>
             </div>
           {{/if}}
         </div>
+        {{#if displayFieldError 'endTimeV' }}
+          <div class="ui error message">
+            <p>Please enter an end time for this session later than it's start time.</p>
+          </div>
+        {{/if}}
       </div>
       <button class="ui teal button" type="submit">Create Study Session</button>
     </form>

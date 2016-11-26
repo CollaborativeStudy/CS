@@ -53,8 +53,10 @@ Template.Create_Study_Session_Page.events({
     if (endTime === 'Select an End Time') {
       endTime = '';
     }
+    const startTimeV = event.target.startTime.value;
+    const endTimeV = event.target.endTime.value;
 
-    const newSession = { name, course, topic, startTime, endTime };
+    const newSession = { name, course, topic, startTime, endTime, startTimeV, endTimeV };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newSession reflects what will be inserted.

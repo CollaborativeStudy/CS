@@ -31,27 +31,28 @@ export const SessionsSchema = new SimpleSchema({
     label: 'Start Time',
     type: String,
     optional: false,
-    max: 200,
   },
   endTime: {
     label: 'End Time',
     type: String,
     optional: false,
-    max: 200,
-    custom: function() {
-      if (this.startTime > this.endTime) {
-
-      }
-    }
+  },
+  startTimeV: {
+    label: 'Start Time Value',
+    type: Number,
+    optional: false,
+  },
+  endTimeV: {
+    label: 'End Time Value',
+    type: Number,
+    optional: false,
+    custom: function startAndEnd() {
+      let x = 0;
+      if (this.value < this.field('startTimeV').value || this.value === this.field('startTimeV').value) {
+        x = 'endTimeV';
+      } return x;
+    },
   },
 });
 
 Sessions.attachSchema(SessionsSchema);
-
-/* Sessions.addValidator(function checkStartAndEnd() {
-  if (this.startTime > this.endTime) {
-        return false;
-      }
-  return true;
-    }
-); */

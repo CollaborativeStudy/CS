@@ -14,3 +14,5 @@ settings.production.json
 node_modules/
 
 config/settings.json
+
+app/npm-debug.log

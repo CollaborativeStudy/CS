@@ -40,7 +40,7 @@
       <div class="two fields">
         <div class="field">
           <label>Start Time</label>
-          <select class="ui fluid search dropdown" name="startTime" id="startTime">
+          <select class="ui fluid search dropdown" name="start" id="start">
             <option value="">Select a Start Time</option>
             <option value="0">12:00AM</option>
             <option value="1">1:00AM</option>
@@ -67,7 +67,7 @@
             <option value="22">10:00PM</option>
             <option value="23">11:00PM</option>
           </select>
-          {{#if displayFieldError 'startTime' }}
+          {{#if displayFieldError 'start' }}
             <div class="ui error message">
               <p>Please specify the start time of this session.</p>
             </div>
@@ -76,7 +76,7 @@
 
         <div class="field">
           <label>End Time</label>
-          <select class="ui fluid search dropdown" name="endTime" id="endTime">
+          <select class="ui fluid search dropdown" name="end" id="end">
             <option value="">Select an End Time</option>
             <option value="1">1:00AM</option>
             <option value="2">2:00AM</option>
@@ -103,13 +103,13 @@
             <option value="23">11:00PM</option>
             <option value="24">12:00AM</option>
           </select>
-          {{#if displayFieldError 'endTime' }}
+          {{#if displayFieldError 'end' }}
             <div class="ui error message">
               <p>Please specify the end time of this session.</p>
             </div>
           {{/if}}
         </div>
-        {{#if displayFieldError 'endTimeV' }}
+        {{#if displayFieldError 'endV' }}
           <div class="ui error message">
             <p>Please enter an end time for this session later than it's start time.</p>
           </div>

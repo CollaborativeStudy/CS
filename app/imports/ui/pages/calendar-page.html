@@ -4,7 +4,10 @@
     <div id="sessions-calendar"></div>
   </div>
 
-  {{>Add_Edit_Event_Modal}}
+  <!-- fix this -->
+  <div class="ui modal">
+    {{>Create_Study_Session_Page}}
+  </div>
 
   <style>
     .fc-event-container {
@@ -14,7 +17,8 @@
     .fc-event {
       padding: 5px 10px;
       border-color: #ddd;
-      background: #25A574 !important;}
+      background: #25A574 !important;
+    }
 
     .fc-content {
       color: white;

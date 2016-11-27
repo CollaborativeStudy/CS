@@ -58,9 +58,9 @@ Template.Calendar_Page.onRendered(() => {
     // Modal to add event when clicking on a day.
     dayClick(date, session) {
       Session.set('eventModal', { type: 'add', date: date.format() });
-      console.log("here");
+      // console.log(date.format());
       //$( '#add-edit-event-modal' ).modal( 'show' );
-      $('#add-edit-event-modal')
+      $('.ui.modal')
           .modal('show')
       ;
     },

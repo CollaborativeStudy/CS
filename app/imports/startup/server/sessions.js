@@ -8,11 +8,14 @@ import { _ } from 'meteor/underscore';
 const sessionsSeeds = [
   {
     title: 'event1',
+    name: 'Chad',
+    guests: 50,
+    course: 'ICS 315',
+    topic: 'git',
     start: '2016-11-21',
     end: '2016-11-22',
-    course: 'ICS 314',
-    topic: 'git',
-    guests: 50
+    startV: 1,
+    endV: 2,
   },
 ];
 

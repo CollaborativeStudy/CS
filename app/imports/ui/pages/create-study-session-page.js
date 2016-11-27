@@ -116,6 +116,7 @@ Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
     // Get name (text field)
+    console.log(Session.get('eventModal'));
     const title = 'Title';
     const name = Meteor.user().profile.name;
     const guests = 0;
@@ -138,12 +139,8 @@ Template.Create_Study_Session_Page.events({
     const startV = event.target.start.value;
     const endV = event.target.end.value;
 
-<<<<<<< HEAD
-    const newSession = { name, title, course, topic, startTime, endTime };
-=======
     // const newSession = { name, course, topic, start, end, startV, endV };
     const newSession = { title, name, guests, course, topic, start, end, startV, endV };
->>>>>>> master
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newSession reflects what will be inserted.

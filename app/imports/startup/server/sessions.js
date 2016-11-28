@@ -7,25 +7,15 @@ import { _ } from 'meteor/underscore';
  */
 const sessionsSeeds = [
   {
-    name: 'changeme',
-    course: '5',
-    topic: 'changeme',
-    startTime: 'changeme',
-    endTime: 'changeme',
-  },
-  {
-    name: 'changeme1',
-    course: '3',
-    topic: 'changeme1',
-    startTime: 'changeme1',
-    endTime: 'changeme1',
-  },
-  {
-    name: 'changeme2',
-    course: '3',
-    topic: 'changeme2',
-    startTime: 'changeme2',
-    endTime: 'changeme2',
+    title: 'changeme',
+    name: 'generalname',
+    guests: '5',
+    course: '1',
+    topic: 'generictopic',
+    start: 'changeme',
+    end: 'changeme',
+    startV: '1',
+    endV: '2',
   },
 ];
 

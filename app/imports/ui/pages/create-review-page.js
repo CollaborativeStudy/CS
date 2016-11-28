@@ -24,17 +24,14 @@ Template.Create_Review_Page.helpers({
   },
 });
 
-// Template.Create_Review_Page.onRendered(function enableSemantic() {
-//   const instance = this;
-//   instance.$('select.ui.dropdown').dropdown();
-//   instance.$('.ui.selection.dropdown').dropdown();
-//   instance.$('ui.fluid.search.dropdown').dropdown();
-// });
+Template.Create_Review_Page.onRendered(function enableSemantic() {
+  const instance = this;
+  instance.$('.ui.rating').rating({maxRating:5});
+});
 
-Template.Create_Study_Session_Page.events({
+Template.Create_Review_Page.events({
   'submit .review-data-form'(event, instance) {
     event.preventDefault();
-    // Get name (text field)
     const rating = event.target.rating.value;
     const title = event.target.title.value;
     const review = event.target.review.value;
@@ -49,7 +46,7 @@ Template.Create_Study_Session_Page.events({
     if (instance.context.isValid()) {
       Reviews.insert(newReview);
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go('User_Home_Page');
+      FlowRouter.go('Review_Page');
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }

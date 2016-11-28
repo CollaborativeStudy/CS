@@ -10,3 +10,14 @@ Template.Review_Page.helpers({
     return Reviews.find();
   },
 });
+
+Template.Review_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Reviews');
+  });
+});
+
+Template.Create_Review_Page.onRendered(function enableSemantic() {
+  const instance = this;
+  instance.$('.ui.rating').rating('disable');
+});

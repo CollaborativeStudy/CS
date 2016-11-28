@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -35,19 +36,32 @@ Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
     // Get name (text field)
-    const name = 'John Doe changeme';
+    const title = 'Title';
+    const name = Meteor.user().profile.name;
+    const guests = 0;
     const e = document.getElementById(event.target.course.id);
-    const course = e.options[e.selectedIndex].text;
+    let course = e.options[e.selectedIndex].text;
+    if (course === 'Select a Course') {
+      course = '';
+    }
     const topic = event.target.topic.value;
-    const f = document.getElementById(event.target.startTime.id);
-    const startTime = f.options[f.selectedIndex].text;
-    const g = document.getElementById(event.target.endTime.id);
-    const endTime = g.options[g.selectedIndex].text;
+    const f = document.getElementById(event.target.start.id);
+    let start = f.options[f.selectedIndex].text;
+    if (start === 'Select a Start Time') {
+      start = '';
+    }
+    const g = document.getElementById(event.target.end.id);
+    let end = g.options[g.selectedIndex].text;
+    if (end === 'Select an End Time') {
+      end = '';
+    }
+    const startV = event.target.start.value;
+    const endV = event.target.end.value;
 
-    const newSession = { name, course, topic, startTime, endTime };
+    const newSession = { title, name, guests, course, topic, start, end, startV, endV };
     // Clear out any old validation errors.
     instance.context.resetValidation();
-    // Invoke clean so that newSessionData reflects what will be inserted.
+    // Invoke clean so that newSession reflects what will be inserted.
     SessionsSchema.clean(newSession);
     // Determine validity.
     instance.context.validate(newSession);

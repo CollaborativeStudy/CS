@@ -163,5 +163,12 @@ Template.Create_Study_Session_Page.events({
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },
+  'click .cancel'(event, instance){
+    event.preventDefault();
+    console.log('cancel');
+    $('.ui.modal')
+        .modal('hide')
+    ;
+  },
 });
 

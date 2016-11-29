@@ -20,6 +20,8 @@ import './user-profile-page.html';
 import './user-profile-detail-page.html';
 import './study-session-page.html';
 import './study-session-page.js';
+import './study-session-page-search.html';
+import './study-session-page-search.js';
 import './study-session-detail-page.html';
 import './calendar-page.html';
 

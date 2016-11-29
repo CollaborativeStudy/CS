@@ -117,6 +117,7 @@ Template.Create_Study_Session_Page.events({
     event.preventDefault();
     // Get name (text field)
     console.log(Session.get('eventModal'));
+    let newSession = Session.get('eventModal');
     const title = 'Title';
     const name = Meteor.user().profile.name;
     const guests = 0;
@@ -127,20 +128,24 @@ Template.Create_Study_Session_Page.events({
     }
     const topic = event.target.topic.value;
     const f = document.getElementById(event.target.start.id);
-    let start = f.options[f.selectedIndex].text;
+    // Get the date and add the time to the end.
+    let start = newSession.date+"T"+f.options[f.selectedIndex].value+"-10:00";
     if (start === 'Select a Start Time') {
       start = '';
     }
     const g = document.getElementById(event.target.end.id);
-    let end = g.options[g.selectedIndex].text;
+    let end = newSession.date+"T"+g.options[g.selectedIndex].value+"-10:00";
     if (end === 'Select an End Time') {
       end = '';
     }
-    const startV = event.target.start.value;
-    const endV = event.target.end.value;
+    const startV = parseInt(event.target.start.value);
+    const endV = parseInt(event.target.end.value);
 
+
+    console.log(start);
+    console.log(startV);
     // const newSession = { name, course, topic, start, end, startV, endV };
-    const newSession = { title, name, guests, course, topic, start, end, startV, endV };
+    newSession = { title, name, guests, course, topic, start, end, startV, endV };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newSession reflects what will be inserted.

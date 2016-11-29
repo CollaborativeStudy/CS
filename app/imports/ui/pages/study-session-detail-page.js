@@ -10,3 +10,11 @@ Template.Study_Session_Detail_Page.helpers({
     return session.endV - session.startV;
   }
 });
+
+Template.Study_Session_Detail_Page.events({
+  'click .delete'(event, instance){
+    event.preventDefault();
+    Sessions.remove(FlowRouter.getParam('_id'));
+    FlowRouter.go('Calendar_Page');
+  }
+});

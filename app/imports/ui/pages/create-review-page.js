@@ -1,8 +1,8 @@
-import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { _ } from 'meteor/underscore';
-import { Reviews, ReviewsSchema } from '../../api/reviews/reviews.js';
+import {Template} from 'meteor/templating';
+import {ReactiveDict} from 'meteor/reactive-dict';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+import {_} from 'meteor/underscore';
+import {Reviews, ReviewsSchema} from '../../api/reviews/reviews.js';
 
 /* eslint-disable no-param-reassign */
 
@@ -26,15 +26,22 @@ Template.Create_Review_Page.helpers({
 
 Template.Create_Review_Page.onRendered(function enableSemantic() {
   const instance = this;
-  instance.$('.ui.rating').rating({maxRating:5});
+  instance.$('.ui.rating').rating({
+    onRate: function (value) {
+      return value;
+    }
+  });
 });
 
 Template.Create_Review_Page.events({
   'submit .review-data-form'(event, instance) {
     event.preventDefault();
-    const rating = event.target.rating.value;
+    const rating = $('.ui.rating').rating('get rating');
+    // console.log(rating);
     const title = event.target.title.value;
+    // console.log(title);
     const review = event.target.review.value;
+    // console.log(review);
 
     const newReview = { rating, title, review };
     // Clear out any old validation errors.

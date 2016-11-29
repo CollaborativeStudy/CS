@@ -1,11 +1,12 @@
 <template name="Review_Page">
 
   <div class="ui container">
-    <button id="create-review-botton" class="ui labeled icon button">
-      <i class="star icon"></i>
-      <a style="color:white" href="create-review">Submit a Review</a>
-    </button>
-
+    <a href="create-review">
+      <button id="create-review-botton" class="ui labeled icon button">
+        <i class="star icon"></i>
+        Submit a Review
+      </button>
+    </a>
     {{#if Template.subscriptionsReady}}
     <div class="ui four stackable cards">
       {{#each review in reviewsList}}
@@ -14,9 +15,9 @@
           <div class="header">{{review.title}}</div>
           <div class="description"><p>{{review.review}}</p></div>
         </div>
-        <div class="extra content">
+        <div class="extra">
           Rating:
-          <div class="ui rating" data-rating={{review.rating}} data-max-rating="5"></div>
+          <div class="ui star rating" data-max-rating="1"></div>
         </div>
       </div>
       {{/each}}
@@ -26,4 +27,9 @@
     {{/if}}
   </div>
 
+  <script>
+  $('.ui.star.rating')
+  .rating()
+  ;
+  </script>
 </template>

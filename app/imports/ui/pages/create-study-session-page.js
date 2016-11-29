@@ -122,7 +122,7 @@ Template.Create_Study_Session_Page.events({
     const name = Meteor.user().profile.name;
     const guests = 0;
     const e = document.getElementById(event.target.course.id);
-    let course = e.options[e.selectedIndex].text;
+    let course = e.options[e.selectedIndex].value;
     if (course === 'Select a Course') {
       course = '';
     }
@@ -141,11 +141,15 @@ Template.Create_Study_Session_Page.events({
     const startV = parseInt(event.target.start.value);
     const endV = parseInt(event.target.end.value);
 
+    // Store the start and end time in a string format.
+    const startString = f.options[f.selectedIndex].text;
+    const endString = g.options[g.selectedIndex].text;
 
-    console.log(start);
-    console.log(startV);
+    console.log(startString);
+    console.log(endString);
+
     // const newSession = { name, course, topic, start, end, startV, endV };
-    newSession = { title, name, guests, course, topic, start, end, startV, endV };
+    newSession = { title, name, guests, course, topic, start, end, startV, endV, startString, endString };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newSession reflects what will be inserted.
@@ -157,7 +161,10 @@ Template.Create_Study_Session_Page.events({
       console.log('valid data');
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go('Public_Landing_Page');
+      $('.ui.modal')
+          .modal('hide')
+      ;
+      //FlowRouter.go('Public_Landing_Page');
     } else {
       console.log('invalid data');
       instance.messageFlags.set(displayErrorMessages, true);

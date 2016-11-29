@@ -16,6 +16,11 @@ Template.Calendar_Page.onCreated(() => {
 Template.Calendar_Page.onRendered(() => {
   // Initialize the calendar.
   $('#sessions-calendar').fullCalendar({
+    header: {
+      left:   'title',
+      center: '',
+      right:  'today prev,next'
+    },
     // Add events to the calendar.
     events(start, end, timezone, callback) {
       let data = Sessions.find().fetch().map((session) => {

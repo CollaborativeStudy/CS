@@ -19,7 +19,9 @@ import './admin-home-page.html';
 import './user-profile-page.html';
 import './user-profile-detail-page.html';
 import './study-session-page.html';
+
 import './study-session-detail-page.html';
+import './study-session-detail-page.js';
 
 import './group-page-ics311.html';
 import './group-page-ics314.html';

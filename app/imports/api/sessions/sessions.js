@@ -92,10 +92,6 @@ export const SessionsSchema = new SimpleSchema({
     type: String,
     optional: false,
   },
-  guests: {
-    label: 'The number of guests expected at this study session.',
-    type: Number,
-  },
   course: {
     label: 'Course',
     type: String,
@@ -136,17 +132,13 @@ export const SessionsSchema = new SimpleSchema({
       return x;
     },
   },
-  guests: {
-    label: "The number of guests expected at this study session.",
-    type: Number
-  },
-  pros: {
-    label: "List of pros attending the event.",
+  startString: {
+    label: 'Start time of event represented as a string',
     type: String,
     optional: false,
   },
-  studs: {
-    label: "List of studs attending the event.",
+  endString: {
+    label: 'End time of event represented as a string',
     type: String,
     optional: false,
   }

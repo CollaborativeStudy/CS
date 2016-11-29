@@ -54,4 +54,5 @@ insecure@1.0.7
 atoy40:accounts-cas
 random@1.0.10
 momentjs:moment@=2.15.1
+fullcalendar:fullcalendar
 aldeed:simple-schema

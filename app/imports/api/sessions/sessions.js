@@ -139,6 +139,16 @@ export const SessionsSchema = new SimpleSchema({
   guests: {
     label: "The number of guests expected at this study session.",
     type: Number
+  },
+  pros: {
+    label: "List of pros attending the event.",
+    type: String,
+    optional: false,
+  },
+  studs: {
+    label: "List of studs attending the event.",
+    type: String,
+    optional: false,
   }
 });
 

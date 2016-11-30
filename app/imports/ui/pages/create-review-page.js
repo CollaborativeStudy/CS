@@ -37,11 +37,8 @@ Template.Create_Review_Page.events({
   'submit .review-data-form'(event, instance) {
     event.preventDefault();
     const rating = $('.ui.rating').rating('get rating');
-    // console.log(rating);
     const title = event.target.title.value;
-    // console.log(title);
     const review = event.target.review.value;
-    // console.log(review);
 
     const newReview = { rating, title, review };
     // Clear out any old validation errors.

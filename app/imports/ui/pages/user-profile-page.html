@@ -8,7 +8,16 @@
           <p>Expected Graduation: Spring 2019</p>
           <p>GPA: 4.0</p>
           <div class="extra">Rate:
+            {{#if Template.subscriptionsReady}}
             <div class="ui centered huge star rating" data-rating="5" data-max-rating="5"></div>
+            <script>
+              $('.ui.rating')
+                  .rating('disable')
+              ;
+            </script>
+            {{else}}
+            {{> Loading}}
+            {{/if}}
           </div>
           <a href="reviews">
             <div class="ui bottom attached button" href="reviews">
@@ -63,9 +72,4 @@
     </div>
   </div>
 
-  <script>
-    $('.ui.rating')
-        .rating('disable')
-    ;
-  </script>
 </template>

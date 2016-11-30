@@ -7,19 +7,19 @@ import { _ } from 'meteor/underscore';
  */
 const reviewSeeds = [
   {
-    rating: 3,
-    title: 'Whatever',
-    review: 'Good',
+    rating: 5,
+    title: 'Good teacher.',
+    review: 'He taught me a lot of stuff.',
   },
   {
     rating: 1,
     title: 'Not Cool',
-    review: 'My friend and I was talking and she interrupted me and started telling me what to do.. -_-',
+    review: 'My friend and I was talking and he interrupted me and started telling me what to do.. -_-',
   },
   {
     rating: 5,
     title: 'Always On Track!',
-    review: 'Mary kept the whole group on topic and was a great mediator when an argument got out of hand.',
+    review: 'Chad kept the whole group on topic and was a great mediator when an argument got out of hand.',
   },
 ];
 

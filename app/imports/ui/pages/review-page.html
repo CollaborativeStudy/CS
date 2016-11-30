@@ -16,10 +16,16 @@
           <div class="description"><p>{{review.review}}</p></div>
         </div>
         <div class="extra">
-          Rating:
-          <div class="ui star rating" data-max-rating="1"></div>
+          <!--Rating:-->
+          <div class="ui centered huge star rating" data-rating={{review.rating}} data-max-rating="5"></div>
         </div>
       </div>
+
+      <script>
+        $('.ui.star.rating')
+            .rating('disable')
+        ;
+      </script>
       {{/each}}
     </div>
     {{else}}
@@ -27,9 +33,5 @@
     {{/if}}
   </div>
 
-  <script>
-  $('.ui.star.rating')
-  .rating()
-  ;
-  </script>
+
 </template>

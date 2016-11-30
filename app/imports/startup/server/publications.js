@@ -1,4 +1,5 @@
 import { Sessions } from '../../api/sessions/sessions.js';
+import { Reviews } from '../../api/reviews/reviews.js';
 // Change
 import { Events } from '../../api/events/events.js';
 import { Meteor } from 'meteor/meteor';

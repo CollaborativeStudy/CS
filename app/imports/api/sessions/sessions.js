@@ -80,10 +80,6 @@ export const SessionsSchema = new SimpleSchema({
     type: String,
     optional: false,
   },
-  guests: {
-    label: 'The number of guests expected at this study session.',
-    type: Number,
-  },
   course: {
     label: 'Course',
     type: String,
@@ -124,6 +120,16 @@ export const SessionsSchema = new SimpleSchema({
       return x;
     },
   },
+  startString: {
+    label: 'Start time of event represented as a string',
+    type: String,
+    optional: false,
+  },
+  endString: {
+    label: 'End time of event represented as a string',
+    type: String,
+    optional: false,
+  }
 });
 
 Sessions.attachSchema(SessionsSchema);

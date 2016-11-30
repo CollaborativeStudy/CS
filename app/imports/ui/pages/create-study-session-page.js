@@ -111,30 +111,45 @@ Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
     // Get name (text field)
+    console.log(Session.get('eventModal'));
+    let newSession = Session.get('eventModal');
     const title = 'Title';
     const name = Meteor.user().profile.name;
     const guests = 0;
     const e = document.getElementById(event.target.course.id);
-    let course = e.options[e.selectedIndex].text;
+    let course = e.options[e.selectedIndex].value;
     if (course === 'Select a Course') {
       course = '';
     }
     const topic = event.target.topic.value;
     const f = document.getElementById(event.target.start.id);
-    let start = f.options[f.selectedIndex].text;
+    // Get the date and add the time to the end.
+    let start = newSession.date+"T"+f.options[f.selectedIndex].value+"-10:00";
     if (start === 'Select a Start Time') {
       start = '';
     }
     const g = document.getElementById(event.target.end.id);
-    let end = g.options[g.selectedIndex].text;
+    let end = newSession.date+"T"+g.options[g.selectedIndex].value+"-10:00";
     if (end === 'Select an End Time') {
       end = '';
     }
-    const startV = event.target.start.value;
-    const endV = event.target.end.value;
+    const startV = parseInt(event.target.start.value);
+    const endV = parseInt(event.target.end.value);
 
+<<<<<<< HEAD
     // const newSession = { name, course, topic, start, end, startV, endV };
     const newSession = { title, name, guests, course, topic, start, end, startV, endV };
+=======
+    // Store the start and end time in a string format.
+    const startString = f.options[f.selectedIndex].text;
+    const endString = g.options[g.selectedIndex].text;
+
+    console.log(startString);
+    console.log(endString);
+
+    // const newSession = { name, course, topic, start, end, startV, endV };
+    newSession = { title, name, guests, course, topic, start, end, startV, endV, startString, endString };
+>>>>>>> refs/remotes/origin/master
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newSession reflects what will be inserted.
@@ -146,11 +161,21 @@ Template.Create_Study_Session_Page.events({
       console.log('valid data');
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go('Public_Landing_Page');
+      $('.ui.modal')
+          .modal('hide')
+      ;
+      //FlowRouter.go('Public_Landing_Page');
     } else {
       console.log('invalid data');
       instance.messageFlags.set(displayErrorMessages, true);
     }
+  },
+  'click .cancel'(event, instance){
+    event.preventDefault();
+    console.log('cancel');
+    $('.ui.modal')
+        .modal('hide')
+    ;
   },
 });
 

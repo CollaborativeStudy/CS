@@ -1,7 +1,67 @@
 <template name="Calendar_Page">
   <div class="ui raised segment container">
-    <iframe
-        src="https://calendar.google.com/calendar/embed?src=hawaii.edu_363jrgknofhsanehjf25pa0pno%40group.calendar.google.com&ctz=Pacific/Honolulu"
-        style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    <!--Add the events calendar to the template.-->
+    <div id="sessions-calendar"></div>
   </div>
+
+  <!-- fix this -->
+  <div class="ui modal">
+    {{>Create_Study_Session_Page}}
+  </div>
+
+  <style>
+    .fc-event-container {
+      padding: 5px !important;
+    }
+
+    .fc-event {
+      padding: 5px 10px;
+      border-color: #ddd;
+      background: #25A574 !important;
+    }
+
+    .fc-content {
+      color: white;
+    }
+
+    h4,
+    h5 {
+      margin: 0;
+      font-weight: normal;
+    }
+
+    h4 {
+      color: white;
+      font-size: 13px;
+      line-height: 18px;
+      white-space: normal;
+    }
+
+    h5 {
+      color: #888;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .guest-count {
+      margin: 5px 0;
+    }
+
+    p[class^="type-"] {
+      margin: 0;
+    }
+
+    p[class="type-Corporate"] {
+      color: red;
+    }
+
+    p[class="type-Wedding"] {
+      color: green;
+    }
+
+    p[class="type-Birthday"] {
+      color: blue;
+    }
+  </style>
 </template>
+

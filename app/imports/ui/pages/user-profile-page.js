@@ -4,7 +4,7 @@ import {FlowRouter} from 'meteor/kadira:flow-router';
 import {_} from 'meteor/underscore';
 import {Reviews} from '../../api/reviews/reviews.js';
 
-Template.Review_Page.helpers({
+Template.User_Profile_Page.helpers({
 
   /**
    * @returns {*} All of the Reviews documents.
@@ -14,17 +14,25 @@ Template.Review_Page.helpers({
   },
 });
 
-Template.Review_Page.onCreated(function onCreated() {
+Template.User_Profile_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Reviews');
   });
 
 });
 
-Template.Create_Review_Page.helpers({
+Template.User_Profile_Page.helpers({
   getAverageRate(){
     let totalRate = 0;
-    _.each(Reviews, function(instance){totalRate = totalRate + instance.rating});
-    return floor(totalRate);
+    let size = 0;
+    let averageRate = 0;
+    let allReviews = Reviews.find();
+    allReviews.forEach(function (review) {
+      totalRate = totalRate + review.rating;
+      size++;
+    });
+    averageRate = parseInt(Math.round(totalRate/size));
+    console.log(averageRate);
+    return averageRate;
   },
 });

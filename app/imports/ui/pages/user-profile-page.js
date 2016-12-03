@@ -18,7 +18,6 @@ Template.User_Profile_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Reviews');
   });
-
 });
 
 Template.User_Profile_Page.helpers({
@@ -32,7 +31,11 @@ Template.User_Profile_Page.helpers({
       size++;
     });
     averageRate = parseInt(Math.round(totalRate/size));
-    console.log(averageRate);
+
+    console.log('Total rate = ' + totalRate);
+    console.log('Size = ' + size);
+    console.log('Average = ' + averageRate);
+    
     return averageRate;
   },
 });

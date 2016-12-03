@@ -13,6 +13,7 @@ Template.User_Profile_Page.helpers({
     return Reviews.find();
   },
   getAverageRate(){
+
     let totalRate = 0;
     let size = 0;
     let averageRate = 0;
@@ -21,20 +22,19 @@ Template.User_Profile_Page.helpers({
       totalRate = totalRate + review.rating;
       size++;
     });
-    averageRate = parseInt(Math.round(totalRate/size));
+    averageRate = parseInt(Math.round(totalRate / size));
 
     console.log('Total rate = ' + totalRate);
     console.log('Size = ' + size);
     console.log('Average = ' + averageRate);
     console.log('');
-
     return averageRate;
   },
 });
-
+//
 Template.User_Profile_Page.onCreated(function onCreated() {
   this.autorun(() => {
-    this.subscribe('Reviews');
+    this.subscribe('Reviews').ready();
   });
 });
 

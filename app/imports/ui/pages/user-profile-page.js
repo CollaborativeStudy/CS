@@ -12,15 +12,6 @@ Template.User_Profile_Page.helpers({
   reviewsList() {
     return Reviews.find();
   },
-});
-
-Template.User_Profile_Page.onCreated(function onCreated() {
-  this.autorun(() => {
-    this.subscribe('Reviews');
-  });
-});
-
-Template.User_Profile_Page.helpers({
   getAverageRate(){
     let totalRate = 0;
     let size = 0;
@@ -35,7 +26,18 @@ Template.User_Profile_Page.helpers({
     console.log('Total rate = ' + totalRate);
     console.log('Size = ' + size);
     console.log('Average = ' + averageRate);
-    
+    console.log('');
+
     return averageRate;
   },
 });
+
+Template.User_Profile_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Reviews');
+  });
+});
+
+// Template.User_Profile_Page.helpers({
+//
+// });

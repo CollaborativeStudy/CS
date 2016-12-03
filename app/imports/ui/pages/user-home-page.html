@@ -4,7 +4,7 @@
       <a class="item active" data-tab="MyCalendar">My Calendar</a>
       <a class="item" data-tab="Notifications">Notifications</a>
       <a class="item" data-tab="Groups">Groups</a>
-      <a class="item" data-tab="Reviews">Reviews</a>
+      <!--<a class="item" data-tab="Reviews">Reviews</a>-->
       <a class="item" data-tab="Messages">Messages</a>
     </div>
 
@@ -68,93 +68,9 @@
         </div>
       </div>
     </div>
-    <div class="ui tab segment" data-tab="Reviews">
-      <div class="ui labeled button" tabindex="1" style="margin-bottom: 15px; color: #003c11">
-        <div class="ui green button" href="{{pathFor 'Make_Review_Page'}}">
-          <i class="star icon"></i> Submit a Review
-        </div>
-        <a class="ui basic green left pointing label">
-          4
-        </a>
-      </div>
-      <div class="ui stackable four cards">
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Always On Track!</div>
-            <div class="meta">
-              <span class="right floated time">2 days ago</span>
-              <span class="category">Review</span>
-            </div>
-            <div class="description">
-              <p>Mary kept the whole group on topic and was a great mediator when an argument got out of hand.</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating: <i class="star icon"></i> <i class="star icon"></i> <i class="star icon"></i> <i
-                class="star icon"></i> <i class="star icon"></i>
-              <!--<div class="ui rating" data-max-rating="5"></div>-->
-            </div>
-          </div>
-        </div>
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Not Cool</div>
-            <div class="meta">
-              <span class="right floated time">4 days ago</span>
-              <span class="category">Review</span>
-            </div>
-            <div class="description">
-              <p>My friend and I was talking and she interrupted me and started telling me what to do.. -_-</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating: <i class="star icon"></i>
-              <!--<div class="ui rating" data-max-rating="5"></div>-->
-            </div>
-          </div>
-        </div>
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Cool!</div>
-            <div class="meta">
-              <span class="right floated time">5 days ago</span>
-              <span class="category">Review</span>
-            </div>
-            <div class="description">
-              <p>No comment.</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating: <i class="star icon"></i> <i class="star icon"></i> <i class="star icon"></i> <i
-                class="star icon"></i>
-              <!--<div class="ui rating" data-max-rating="5"></div>-->
-            </div>
-          </div>
-        </div>
-        <div class="ui card">
-          <div class="content">
-            <div class="header">Don't mind the bad reviews</div>
-            <div class="meta">
-              <span class="right floated time">6 days ago</span>
-              <span class="category">Review</span>
-            </div>
-            <div class="description">
-              <p>She's super cool. Idk what some people are talking about.</p>
-            </div>
-          </div>
-          <div class="extra content">
-            <div class="extra content">
-              Rating: <i class="star icon"></i> <i class="star icon"></i> <i class="star icon"></i> <i
-                class="star icon"></i> <i class="star icon"></i>
-              <!--<div class="ui rating" data-max-rating="5"></div>-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--<div class="ui tab segment" data-tab="Reviews">-->
+      <!--{{>Review_Page}}-->
+    <!--</div>-->
     <div class="ui tab segment" data-tab="Messages">
       <div class="ui grid">
         <div class="four wide column">
@@ -224,4 +140,5 @@
   <script>
     $('#points').progress();
   </script>
+
 </template>

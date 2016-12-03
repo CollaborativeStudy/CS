@@ -95,4 +95,3 @@ Template.Create_Study_Session_Page.events({
     ;
   },
 });
-

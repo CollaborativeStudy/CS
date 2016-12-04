@@ -17,6 +17,11 @@ body {
   padding: 10px 10px 10px 10px;
 }
 
+.ui.vertical.fluid.pointing.menu {
+  color:white;
+  background-color: #25A574;
+}
+
 a.login-close-text {
   color: black !important;
 }

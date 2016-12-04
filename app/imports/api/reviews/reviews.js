@@ -27,6 +27,11 @@ export const ReviewsSchema = new SimpleSchema({
     optional: false,
     max: 4000,
   },
+  checked: {
+    label: 'checked',
+    type: Number,
+    optional: false,
+  },
 });
 
 Reviews.attachSchema(ReviewsSchema);

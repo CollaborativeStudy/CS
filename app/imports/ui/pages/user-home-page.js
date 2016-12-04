@@ -26,6 +26,9 @@ Template.User_Home_Page.events({
   },
   'click .allow-button'(event) {
     console.log('clicked allow-button');
-    //Reviews[event.target.id].checked = true;
+    Reviews.update(
+        {_id: event.target.id},
+        {$set: {checked: 1} }
+    );
   },
 });

@@ -1,0 +1,50 @@
+<template name="Messages_Page">
+
+  <div class="ui container">
+    <div class="ui grid">
+      <div class="ui four wide column">
+        <div class="ui vertical fluid pointing menu">
+          <!--Repeat for each group-->
+          <a class="item" data-tab="Group1"><p>Group 1</p></a>
+        </div>
+      </div>
+
+      <div class="ui twelve wide column">
+
+        <div class="ui tab segment" data-tab="Group1">
+          <div class="ui grid">
+            {{#if Template.subscriptionsReady}}
+            {{#each message in messagesList}}
+            <div class="two column row">
+              <div class="left column">
+                <div class="ui segment">
+                  <p><strong>{{message.user}}:</strong> {{message.message}}</p>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+            {{else}}
+            {{> Loading}}
+            {{/if}}
+          </div>
+
+          <form class="new-message">
+            <div class="ui large fluid action icon input" style="margin-top: 15px;">
+              <input type="text" placeholder="Message" id="message" name="message">
+              <i class="send icon"></i>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+    $('.menu .vertical .item').tab();
+  </script>
+
+</template>

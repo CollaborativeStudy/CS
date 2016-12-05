@@ -12,16 +12,29 @@
       <div class="ui twelve wide column">
 
         <div class="ui tab segment" data-tab="Group1">
-          <div class="ui grid">
+          <div class="ui grid container" id="message-container" style="overflow-y:auto; overflow-x:hidden; height:400px; margin: 0px;">
             {{#if Template.subscriptionsReady}}
             {{#each message in messagesList}}
+            {{updateScroll}}
+            {{#if ifUser message.user}}
             <div class="two column row">
-              <div class="left column">
-                <div class="ui segment">
+              <div class="right floated column">
+                <div class="ui right aligned blue segment">
                   <p><strong>{{message.user}}:</strong> {{message.message}}</p>
                 </div>
               </div>
             </div>
+            {{else}}
+            <div class="two column row">
+              <div class="left floated column">
+                <div class="ui red segment">
+                  <p><strong>{{message.user}}:</strong> {{message.message}}</p>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+            {{updateScroll}}
+            {{clearThis}}
             {{/each}}
             {{else}}
             {{> Loading}}
@@ -29,7 +42,7 @@
           </div>
 
           <form class="new-message">
-            <div class="ui large fluid action icon input" style="margin-top: 15px;">
+            <div class="ui large fluid action icon input" style="margin: 15px;">
               <input type="text" placeholder="Message" id="message" name="message">
               <i class="send icon"></i>
             </div>

@@ -10,7 +10,24 @@ Template.Messages_Page.helpers({
    * @returns {*} All of the Messages documents.
    */
   messagesList() {
-    return Messages.find();
+    return Messages.find({}, { sort: { createdAt: -1 } });
+  },
+  ifUser(user) {
+    if (user == Meteor.user().profile.name) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  updateScroll(){
+    var element = document.getElementById('message-container');
+    element.scrollTop = element.scrollHeight + 1;
+  },
+  clearThis(){
+    var target = document.getElementById('message');
+    if (target.value != '') {
+      target.value = "";
+    }
   },
 });
 
@@ -18,7 +35,6 @@ Template.Messages_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Messages');
   });
-
 });
 
 Template.Messages_Page.events({
@@ -30,41 +46,13 @@ Template.Messages_Page.events({
     const time = new Date();
 
     const newMessage = { user, message, time };
-    // // Clear out any old validation errors.
+    // Clear out any old validation errors.
     // instance.context.resetValidation();
-    // // Invoke clean so that newSessionData reflects what will be inserted.
-    // MessagesSchema.clean(newMessage);
+    // Invoke clean so that newSessionData reflects what will be inserted.
+    MessagesSchema.clean(newMessage);
     Messages.insert(newMessage);
 
     //clear form
     event.target.text = '';
   }
 });
-
-//
-// if (Meteor.isClient) {
-//   Template.messages.helpers({
-//     messages: function() {
-//       return Messages.find({}, { sort: { time: -1}});
-//     }
-//   });
-//   Template.input.events = {
-//     'keydown input#message' : function (event) {
-//       if (event.which == 13 || event.button) { // 13 is the enter key event
-//         var name = 'Anon';
-//         var message = document.getElementById('message');
-//         var time = Date.now();
-//
-//         console.log('Name = ' + name);
-//         console.log('Message = ' + message);
-//         console.log('Time = ' + time);
-//
-//         if (message.value != '') {
-//           Messages.insert({ name, message, time});
-//           document.getElementById('message').value = '';
-//           message.value = '';
-//         }
-//       }
-//     }
-//   }
-// }

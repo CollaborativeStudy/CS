@@ -22,9 +22,11 @@ Template.User_Home_Page.helpers({
 
 Template.User_Home_Page.events({
   'click .remove-button'(event) {
+    event.preventDefault();
     Reviews.remove(event.target.id);
   },
   'click .allow-button'(event) {
+    event.preventDefault();
     console.log('clicked allow-button');
     Reviews.update(
         {_id: event.target.id},

@@ -26,8 +26,7 @@ Template.Study_Session_Page_Search.helpers({
     // Get the search value that was submitted.
     let searchValue = Session.get("searchValue");
     // Search the Sessions collection for any sessions with the same name as searchValue and return it.
-    let myCursor = Sessions.findOne({ course: searchValue});
-    console.log(myCursor);
+    return Sessions.find({ course: searchValue});
   }
 });
 

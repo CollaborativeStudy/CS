@@ -6,15 +6,15 @@ if (Meteor.isClient) {
     "submit #search": function (e) {
       e.preventDefault();
       Session.set("searchValue", $("#searchValue").val());
-      console.log(e);
+
     }
   });
 
   Template.Study_Session_Page_Search.helpers({
     Sessions: function () {
-      console.log('fdsafdsaf');
+
       Meteor.subscribe("search", Session.get("searchValue"));
-      if (Session.getElementById("searchValue")) {
+      if (Session.get("searchValue")) {
         return Sessions.find({}, { sort: [["score", "desc"]] });
       } else {
         return Sessions.find({});

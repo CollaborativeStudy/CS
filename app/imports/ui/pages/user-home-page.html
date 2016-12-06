@@ -6,6 +6,7 @@
       <a class="item" data-tab="Groups">Groups</a>
       <!--<a class="item" data-tab="Reviews">Reviews</a>-->
       <a class="item" data-tab="Messages">Messages</a>
+      <a class="item" data-tab="Reports">Reports</a>
     </div>
 
     <div class="ui tab segment active" data-tab="MyCalendar">
@@ -89,6 +90,7 @@
             </a>
           </div>
         </div>
+
         <div class="twelve wide stretched column">
           <div class="ui grid segment">
             <div class="row">
@@ -127,6 +129,34 @@
             <i class="send icon"></i>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="ui tab segment" data-tab="Reports">
+      <h2 class="ui header">Recent Reviews</h2>
+      <div class="ui large feed">
+        {{#each review in reviewsListChecked}}
+        <div class="event">
+          <div style="width: 5em" class="ui label">
+            <i style="margin-top: 10px; margin-bottom: 10px" class="yellow star icon"></i>
+            <div style="font-size: 15px" class="detail">{{review.rating}}</div>
+          </div>
+          <div class="content">
+            <div class="summary">
+              <h3 name="title">{{review.title}}</h3>
+              <div class="ui right floated buttons">
+                <button class="ui medium green allow-button button" type="button" id="{{review._id}}">Allow</button>
+                <div class="or"></div>
+                <button class="ui medium red remove-button button" type="button" id="{{review._id}}">Remove</button>
+              </div>
+              <div class="extra text">
+                {{review.review}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        {{/each}}
       </div>
     </div>
   </div>

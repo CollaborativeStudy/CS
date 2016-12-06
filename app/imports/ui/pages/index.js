@@ -12,13 +12,25 @@ import './list-stuff-page.js';
 import './create-study-session-page.html';
 import './create-study-session-page.js';
 
+import './create-review-page.html';
+import './create-review-page.js';
+
+import './review-page.html';
+import './review-page.js';
+
+import './user-profile-page.html';
+import './user-profile-page.js';
+
 import './public-landing-page.html';
 
 import './user-home-page.html';
 
 import './admin-home-page.html';
+<<<<<<< HEAD
 
 import './user-profile-page.html';
+=======
+>>>>>>> master
 import './user-profile-detail-page.html';
 
 import './study-session-page.html';

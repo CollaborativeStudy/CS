@@ -39,8 +39,9 @@ Template.Create_Review_Page.events({
     const rating = $('.ui.rating').rating('get rating');
     const title = event.target.title.value;
     const review = event.target.review.value;
+    const checked = 0;
 
-    const newReview = { rating, title, review };
+    const newReview = { rating, title, review, checked };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newSessionData reflects what will be inserted.

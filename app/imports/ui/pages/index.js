@@ -18,12 +18,23 @@ import './create-review-page.js';
 import './review-page.html';
 import './review-page.js';
 
+import './messages-page.html';
+import './messages-page.js';
+
 import './user-profile-page.html';
 import './user-profile-page.js';
+
 
 import './public-landing-page.html';
 
 import './user-home-page.html';
+
+
+import './user-home-page.html';
+import './user-home-page.js';
+
+import './public-landing-page.html';
+import './login-page.html';
 
 import './admin-home-page.html';
 

@@ -1,0 +1,37 @@
+<template name="Review_Page">
+
+  <div class="ui container">
+    <a href="create-review">
+      <button id="create-review-button" class="ui labeled icon button">
+        <i class="star icon"></i>
+        Submit a Review
+      </button>
+    </a>
+    {{#if Template.subscriptionsReady}}
+    <div class="ui four stackable cards">
+      {{#each review in reviewsList}}
+      <div class="ui card">
+        <div class="content">
+          <div class="header">{{review.title}}</div>
+          <div class="description"><p>{{review.review}}</p></div>
+        </div>
+        <div class="extra">
+          <!--Rating:-->
+          <div class="ui centered huge star rating" data-rating={{review.rating}} data-max-rating="5"></div>
+        </div>
+      </div>
+
+      <script>
+        $('.ui.star.rating')
+            .rating('disable')
+        ;
+      </script>
+      {{/each}}
+    </div>
+    {{else}}
+    {{> Loading}}
+    {{/if}}
+  </div>
+
+
+</template>

@@ -9,36 +9,67 @@ export const Sessions = new Mongo.Collection('Sessions');
  * Create the schema for Sessions
  */
 export const SessionsSchema = new SimpleSchema({
+  // "title" is required by fullcalendar.
+  // Title of the event.
+  title: {
+    label: 'Title of the event.',
+    type: String,
+    optional: false,
+  },
   name: {
     label: 'Name',
     type: String,
     optional: false,
-    max: 200,
   },
   course: {
     label: 'Course',
     type: String,
     optional: false,
-    max: 200,
   },
   topic: {
     label: 'Topic',
     type: String,
     optional: false,
-    max: 200,
   },
-  startTime: {
-    label: 'Start Time',
+  // "start" is required by fullcalendar.
+  // Start is the start time of the event.
+  start: {
+    label: 'Start time of event.',
     type: String,
     optional: false,
-    max: 200,
   },
-  endTime: {
-    label: 'End Time',
+  end: {
+    label: 'End time of event.',
     type: String,
     optional: false,
-    max: 200,
   },
+  startV: {
+    label: 'Start Time Value',
+    type: Number,
+    optional: false,
+  },
+  endV: {
+    label: 'End Time Value',
+    type: Number,
+    optional: false,
+    custom: function startAndEnd() {
+      let x = 0;
+      if (this.value < this.field('startV').value || this.value === this.field('startV').value) {
+        x = 'endV';
+      }
+      return x;
+    },
+  },
+  startString: {
+    label: 'Start time of event represented as a string',
+    type: String,
+    optional: false,
+  },
+  endString: {
+    label: 'End time of event represented as a string',
+    type: String,
+    optional: false,
+  }
 });
 
 Sessions.attachSchema(SessionsSchema);

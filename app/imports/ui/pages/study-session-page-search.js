@@ -1,21 +1,30 @@
-import { Template } from 'meteor/templating';
-import { Sessions } from '../../api/sessions/sessions.js';
-
+import {Template} from 'meteor/templating';
+import {Sessions} from '../../api/sessions/sessions.js';
 
 if (Meteor.isClient) {
   Template.Study_Session_Page_Search.events({
     "submit #search": function (e) {
       e.preventDefault();
       Session.set("searchValue", $("#searchValue").val());
+      console.log(e);
     }
   });
 
   Template.Study_Session_Page_Search.helpers({
-    Sessions: function() {
+    Sessions: function () {
+      console.log('fdsafdsaf');
       Meteor.subscribe("search", Session.get("searchValue"));
-      if (Session.get("searchValue")) {
+      if (Session.getElementById("searchValue")) {
         return Sessions.find({}, { sort: [["score", "desc"]] });
       } else {
+        return Sessions.find({});
+      }
+    },
+    search(value){
+      if (Session.get("searchValue") == value) {
+        return Sessions.find({}, { sort: [["score", "desc"]] })
+      }
+      else {
         return Sessions.find({});
       }
     }
@@ -30,13 +39,13 @@ if (Meteor.isServer) {
     Sessions;
   });
 
-  Meteor.publish("search", function(searchValue) {
+  Meteor.publish("search", function (searchValue) {
     if (!searchValue) {
       return Sessions.find({});
     }
     console.log("Searching for ", searchValue);
     var cursor = Sessions.find(
-        { $text: {$search: searchValue} },
+        { $text: { $search: searchValue } },
         {
           /*
            * `fields` is where we can add MongoDB projections. Here we're causing

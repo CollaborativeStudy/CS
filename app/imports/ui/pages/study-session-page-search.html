@@ -7,8 +7,8 @@
     <hr/>
     <h1>Messages</h1>
     <ol>
-      {{#each sessions}}
-      <li>{{value}}</li>
+      {{#each session in Sessions}}
+      <li>{{search session.value}}</li>
       {{/each}}
     </ol>
 

@@ -108,6 +108,14 @@ FlowRouter.route('/group-page-ics311', {
   },
 });
 
+//Change
+FlowRouter.route('/events', {
+  name: 'events',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'events' });
+  },
+});
+
 
 FlowRouter.notFound = {
   action() {

@@ -9,27 +9,24 @@
     </div>
     {{#if Template.subscriptionsReady}}
     <table class="ui celled table">
-      <thead>
-      <tr>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Created By</th>
-        <th>Course</th>
-        <th>More Info</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      {{#each sessions in sessionsList}}
-      <tr>
-        <td>{{sessions.startTime}}</td>
-        <td>{{sessions.endTime}}</td>
-        <td>{{sessions.name}}</td>
-        <td>{{sessions.course}}</td>
-        <td><a href="study-session/123"><label class="ui label">More Info</label></a></td>
-      </tr>
-      {{/each}}
-      </tbody>
+    <thead>
+    <tr>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Created By</th>
+    <th>Course</th>
+    <th>More Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>5:00pm</td>
+    <td>10:00pm</td>
+    <td>Chad</td>
+    <td>ICS 241</td>
+    <td><a href="study-session/bPpm7TFddomLqto5K"><label class="ui label">More Info</label></a></td>
+    </tr>
+    </tbody>
     </table>
     {{else}}
     {{> Loading}}

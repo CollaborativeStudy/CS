@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -35,29 +36,63 @@ Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
     // Get name (text field)
-    const name = 'John Doe changeme';
+    console.log(Session.get('eventModal'));
+    let newSession = Session.get('eventModal');
+    const title = 'Title';
+    const name = Meteor.user().profile.name;
+    const guests = 0;
     const e = document.getElementById(event.target.course.id);
-    const course = e.options[e.selectedIndex].text;
+    let course = e.options[e.selectedIndex].value;
+    if (course === 'Select a Course') {
+      course = '';
+    }
     const topic = event.target.topic.value;
-    const f = document.getElementById(event.target.startTime.id);
-    const startTime = f.options[f.selectedIndex].text;
-    const g = document.getElementById(event.target.endTime.id);
-    const endTime = g.options[g.selectedIndex].text;
+    const f = document.getElementById(event.target.start.id);
+    // Get the date and add the time to the end.
+    let start = newSession.date+"T"+f.options[f.selectedIndex].value+"-10:00";
+    if (start === 'Select a Start Time') {
+      start = '';
+    }
+    const g = document.getElementById(event.target.end.id);
+    let end = newSession.date+"T"+g.options[g.selectedIndex].value+"-10:00";
+    if (end === 'Select an End Time') {
+      end = '';
+    }
+    const startV = parseInt(event.target.start.value);
+    const endV = parseInt(event.target.end.value);
 
-    const newSession = { name, course, topic, startTime, endTime };
+    // Store the start and end time in a string format.
+    const startString = f.options[f.selectedIndex].text;
+    const endString = g.options[g.selectedIndex].text;
+
+    console.log(startString);
+    console.log(endString);
+
+    // const newSession = { name, course, topic, start, end, startV, endV };
+    newSession = { title, name, guests, course, topic, start, end, startV, endV, startString, endString };
     // Clear out any old validation errors.
     instance.context.resetValidation();
-    // Invoke clean so that newSessionData reflects what will be inserted.
+    // Invoke clean so that newSession reflects what will be inserted.
     SessionsSchema.clean(newSession);
     // Determine validity.
     instance.context.validate(newSession);
     if (instance.context.isValid()) {
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      FlowRouter.go('Public_Landing_Page');
+      $('.ui.modal')
+          .modal('hide')
+      ;
+      //FlowRouter.go('Public_Landing_Page');
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }
+  },
+  'click .cancel'(event, instance){
+    event.preventDefault();
+    console.log('cancel');
+    $('.ui.modal')
+        .modal('hide')
+    ;
   },
 });
 

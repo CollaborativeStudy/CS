@@ -1,71 +1,28 @@
 import {Template} from 'meteor/templating';
 import {Sessions} from '../../api/sessions/sessions.js';
 
-if (Meteor.isClient) {
-  Template.Study_Session_Page_Search.events({
-    "submit #search": function (e) {
-      e.preventDefault();
-      Session.set("searchValue", $("#searchValue").val());
-      console.log(e);
-    }
+Template.Study_Session_Page_Search.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Sessions');
   });
+});
 
-  Template.Study_Session_Page_Search.helpers({
-    Sessions: function () {
-      console.log('fdsafdsaf');
-      Meteor.subscribe("search", Session.get("searchValue"));
-      if (Session.getElementById("searchValue")) {
-        return Sessions.find({}, { sort: [["score", "desc"]] });
-      } else {
-        return Sessions.find({});
-      }
-    },
-    search(value){
-      if (Session.get("searchValue") == value) {
-        return Sessions.find({}, { sort: [["score", "desc"]] })
-      }
-      else {
-        return Sessions.find({});
-      }
-    }
-  });
-}
+Template.Study_Session_Page_Search.events({
+  "submit #search": function (e) {
+    e.preventDefault();
+    Session.set("searchValue", $("#searchValue").val());
+    console.log(e);
+  }
+});
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    Sessions._ensureIndex({
-      "value": "text"
-    });
-    Sessions;
-  });
+Template.Study_Session_Page_Search.helpers({
+  search() {
+    // Get the search value that was submitted.
+    let searchValue = Session.get("searchValue");
+    // Search the Sessions collection for any sessions with the same name as searchValue and return it.
+    let myCursor = Sessions.findOne({ course: searchValue});
+    console.log(myCursor);
+  }
+});
 
-  Meteor.publish("search", function (searchValue) {
-    if (!searchValue) {
-      return Sessions.find({});
-    }
-    console.log("Searching for ", searchValue);
-    var cursor = Sessions.find(
-        { $text: { $search: searchValue } },
-        {
-          /*
-           * `fields` is where we can add MongoDB projections. Here we're causing
-           * each document published to include a property named `score`, which
-           * contains the document's search rank, a numerical value, with more
-           * relevant documents having a higher score.
-           */
-          fields: {
-            score: { $meta: "textScore" }
-          },
-          /*
-           * This indicates that we wish the publication to be sorted by the
-           * `score` property specified in the projection fields above.
-           */
-          sort: {
-            score: { $meta: "textScore" }
-          }
-        }
-    );
-    return cursor;
-  });
-}
 

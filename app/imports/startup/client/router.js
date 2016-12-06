@@ -79,6 +79,13 @@ FlowRouter.route('/study-session', {
   },
 });
 
+FlowRouter.route('/study-session-search', {
+  name: 'Study_Session_Page_Search',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Study_Session_Page_Search' });
+  },
+});
+
 // Use to access detailed study session page.
 FlowRouter.route('/study-session/:_id', {
   name: 'Study_Session_Detail_Page',

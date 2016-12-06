@@ -7,8 +7,10 @@
     <hr/>
     <h1>Messages</h1>
     <ol>
+      <!-- For each session that matches the searchValue -->
       {{#each session in search}}
-      <li>{{session.course}}</li>
+      <!-- List the course and add a link to the session details. -->
+      <li>{{session.course}}  <a href="{{pathFor 'Study_Session_Detail_Page' _id=session._id}}"><button>Details</button></a> </li>
       {{/each}}
     </ol>
 

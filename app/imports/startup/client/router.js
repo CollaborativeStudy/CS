@@ -65,6 +65,13 @@ FlowRouter.route('/reviews', {
   },
 });
 
+FlowRouter.route('/messages', {
+  name: 'Messages_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Messages_Page' });
+  },
+});
+
 FlowRouter.route('/create-review', {
   name: 'Create_Review_Page',
   action() {

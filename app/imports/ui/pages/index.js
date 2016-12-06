@@ -18,6 +18,9 @@ import './create-review-page.js';
 import './review-page.html';
 import './review-page.js';
 
+import './messages-page.html';
+import './messages-page.js';
+
 import './user-profile-page.html';
 import './user-profile-page.js';
 

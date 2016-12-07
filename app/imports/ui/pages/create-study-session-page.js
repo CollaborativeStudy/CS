@@ -79,18 +79,16 @@ Template.Create_Study_Session_Page.events({
     if (instance.context.isValid()) {
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      $('.ui.modal')
+      $('.ui.modal.calendar')
           .modal('hide')
       ;
-      //FlowRouter.go('Public_Landing_Page');
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },
   'click .cancel'(event, instance){
     event.preventDefault();
-    console.log('cancel');
-    $('.ui.modal')
+    $('.ui.modal.calendar')
         .modal('hide')
     ;
   },

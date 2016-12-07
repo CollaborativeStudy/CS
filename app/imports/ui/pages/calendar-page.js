@@ -65,7 +65,7 @@ Template.Calendar_Page.onRendered(() => {
       Session.set('eventModal', { type: 'add', date: date.format() });
       // console.log(date.format());
       //$( '#add-edit-event-modal' ).modal( 'show' );
-      $('.ui.modal')
+      $('.ui.modal.calendar')
           .modal('show')
       ;
     },

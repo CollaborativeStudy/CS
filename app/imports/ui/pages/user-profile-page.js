@@ -33,6 +33,7 @@ Template.User_Profile_Page.helpers({
   userExists() {
     let val = _.find(Users.find().name, function(user){ return user == Meteor.user().profile.name});
     if(val == undefined){
+
       console.log('creating a new user');
     }
   },

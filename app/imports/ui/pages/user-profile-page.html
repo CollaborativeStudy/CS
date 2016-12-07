@@ -1,5 +1,9 @@
 <template name="User_Profile_Page">
   {{#if Template.subscriptionsReady}}
+    <div class="ui raised segment container">
+      <h2>{{user}}</h2>
+      {{userExists}}
+    </div>
     <div class="ui three column grid container">
       <div class="row">
         <div class="ui four wide column">
@@ -65,7 +69,6 @@
 
 
     </div>
-
 
   <script>
     $('.ui.rating')

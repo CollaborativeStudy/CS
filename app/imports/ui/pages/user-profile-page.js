@@ -3,6 +3,7 @@ import {ReactiveDict} from 'meteor/reactive-dict';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {_} from 'meteor/underscore';
 import {Reviews} from '../../api/reviews/reviews.js';
+import {Users} from '../../api/users/users.js';
 
 Template.User_Profile_Page.helpers({
 
@@ -24,17 +25,23 @@ Template.User_Profile_Page.helpers({
     });
     averageRate = parseInt(Math.round(totalRate / size));
 
-    console.log('Total rate = ' + totalRate);
-    console.log('Size = ' + size);
-    console.log('Average = ' + averageRate);
-    console.log('');
     return averageRate;
+  },
+  user: function user() {
+    return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
+  },
+  userExists() {
+    let val = _.find(Users.find().name, function(user){ return user == Meteor.user().profile.name});
+    if(val == undefined){
+      console.log('creating a new user');
+    }
   },
 });
 //
 Template.User_Profile_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Reviews').ready();
+    this.subscribe('Users').ready();
   });
 });
 

@@ -6,13 +6,13 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 export const Users = new Mongo.Collection('Users');
 
 // Block all database operations on the client-side.
-Events.allow({
+Users.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-Events.deny({
+Users.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
@@ -57,7 +57,12 @@ export const UsersSchema = new SimpleSchema({
     label: 'Admin Permission',
     type: Boolean,
     optional: false,
+  },
+  tutorial: {
+    label: 'Tutorial',
+    type: Boolean,
+    optional: false,
   }
 });
 
-Sessions.attachSchema(UsersSchema);
+Users.attachSchema(UsersSchema);

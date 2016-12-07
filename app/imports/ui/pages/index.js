@@ -61,3 +61,5 @@ import './test-page.js';
 
 import './calendar-page.html';
 import './calendar-page.js';
+
+import './create-new-user-modal.html';

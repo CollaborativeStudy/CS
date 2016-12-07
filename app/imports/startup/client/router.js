@@ -65,6 +65,13 @@ FlowRouter.route('/reviews', {
   },
 });
 
+FlowRouter.route('/messages', {
+  name: 'Messages_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Messages_Page' });
+  },
+});
+
 FlowRouter.route('/create-review', {
   name: 'Create_Review_Page',
   action() {
@@ -76,6 +83,13 @@ FlowRouter.route('/study-session', {
   name: 'Study_Session_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Study_Session_Page' });
+  },
+});
+
+FlowRouter.route('/study-session-search', {
+  name: 'Study_Session_Page_Search',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Study_Session_Page_Search' });
   },
 });
 

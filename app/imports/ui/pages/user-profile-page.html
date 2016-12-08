@@ -1,13 +1,19 @@
 <template name="User_Profile_Page">
   {{#if Template.subscriptionsReady}}
-    <div class="ui raised segment container">
-      <h2>{{user}}</h2>
-      {{userExists}}
+    <div id="newUser" class="ui modal">
+      {{> Create_New_User_Modal}}
     </div>
 
-  <div class="ui modal new user">
-    {{> Create_New_User_Modal}}
-  </div>
+    <div class="ui raised segment container">
+      <h2>{{user}}</h2>
+      {{#if userExists}}
+      {{else}}
+        <script>
+          $('#newUser').modal({ blurring: true }).modal('show');
+        </script>
+      {{/if}}
+    </div>
+
     <div class="ui three column grid container">
       <div class="row">
         <div class="ui four wide column">

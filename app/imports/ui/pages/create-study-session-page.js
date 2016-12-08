@@ -79,7 +79,7 @@ Template.Create_Study_Session_Page.events({
     if (instance.context.isValid()) {
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      $('.ui.modal.calendar')
+      $('#calendar')
           .modal('hide')
       ;
     } else {
@@ -88,7 +88,7 @@ Template.Create_Study_Session_Page.events({
   },
   'click .cancel'(event, instance){
     event.preventDefault();
-    $('.ui.modal.calendar')
+    $('#calendar')
         .modal('hide')
     ;
   },

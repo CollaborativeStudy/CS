@@ -65,8 +65,7 @@ Template.Calendar_Page.onRendered(() => {
       Session.set('eventModal', { type: 'add', date: date.format() });
       // console.log(date.format());
       //$( '#add-edit-event-modal' ).modal( 'show' );
-      $('.ui.modal.calendar')
-          .modal('show')
+      $('#calendar').modal({ blurring: true }).modal('show')
       ;
     },
 
@@ -74,7 +73,6 @@ Template.Calendar_Page.onRendered(() => {
     eventClick(event) {
       Session.set('eventModal', { type: 'edit', event: event._id });
       FlowRouter.go('Study_Session_Detail_Page', { _id: event._id });
-      // $( '#add-edit-event-modal' ).modal( 'show' );
     }
   });
 

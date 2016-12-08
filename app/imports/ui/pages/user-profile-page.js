@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import {Template} from 'meteor/templating';
 import {ReactiveDict} from 'meteor/reactive-dict';
 import {FlowRouter} from 'meteor/kadira:flow-router';
@@ -33,21 +34,19 @@ Template.User_Profile_Page.helpers({
   userExists() {
     let val = _.find(Users.find().name, function(user){ return user == Meteor.user().profile.name});
     if(val == undefined){
-      $('.ui.modal.new.user')
-          .modal('show')
-      ;
-      console.log('creating a new user');
+      return false;
     }
+    return true;
+  },
+  createNewUser(){
+    $('#newUser').modal('show');
+    console.log('create new user');
   },
 });
-//
+
 Template.User_Profile_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Reviews').ready();
     this.subscribe('Users').ready();
   });
 });
-
-// Template.User_Profile_Page.helpers({
-//
-// });

@@ -38,7 +38,6 @@ import './login-page.html';
 
 import './admin-home-page.html';
 
-import './user-profile-page.html';
 
 import './user-profile-detail-page.html';
 

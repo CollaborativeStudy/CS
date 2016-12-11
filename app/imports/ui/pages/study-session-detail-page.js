@@ -2,6 +2,12 @@ import { Template } from 'meteor/templating';
 import { Sessions } from '../../api/sessions/sessions.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+Template.Study_Session_Detail_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Sessions');
+  });
+});
+
 Template.Study_Session_Detail_Page.helpers({
   findSession(){
     return Sessions.findOne(FlowRouter.getParam('_id'));

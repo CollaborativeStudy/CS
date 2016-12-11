@@ -40,7 +40,7 @@ Template.Create_Study_Session_Page.events({
     let newSession = Session.get('eventModal');
     const title = 'Title';
     const name = Meteor.user().profile.name;
-    const guests = 0;
+    const guests = {};
     const e = document.getElementById(event.target.course.id);
     let course = e.options[e.selectedIndex].value;
     if (course === 'Select a Course') {
@@ -69,7 +69,7 @@ Template.Create_Study_Session_Page.events({
     console.log(endString);
 
     // const newSession = { name, course, topic, start, end, startV, endV };
-    newSession = { title, name, guests, course, topic, start, end, startV, endV, startString, endString };
+    newSession = { title, name, course, topic, start, end, startV, endV, startString, endString, guests };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newSession reflects what will be inserted.

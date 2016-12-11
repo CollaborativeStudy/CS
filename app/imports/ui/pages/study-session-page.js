@@ -33,6 +33,6 @@ Template.Study_Session_Page.events({
   "submit #search": function (e) {
     e.preventDefault();
     Session.set("searchValue", $("#searchValue").val());
- console.log("sfgsf");
+
   }
 });

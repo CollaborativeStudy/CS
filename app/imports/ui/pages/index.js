@@ -4,8 +4,6 @@ import './add-stuff-page.js';
 import './edit-stuff-page.html';
 import './edit-stuff-page.js';
 
-import './home-page.html';
-
 import './list-stuff-page.html';
 import './list-stuff-page.js';
 
@@ -25,8 +23,6 @@ import './user-home-page.html';
 import './user-home-page.js';
 
 import './public-landing-page.html';
-import './login-page.html';
-import './admin-home-page.html';
 import './user-profile-detail-page.html';
 import './study-session-page.html';
 
@@ -42,3 +38,6 @@ import './test-page.js';
 
 import './calendar-page.html';
 import './calendar-page.js';
+
+import './reports-page.html';
+import './reports-page.js';

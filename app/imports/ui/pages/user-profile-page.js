@@ -31,13 +31,9 @@ Template.User_Profile_Page.helpers({
     return averageRate;
   },
 });
-//
+
 Template.User_Profile_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Reviews').ready();
   });
 });
-
-// Template.User_Profile_Page.helpers({
-//
-// });

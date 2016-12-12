@@ -1,5 +1,16 @@
 <template name="Study_Session_Page">
   <div class="ui raised segment container">
+    <form id="search">
+    <div class="ui category search">
+      <div class="ui icon input">
+        <input class="prompt" type="text" id="searchValue" placeholder="Search By Course...">
+        <i class="search icon"></i>
+      </div>
+      <button type="submit" class="ui teal search button">Search</button>
+      <div class="results"></div>
+    </div>
+    </form>
+    {{#if Template.subscriptionsReady}}
     <table class="ui celled table">
     <thead>
     <tr>
@@ -11,14 +22,20 @@
     </tr>
     </thead>
     <tbody>
+    {{#each sessions in search}}
     <tr>
-    <td>5:00pm</td>
-    <td>10:00pm</td>
-    <td>Chad</td>
-    <td>ICS 241</td>
+      <td>{{sessions.startString}}</td>
+      <td>{{sessions.endString}}</td>
+      <td>{{sessions.name}}</td>
+      <td>{{sessions.course}}</td>
+
     <td><a href="study-session/bPpm7TFddomLqto5K"><label class="ui label">More Info</label></a></td>
     </tr>
+    {{/each}}
     </tbody>
     </table>
+    {{else}}
+    {{> Loading}}
+    {{/if}}
   </div>
 </template>

@@ -30,13 +30,6 @@ FlowRouter.route('/user-home', {
   },
 });
 
-FlowRouter.route('/admin-home', {
-  name: 'Admin_Home_Page',
-  action() {
-    BlazeLayout.render('App_Body', { main: 'Admin_Home_Page' });
-  },
-});
-
 FlowRouter.route('/user-profile', {
   name: 'User_Profile_Page',
   action() {
@@ -65,6 +58,13 @@ FlowRouter.route('/reviews', {
   },
 });
 
+FlowRouter.route('/messages', {
+  name: 'Messages_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Messages_Page' });
+  },
+});
+
 FlowRouter.route('/create-review', {
   name: 'Create_Review_Page',
   action() {
@@ -76,6 +76,13 @@ FlowRouter.route('/study-session', {
   name: 'Study_Session_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Study_Session_Page' });
+  },
+});
+
+FlowRouter.route('/study-session-search', {
+  name: 'Study_Session_Page_Search',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Study_Session_Page_Search' });
   },
 });
 
@@ -94,10 +101,31 @@ FlowRouter.route('/calendar-page', {
   },
 });
 
+FlowRouter.route('/notifications-page', {
+  name: 'Notifications_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Notifications_Page' });
+  },
+});
+
 FlowRouter.route('/group-page', {
   name: 'Group_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Group_Page' });
+  },
+});
+
+FlowRouter.route('/messages-page', {
+  name: 'Messages_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Messages_Page' });
+  },
+});
+
+FlowRouter.route('/reports-page', {
+  name: 'Reports_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Reports_Page' });
   },
 });
 

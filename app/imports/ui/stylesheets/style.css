@@ -9,6 +9,11 @@ body {
   border-radius: 0px;
 }
 
+.ui.vertical.fluid.pointing.menu {
+  color:white;
+  background-color: #25A574;
+}
+
 #login-buttons a, .accounts-dialog a {
   color: white;
 }

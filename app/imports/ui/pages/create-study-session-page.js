@@ -23,6 +23,13 @@ Template.Create_Study_Session_Page.helpers({
     const errorKeys = Template.instance().context.invalidKeys();
     return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
   },
+  isPro(){
+    const completed = Users.tutorial;
+    if(completed == true) {
+      return false;
+    }
+    return true;
+  }
 });
 
 Template.Create_Study_Session_Page.onRendered(function enableSemantic() {

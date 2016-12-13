@@ -1,10 +1,17 @@
 <template name="Review_Page">
+  <div class="ui yellow message transition container">
+    <i class="close icon"></i>
+    <div class="header">
+      <h1>Tutorial</h1>
+    </div>
+    <p>Here other users can rate you and leave reviews. Make sure to leave a good impression!</p>
+  </div>
 
   <div class="ui container">
     <a href="create-review">
       <button id="create-review-button" class="ui labeled icon button">
         <i class="star icon"></i>
-        Submit a Review
+        Submit a Banana
       </button>
     </a>
     {{#if Template.subscriptionsReady}}
@@ -32,6 +39,5 @@
     {{> Loading}}
     {{/if}}
   </div>
-
 
 </template>

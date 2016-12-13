@@ -1,9 +1,23 @@
 <template name="User_Profile_Page">
   {{#if Template.subscriptionsReady}}
+    <div class="ui yellow message transition container">
+      <i class="close icon"></i>
+      <div class="header">
+        <h1>Tutorial</h1>
+      </div>
+      <p>This is your profile page! Here you should add your information so other's can get to know you.</p>
+      <h3 style="margin: 0px">What's a Pro and Stud?</h3>
+      <p>List the courses you're strong in under "Pros". Make sure they're classes you're comfortable teachings, since
+        others may ask you to lead a study session on it! You can change these at any time by clicking _______ following
+        the instructions.</p>
+      <p>List the courses you're weak in under "Studs". Pros may reach out to you to help you with these courses. You
+        can change these at any time by clicking _______ following the instructions.</p>
+    </div>
+
     <div class="ui three column grid container">
       <div class="row">
         <div class="ui four wide column">
-          <div class="ui raised card profile">
+          <div class="ui raised card profile">sessions
             <img class="ui medium fluid image" src="https://chadmorita.github.io/chadmorita.github.io/images/chad2.jpg">
             <p>Major: Computer Science</p>
             <p>Expected Graduation: Spring 2019</p>
@@ -16,6 +30,12 @@
                 Reviews
               </div>
             </a>
+
+          </div>
+          <div class="ui yellow message transition pointing label">
+            <i class="close icon"></i>
+            <p>Others can see a star rating of you based on reviews other users have written on you. Click on "Reviews"
+              above to see what they're written.</p>
           </div>
         </div>
 
@@ -70,6 +90,15 @@
   <script>
     $('.ui.rating')
         .rating('disable')
+    ;
+
+    $('.message .close')
+        .on('click', function() {
+          $(this)
+              .closest('.message')
+              .transition('fade')
+          ;
+        })
     ;
   </script>
 

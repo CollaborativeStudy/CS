@@ -4,8 +4,13 @@ import {FlowRouter} from 'meteor/kadira:flow-router';
 import {_} from 'meteor/underscore';
 import {Reviews} from '../../api/reviews/reviews.js';
 
-Template.User_Profile_Page.helpers({
+Template.User_Profile_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Reviews').ready();
+  });
+});
 
+Template.User_Profile_Page.helpers({
   /**
    * @returns {*} All of the Reviews documents.
    */
@@ -13,7 +18,6 @@ Template.User_Profile_Page.helpers({
     return Reviews.find();
   },
   getAverageRate(){
-
     let totalRate = 0;
     let size = 0;
     let averageRate = 0;
@@ -30,10 +34,4 @@ Template.User_Profile_Page.helpers({
     console.log('');
     return averageRate;
   },
-});
-
-Template.User_Profile_Page.onCreated(function onCreated() {
-  this.autorun(() => {
-    this.subscribe('Reviews').ready();
-  });
 });

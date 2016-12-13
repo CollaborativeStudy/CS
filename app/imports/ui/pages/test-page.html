@@ -5,22 +5,26 @@
       <table style="margin-top: 20px" class="ui celled table">
         <thead>
         <tr>
+          <th>ID</th>
           <th>Name</th>
           <th>Course</th>
           <th>Topic</th>
           <th>Start Time</th>
           <th>End Time</th>
+          <th>Guests</th>
         </tr>
         </thead>
 
         <tbody>
         {{#each session in sessionsList}}
           <tr>
+            <td>{{session._id}}</td>
             <td>{{session.name}}</td>
             <td>{{session.course}}</td>
             <td>{{session.topic}}</td>
             <td>{{session.start}}</td>
             <td>{{session.end}}</td>
+            <td>{{session.guests}}</td>
           </tr>
         {{/each}}
         </tbody>

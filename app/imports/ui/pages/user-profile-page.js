@@ -63,6 +63,7 @@ Template.User_Profile_Page.helpers({
   }
 });
 
+
 Template.User_Profile_Page.events({
   'click .edit-pro'(event, instance){
     console.log('edit pro');

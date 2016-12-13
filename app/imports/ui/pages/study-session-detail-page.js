@@ -21,25 +21,32 @@ Template.Study_Session_Detail_Page.helpers({
     const guestListStuds = Sessions.findOne(FlowRouter.getParam('_id')).guestsStuds;
     if ((_.contains(guestListPros, Meteor.user().profile.name)) || (_.contains(guestListStuds, Meteor.user().profile.name))) {
       return true;
-    } else {
-      return false;
     }
+    return false;
+  },
+  isCreator(){
+    if (Sessions.findOne(FlowRouter.getParam('_id')).name == Meteor.user().profile.name) {
+      return true;
+    }
+    return false;
+  },
+  isPro(){
+    const guestListPros = Sessions.findOne(FlowRouter.getParam('_id')).guestsPros;
+    if (_.contains(guestListPros, Meteor.user().profile.name)) {
+      return true;
+    }
+    return false;
   }
 });
 
 Template.Study_Session_Detail_Page.events({
   'click .add'(event){
     event.preventDefault();
-    console.log("addTopic: " + event.target.addTopic.value);
+    console.log("addTopic: " + document.getElementById('addTopic').value);
     Sessions.update(
         { _id: FlowRouter.getParam('_id') },
         { $push: { topic: event.target.addTopic.value}  });
-    FlowRouter.go('Calendar_Page');
-  },
-  'click .delete'(event){
-    event.preventDefault();
-    Sessions.remove(FlowRouter.getParam('_id'));
-    FlowRouter.go('Calendar_Page');
+    FlowRouter.reload();
   },
 
   'click .join-pro'(event){
@@ -49,7 +56,7 @@ Template.Study_Session_Detail_Page.events({
       Sessions.update(
           { _id: FlowRouter.getParam('_id') },
           { $push: { guestsPros: Meteor.user().profile.name}  });
-      FlowRouter.go('Calendar_Page');
+      FlowRouter.reload();
     } else {
       console.log("Already in list");
     }
@@ -61,7 +68,7 @@ Template.Study_Session_Detail_Page.events({
       Sessions.update(
           { _id: FlowRouter.getParam('_id') },
           { $push: { guestsStuds: Meteor.user().profile.name}  });
-      FlowRouter.go('Calendar_Page');
+      FlowRouter.reload();
     } else {
       console.log("Already in list");
     }
@@ -75,16 +82,22 @@ Template.Study_Session_Detail_Page.events({
       Sessions.update(
           { _id: FlowRouter.getParam('_id') },
           { $pull: { guestsPros: Meteor.user().profile.name } });
-      FlowRouter.go('Calendar_Page');
+      FlowRouter.reload();
     } else
       if (_.contains(guestListStuds, Meteor.user().profile.name)) {
         Sessions.update(
             { _id: FlowRouter.getParam('_id') },
             { $pull: { guestsStuds: Meteor.user().profile.name } });
-        FlowRouter.go('Calendar_Page');
+        FlowRouter.reload();
       } else {
         console.log("You didn't even join weirdo");
       }
+  },
+
+  'click .delete'(event){
+    event.preventDefault();
+    Sessions.remove(FlowRouter.getParam('_id'));
+    FlowRouter.reload();
   }
 
 });

@@ -25,12 +25,12 @@
     <a class="ui big blue ribbon label">Topics</a>
     <div class="ui bulleted list">
       <div class="item">{{ findSession.topic }}</div>
-      {{#unless hasJoined}}
+      {{#if isPro}}
         <div style="margin-bottom: 5px" class="ui action input">
           <input type="text" name="addTopic" topic="addTopic" placeholder="Additional Topic">
           <button class="ui blue button add">Add Topic</button>
         </div>
-      {{/unless}}
+      {{/if}}
     </div>
 
     {{#unless hasJoined}}
@@ -43,6 +43,8 @@
     {{#if hasJoined}}
       <button class="ui teal button leave">Leave Study Session</button>
     {{/if}}
-    <button class="ui red button delete">Delete Study Session</button>
+    {{#if isCreator}}
+      <button class="ui red button delete">Delete Study Session</button>
+    {{/if}}
   </div>
 </template>

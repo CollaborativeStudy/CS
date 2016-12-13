@@ -22,7 +22,7 @@ Template.Cas_Login.events({
    */
   'click .cas-login': function casLogin(event, instance) {
     event.preventDefault();
-    FlowRouter.go('User_Home_Page');
+    FlowRouter.go('User_Profile_Page');
     const callback = function loginCallback(error) {
       if (error) {
         console.log(error);

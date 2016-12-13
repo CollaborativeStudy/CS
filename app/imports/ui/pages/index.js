@@ -53,3 +53,6 @@ import './study-session-detail-page.js';
 
 import './test-page.html';
 import './test-page.js';
+
+import './studs-pros-page.html';
+import './studs-pros-page.js';

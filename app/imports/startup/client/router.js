@@ -79,6 +79,13 @@ FlowRouter.route('/study-session', {
   },
 });
 
+FlowRouter.route('/studs-pros', {
+  name: 'Studs_Pros_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Studs_Pros_Page' });
+  },
+});
+
 FlowRouter.route('/study-session-search', {
   name: 'Study_Session_Page_Search',
   action() {

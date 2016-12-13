@@ -6,6 +6,17 @@ import {_} from 'meteor/underscore';
 import {Reviews} from '../../api/reviews/reviews.js';
 import {Users} from '../../api/users/users.js';
 
+// Template.User_Profile_Page.onRendered(function enableSemantic() {
+//   this.$('#newUser').modal();
+// });
+
+Template.User_Profile_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Reviews').ready();
+    this.subscribe('Users').ready();
+  });
+});
+
 Template.User_Profile_Page.helpers({
 
   /**
@@ -29,24 +40,31 @@ Template.User_Profile_Page.helpers({
     return averageRate;
   },
   user: function user() {
-    return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
+    // return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
+    // return Users.findOne({ username: Meteor.user().profile.name }).name;
+    console.log(Users.findOne({ username: Meteor.user().profile.name }))
   },
   userExists() {
-    let val = _.find(Users.find().name, function(user){ return user == Meteor.user().profile.name});
+    // let val = _.find(Users.find().username, function(user){ return user == Meteor.user().profile.name});
+    let val = Users.findOne({ username: Meteor.user().profile.name});
+    console.log("val return "+val);
     if(val == undefined){
+      console.log('user doesnt exist');
       return false;
     }
+    console.log('user exists');
     return true;
   },
   createNewUser(){
-    $('#newUser').modal('show');
-    console.log('create new user');
+    // $('#newUser').modal('show');
+    // console.log('create new user');
   },
 });
 
-Template.User_Profile_Page.onCreated(function onCreated() {
-  this.autorun(() => {
-    this.subscribe('Reviews').ready();
-    this.subscribe('Users').ready();
-  });
-});
+Template.User_Profile_Page.events({
+  'click'(event, instance){
+    console.log(Users);
+  },
+}
+)
+

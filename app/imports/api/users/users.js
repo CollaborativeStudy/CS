@@ -5,18 +5,18 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 export const Users = new Mongo.Collection('Users');
 
-// Block all database operations on the client-side.
-Users.allow({
-  insert: () => false,
-  update: () => false,
-  remove: () => false
-});
-
-Users.deny({
-  insert: () => true,
-  update: () => true,
-  remove: () => true
-});
+// // Block all database operations on the client-side.
+// Users.allow({
+//   insert: () => false,
+//   update: () => false,
+//   remove: () => false
+// });
+//
+// Users.deny({
+//   insert: () => true,
+//   update: () => true,
+//   remove: () => true
+// });
 
 /**
  * Create the schema for Sessions
@@ -48,7 +48,7 @@ export const UsersSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
-  termsOfUse: {
+  terms: {
     label:'Terms of Use',
     type: Boolean,
     optional: false,

@@ -1,18 +1,29 @@
 <template name="Create_New_User_Modal">
   <div class="ui segment container">
-    <form class="ui form">
-      <h4 class="ui dividing header">Shipping Information</h4>
+    <form class="ui form new-user">
+      <h4 class="ui dividing header">Create Your Profile</h4>
       <div class="field">
-        <label>Name</label>
         <div class="two fields">
           <div class="field">
-            <input type="text" name="shipping[first-name]" placeholder="First Name">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your Name">
           </div>
           <div class="field">
-            <input type="text" name="shipping[last-name]" placeholder="Last Name">
+            <label>Profile Picture URL</label>
+            <input type="text" name="profilePicture" placeholder="URL of your profile picture">
           </div>
         </div>
+
+        <div class="field">
+          <div class="ui checkbox">
+            <input id="Terms" type="checkbox" tabindex="0" >
+            <label>I agree to the <a class="terms" href="#">Terms and Conditions</a></label>
+          </div>
+
+        </div>
       </div>
+      <button class="ui teal button" type="submit">Create Profile</button>
     </form>
   </div>
+
 </template>

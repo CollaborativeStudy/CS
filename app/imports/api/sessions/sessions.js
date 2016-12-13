@@ -28,7 +28,7 @@ export const SessionsSchema = new SimpleSchema({
   },
   topic: {
     label: 'Topic',
-    type: String,
+    type: [String],
     optional: false,
   },
   // "start" is required by fullcalendar.
@@ -71,8 +71,13 @@ export const SessionsSchema = new SimpleSchema({
     type: String,
     optional: false,
   },
-  guests: {
-    label: 'Guests',
+  guestsPros: {
+    label: 'Pro Guests',
+    type: [String],
+    optional: false,
+  },
+  guestsStuds: {
+    label: 'Stud Guests',
     type: [String],
     optional: false,
   }

@@ -1,30 +1,48 @@
 <template name="Study_Session_Detail_Page">
   <div class="ui raised segment container">
     <h1 class="ui header"> {{ findSession.course }} Study Session Details</h1>
-    <a class="ui large blue ribbon label">Time</a>
+    <a class="ui big blue ribbon label">Time</a>
     <div class="ui bulleted list">
       <div class="item">Duration: {{ getDuration findSession }}hr.</div>
       <div class="item">Start Time: {{ findSession.startString }}</div>
       <div class="item">End Time: {{ findSession.endString }}</div>
     </div>
 
-    <a class="ui large red ribbon label">Pros Signed Up</a>
+    <a class="ui big teal ribbon label">Pros Signed Up</a>
     <div class="ui bulleted list">
-      <div class="item"><a href="/user-profile/chad-morita/">Neal H.</a></div>
+      {{#each guest in findSession.guestsPros}}
+        <div class="item">{{guest}}</div>
+      {{/each}}
     </div>
 
-    <a class="ui large green ribbon label">Studs Signed Up</a>
+    <a class="ui big green ribbon label">Studs Signed Up</a>
     <div class="ui bulleted list">
-      <div class="item">Chad M.</div>
-      <div class="item">Mariah G.</div>
-      <div class="item">Mary S.</div>
+      {{#each guest in findSession.guestsStuds}}
+        <div class="item">{{guest}}</div>
+      {{/each}}
     </div>
 
-    <a class="ui large blue ribbon label">Topics</a>
+    <a class="ui big blue ribbon label">Topics</a>
     <div class="ui bulleted list">
       <div class="item">{{ findSession.topic }}</div>
+      {{#unless hasJoined}}
+        <div style="margin-bottom: 5px" class="ui action input">
+          <input type="text" name="addTopic" topic="addTopic" placeholder="Additional Topic">
+          <button class="ui blue button add">Add Topic</button>
+        </div>
+      {{/unless}}
     </div>
-    <button class="ui teal button join">Join Study Session</button>
+
+    {{#unless hasJoined}}
+      <div class="ui buttons">
+        <button class="ui teal join-pro button" type="button">Join as a Pro</button>
+        <div class="or"></div>
+        <button class="ui green join-stud button" type="button">Join as a Stud</button>
+      </div>
+    {{/unless}}
+    {{#if hasJoined}}
+      <button class="ui teal button leave">Leave Study Session</button>
+    {{/if}}
     <button class="ui red button delete">Delete Study Session</button>
   </div>
 </template>

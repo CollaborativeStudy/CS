@@ -40,12 +40,12 @@ Template.Study_Session_Detail_Page.helpers({
 });
 
 Template.Study_Session_Detail_Page.events({
-  'click .add'(event){
+  'submit .add'(event){
     event.preventDefault();
-    console.log("addTopic: " + document.getElementById('addTopic').value);
+    console.log("topic: " + event.target.topic.value);
     Sessions.update(
         { _id: FlowRouter.getParam('_id') },
-        { $push: { topic: event.target.addTopic.value}  });
+        { $push: { topic: event.target.topic.value}  });
     FlowRouter.reload();
   },
 

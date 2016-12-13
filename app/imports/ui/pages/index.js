@@ -21,6 +21,8 @@ import './create-review-page.html';
 import './create-review-page.js';
 
 import './group-page.html';
+import './group-page.js';
+
 import './group-page-ics311.html';
 import './group-page-ics314.html';
 

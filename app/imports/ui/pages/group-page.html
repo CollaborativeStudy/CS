@@ -1,33 +1,39 @@
 <template name="Group_Page">
   <div class="ui raised segment container">
-    <div class="ui internally celled grid">
+    <div class="ui container">
 
-      <div class="row">
-        <div class="three wide centered align column">
-          <i class="huge circular red users icon" style="padding-left: 30px; margin-left: 30px"></i>
-        </div>
-        <div class="ten wide column">
-          <h1 style="align-content: center">ICS 314</h1>
-          <p style="align-content: center"> Study Buddy Project</p>
-        </div>
-        <div class="three wide column">
-          <i class="huge idea icon"><h3>Start a session</h3></i>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="three wide centered align column">
-          <i class="huge circular blue users icon" style="padding-left: 30px; margin-left: 30px"></i>
-        </div>
-        <div class="ten wide column">
-          <h1 style="align-content: center">ICS 311</h1>
-          <p style="align-content: center"> Algorithms Study Session </p>
-        </div>
-        <div class="three wide column">
-          <i class="huge idea icon"><h3>Start a session</h3></i>
-        </div>
-      </div>
-
+      {{#if Template.subscriptionsReady}}
+      <table class="ui very basic stackable celled table">
+        <thead>
+        <tr>
+          <th><h2>Groups</h2></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each group in groupsList}}
+        <tr>
+          <td style="width: 800px">
+            <h3 class="ui image header">
+              <i class="huge fluid circular red users icon"></i>
+              <div class="content">
+                {{group.name}}
+                <div class="sub header">{{group.description}}</div>
+              </div>
+            </h3>
+          </td>
+          <td>
+            <div class="content">
+              <i class="big fluid idea icon"></i>Start a session
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
+      {{else}}
+      {{> Loading}}
+      {{/if}}
     </div>
   </div>
 </template>

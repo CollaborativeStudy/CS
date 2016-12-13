@@ -24,11 +24,20 @@
 
     <a class="ui big blue ribbon label">Topics</a>
     <div class="ui bulleted list">
-      <div class="item">{{ findSession.topic }}</div>
+      {{#each topic in findSession.topic}}
+        <div class="item">{{topic}}</div>
+      {{/each}}
       {{#if isPro}}
-        <div style="margin-bottom: 5px" class="ui action input">
-          <input type="text" name="addTopic" topic="addTopic" placeholder="Additional Topic">
-          <button class="ui blue button add">Add Topic</button>
+      <div class="item">
+        Add a topic:
+        <form class="ui form add">
+          <div class="eight wide field">
+            <div style="margin-top: 5px" class="ui action input">
+              <input type="text" name="topic" placeholder="Additional Topic">
+              <button class="ui blue button" type="submit">Add</button>
+            </div>
+          </div>
+        </form>
         </div>
       {{/if}}
     </div>

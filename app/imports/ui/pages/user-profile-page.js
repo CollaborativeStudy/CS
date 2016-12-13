@@ -39,10 +39,9 @@ Template.User_Profile_Page.helpers({
 
     return averageRate;
   },
-  user: function user() {
+  name: function user() {
     // return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
-    // return Users.findOne({ username: Meteor.user().profile.name }).name;
-    console.log(Users.findOne({ username: Meteor.user().profile.name }))
+    return Users.findOne({ username: Meteor.user().profile.name }).name;
   },
   userExists() {
     // let val = _.find(Users.find().username, function(user){ return user == Meteor.user().profile.name});
@@ -59,12 +58,18 @@ Template.User_Profile_Page.helpers({
     // $('#newUser').modal('show');
     // console.log('create new user');
   },
+  getUser () {
+    return Users.findOne({ username: Meteor.user().profile.name });
+  }
 });
 
 Template.User_Profile_Page.events({
-  'click'(event, instance){
-    console.log(Users);
+  'click .edit-pro'(event, instance){
+    console.log('edit pro');
   },
+  'click .edit-stud'(event, instance) {
+    console.log('edit stud');
+  }
 }
 )
 

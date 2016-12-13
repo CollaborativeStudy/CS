@@ -36,22 +36,29 @@ export const UsersSchema = new SimpleSchema({
   profilePicture: {
     label: 'Profile Picture',
     type: String,
-    optional: false,
+    optional: true,
   },
   pros: {
     label: 'Pros',
-    type: String,
+    type: [String],
     optional: true,
   },
   studs: {
     label: 'Studs',
-    type: String,
+    type: [String],
     optional: true,
   },
   terms: {
     label:'Terms of Use',
     type: Boolean,
     optional: false,
+    custom: function checked() {
+      if (this.value) {
+        return this.value;
+      } else {
+        return "0";
+      }
+    }
   },
   admin: {
     label: 'Admin Permission',
@@ -62,6 +69,11 @@ export const UsersSchema = new SimpleSchema({
     label: 'Tutorial',
     type: Boolean,
     optional: false,
+  },
+  interests: {
+    label: 'Interests',
+    type: String,
+    optional: true,
   }
 });
 

@@ -8,6 +8,7 @@ const displayErrorMessages = 'displayErrorMessages';
 
 Template.Create_New_User_Modal.onRendered(function enableSemantic() {
   this.$('.ui.checkbox').checkbox();
+  this.$('.ui.accordion').accordion();
 });
 
 Template.Create_New_User_Modal.onCreated(function onCreated() {
@@ -32,22 +33,29 @@ Template.Create_New_User_Modal.events({
     event.preventDefault();
     const name = event.target.name.value;
     const username = Meteor.user().profile.name;
-    const profilePicture = event.target.profilePicture.value;
+    console.log(event.target.profilePicture.value);
+    let profilePicture = 'images/CSLogo1W.png';
+    if (event.target.profilePicture.value != '' ) {
+      profilePicture = event.target.profilePicture.value;
+    }
+        // event.target.profilePicture.value;
     const terms = document.getElementById('Terms').checked;
     const admin = false;
     const tutorial = true;
-    const newUser = { name, username, profilePicture, terms, admin, tutorial }
+    const interests = event.target.interests.value;
+    console.log(interests);
+
+    const newUser = { name, username, profilePicture, terms, admin, tutorial, interests }
+
     instance.context.resetValidation();
     UsersSchema.clean(newUser);
     instance.context.validate(newUser);
-    if (instance.context.isValid()) {
+    if (instance.context.isValid() && terms) {
       Users.insert(newUser);
       instance.messageFlags.set(displayErrorMessages, false);
       $('#newUser').modal('hide');
-      console.log('valid');
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
-      console.log('invalid');
     }
     // const e = document.getElementById('pros');
     // const f = e.getElementsByTagName('input');

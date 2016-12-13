@@ -22,5 +22,12 @@ Template.Study_Session_Detail_Page.events({
     event.preventDefault();
     Sessions.remove(FlowRouter.getParam('_id'));
     FlowRouter.go('Calendar_Page');
+  },
+  'click .join'(event, instance){
+    event.preventDefault();
+    Sessions.update(
+        { _id: FlowRouter.getParam('_id') },
+        { $push: { guests: Meteor.user().profile.name}  });
+    FlowRouter.go('Calendar_Page');
   }
 });

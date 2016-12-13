@@ -73,7 +73,7 @@ export const SessionsSchema = new SimpleSchema({
   },
   guests: {
     label: 'Guests',
-    type: String,
+    type: [String],
     optional: false,
   }
 });

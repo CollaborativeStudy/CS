@@ -35,12 +35,11 @@ Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
 Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
-    // Get name (text field)
     console.log(Session.get('eventModal'));
     let newSession = Session.get('eventModal');
-    const title = 'Title';
+    const title = event.target.title.value;
     const name = Meteor.user().profile.name;
-    const guests = {};
+    const guests = [];
     const e = document.getElementById(event.target.course.id);
     let course = e.options[e.selectedIndex].value;
     if (course === 'Select a Course') {
@@ -84,6 +83,7 @@ Template.Create_Study_Session_Page.events({
       ;
       //FlowRouter.go('Public_Landing_Page');
     } else {
+      console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },

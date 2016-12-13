@@ -12,12 +12,36 @@
   </div>
 
   <div class="ui raised segment container">
-    <h1 class="ui header"> {{ findSession.course }} Study Session Details</h1>
+    <h1 class="ui header"> {{ findSession.course }} Study Session Details
+    {{#if isCreator}}
+      <button class="ui red right floated button delete">Delete Study Session</button>
+    {{/if}}
+    </h1>
     <a class="ui big blue ribbon label">Time</a>
     <div class="ui bulleted list">
       <div class="item">Duration: {{ getDuration findSession }}hr.</div>
       <div class="item">Start Time: {{ findSession.startString }}</div>
       <div class="item">End Time: {{ findSession.endString }}</div>
+    </div>
+
+    <a class="ui big blue ribbon label">Topics</a>
+    <div class="ui bulleted list">
+      {{#each topic in findSession.topic}}
+        <div class="item">{{topic}}</div>
+      {{/each}}
+      {{#if isPro}}
+        <div class="item">
+          Add a topic:
+          <form class="ui form add">
+            <div class="eight wide field">
+              <div style="margin-top: 5px" class="ui action input">
+                <input type="text" name="topic" placeholder="Additional Topic">
+                <button class="ui blue button" type="submit">Add</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      {{/if}}
     </div>
 
     <a class="ui big teal ribbon label">Pros Signed Up</a>
@@ -34,26 +58,6 @@
       {{/each}}
     </div>
 
-    <a class="ui big blue ribbon label">Topics</a>
-    <div class="ui bulleted list">
-      {{#each topic in findSession.topic}}
-        <div class="item">{{topic}}</div>
-      {{/each}}
-      {{#if isPro}}
-      <div class="item">
-        Add a topic:
-        <form class="ui form add">
-          <div class="eight wide field">
-            <div style="margin-top: 5px" class="ui action input">
-              <input type="text" name="topic" placeholder="Additional Topic">
-              <button class="ui blue button" type="submit">Add</button>
-            </div>
-          </div>
-        </form>
-        </div>
-      {{/if}}
-    </div>
-
     {{#unless hasJoined}}
       <div class="ui buttons">
         <button class="ui teal join-pro button" type="button">Join as a Pro</button>
@@ -64,8 +68,6 @@
     {{#if hasJoined}}
       <button class="ui teal button leave">Leave Study Session</button>
     {{/if}}
-    {{#if isCreator}}
-      <button class="ui red button delete">Delete Study Session</button>
-    {{/if}}
+    <button class="ui blue right floated button back">Back</button>
   </div>
 </template>

@@ -11,9 +11,6 @@ Template.Reports_Page.onCreated(function onCreated() {
 });
 
 Template.Reports_Page.helpers({
-  /**
-   * @returns {*} All of the Reviews documents.
-   */
   reviewsList() {
     return Reviews.find();
   },
@@ -22,6 +19,9 @@ Template.Reports_Page.helpers({
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
+  },
+  isAdmin(){
+    return Users.findOne({ username: Meteor.user().profile.name }).admin;
   }
 });
 

@@ -1,16 +1,5 @@
 /** ALL IMPORTS ARE ALPHABETIZED  **/
 
-//digits imports
-import './add-stuff-page.html';
-import './add-stuff-page.js';
-
-import './edit-stuff-page.html';
-import './edit-stuff-page.js';
-
-import './list-stuff-page.html';
-import './list-stuff-page.js';
-
-//CS imports
 import './calendar-page.html';
 import './calendar-page.js';
 
@@ -43,9 +32,6 @@ import './messages-page.js';
 
 import './public-landing-page.html';
 
-import './user-home-page.html';
-import './user-home-page.js';
-
 import './user-profile-detail-page.html';
 import './user-profile-page.html';
 import './user-profile-page.js';
@@ -64,6 +50,3 @@ import './study-session-page-search.js';
 
 import './study-session-detail-page.html';
 import './study-session-detail-page.js';
-
-import './test-page.html';
-import './test-page.js';

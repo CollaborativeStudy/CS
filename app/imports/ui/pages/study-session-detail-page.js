@@ -33,18 +33,29 @@ Template.Study_Session_Detail_Page.helpers({
     }
     return false;
   },
+  isPro(){
+    const guestListPros = Sessions.findOne(FlowRouter.getParam('_id')).guestsPros;
+    return _.contains(guestListPros, Meteor.user().profile.name);
+  },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   }
 });
 
 Template.Study_Session_Detail_Page.events({
-  'submit .add'(event){
+  'submit .add-topic'(event){
     event.preventDefault();
-    console.log("topic: " + event.target.topic.value);
     Sessions.update(
         { _id: FlowRouter.getParam('_id') },
-        { $push: { topic: event.target.topic.value}  });
+        { $push: { topic: event.target.addTopic.value}  });
+    FlowRouter.reload();
+  },
+  'submit .remove-topic'(event){
+    event.preventDefault();
+    console.log("topic: " + event.target.removeTopic.value);
+    Sessions.update(
+        { _id: FlowRouter.getParam('_id') },
+        { $pull: { topic: event.target.removeTopic.value}  });
     FlowRouter.reload();
   },
   'click .join-pro'(event){
@@ -55,8 +66,6 @@ Template.Study_Session_Detail_Page.events({
           { _id: FlowRouter.getParam('_id') },
           { $push: { guestsPros: Meteor.user().profile.name}  });
       FlowRouter.reload();
-    } else {
-      console.log("Already in list");
     }
   },
   'click .join-stud'(event){
@@ -67,8 +76,6 @@ Template.Study_Session_Detail_Page.events({
           { _id: FlowRouter.getParam('_id') },
           { $push: { guestsStuds: Meteor.user().profile.name}  });
       FlowRouter.reload();
-    } else {
-      console.log("Already in list");
     }
   },
   'click .leave'(event){
@@ -86,8 +93,6 @@ Template.Study_Session_Detail_Page.events({
             { _id: FlowRouter.getParam('_id') },
             { $pull: { guestsStuds: Meteor.user().profile.name } });
         FlowRouter.reload();
-      } else {
-        console.log("You didn't even join weirdo");
       }
   },
   'click .delete'(event){

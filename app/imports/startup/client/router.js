@@ -93,6 +93,14 @@ FlowRouter.route('/study-session', {
   },
 });
 
+
+FlowRouter.route('/studs-pros-page', {
+  name: 'Studs_Pros_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Studs_Pros_Page' });
+  },
+});
+
 FlowRouter.route('/study-session-search', {
   name: 'Study_Session_Page_Search',
   action() {
@@ -128,6 +136,13 @@ FlowRouter.notFound = {
 };
 
 //Change
+FlowRouter.route('/events', {
+  name: 'events',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'events' });
+  },
+});
+
 FlowRouter.route('/events', {
   name: 'events',
   action() {

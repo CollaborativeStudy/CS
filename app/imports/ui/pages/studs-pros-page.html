@@ -32,7 +32,7 @@
         <td>{{users.major}}</td>
         <td>{{users.course}}</td>
 
-        <td><a href="study-session/bPpm7TFddomLqto5K"><label class="ui label">More Info</label></a></td>
+        <td><a href="{{pathFor 'User_Profile_Page' _id=users._id}}"><label class="ui label">More Info</label></a></td>
       </tr>
       {{/each}}
       </tbody>

@@ -11,4 +11,4 @@ import './if-logged-in.js';
 import './loading.html';
 import './not-authorized.html';
 import './profile-dropdown.html';
-import './profile-dropdown';
+import './profile-dropdown.js';

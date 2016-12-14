@@ -24,15 +24,14 @@ import './group-details-page.js';
 import './group-page.html';
 import './group-page.js';
 
-import './group-page-ics311.html';
-import './group-page-ics314.html';
-
 import './messages-page.html';
 import './messages-page.js';
 
 import './public-landing-page.html';
 
 import './user-profile-detail-page.html';
+import './user-profile-detail-page.js';
+
 import './user-profile-page.html';
 import './user-profile-page.js';
 

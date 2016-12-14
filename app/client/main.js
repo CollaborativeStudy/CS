@@ -1,6 +1,5 @@
 import '/imports/startup/client';
 import '/imports/startup/both';
-import '/imports/api/stuff';
 import '/imports/api/reviews';
 import '/imports/api/sessions';
 import '/imports/ui/layouts';

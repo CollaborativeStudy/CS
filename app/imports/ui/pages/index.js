@@ -3,6 +3,9 @@
 import './calendar-page.html';
 import './calendar-page.js';
 
+import './create-group-page.html';
+import './create-group-page.js';
+
 import './create-new-user-modal.html';
 import './create-new-user-modal.js';
 
@@ -12,7 +15,15 @@ import './create-study-session-page.js';
 import './create-review-page.html';
 import './create-review-page.js';
 
+import './edit-group-page.html';
+import './edit-group-page.js';
+
+import './group-details-page.html';
+import './group-details-page.js';
+
 import './group-page.html';
+import './group-page.js';
+
 import './group-page-ics311.html';
 import './group-page-ics314.html';
 

@@ -5,18 +5,7 @@ import { _ } from 'meteor/underscore';
  * A list of Reviews to pre-fill the Collection.
  * @type {*[]}
  */
-const messagesSeeds = [
-  {
-    user: 'User1',
-    message: 'Hello World!',
-    time: 0,
-  },
-  {
-    user: 'User2',
-    message: 'Hello Universe!',
-    time: 1,
-  }
-];
+const messagesSeeds = [];
 
 /**
  * Initialize the Stuff collection if empty with seed data.

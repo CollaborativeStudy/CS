@@ -16,6 +16,13 @@ FlowRouter.route('/calendar-page', {
   },
 });
 
+FlowRouter.route('/create-group', {
+  name: 'Create_Group_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Create_Group_Page' });
+  },
+});
+
 FlowRouter.route('/create-study-session', {
   name: 'Create_Study_Session_Page',
   action() {
@@ -27,6 +34,13 @@ FlowRouter.route('/create-review', {
   name: 'Create_Review_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Create_Review_Page' });
+  },
+});
+
+FlowRouter.route('/group-details/:_id', {
+  name: 'Group_Details_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Group_Details_Page' });
   },
 });
 

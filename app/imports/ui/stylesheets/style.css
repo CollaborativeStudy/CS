@@ -5,6 +5,10 @@ body {
   background-repeat: no-repeat;
 }
 
+p {
+  font-size: medium;
+}
+
 .ui.segment {
   border-radius: 0px;
 }

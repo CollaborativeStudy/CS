@@ -1,23 +1,28 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Reviews } from '../../api/reviews/reviews.js';
+import { Users } from '../../api/users/users.js';
 
 Template.Reports_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Reviews');
+    this.subscribe('Users');
   });
 });
 
 Template.Reports_Page.helpers({
-
-  /**
-   * @returns {*} All of the Reviews documents.
-   */
   reviewsList() {
     return Reviews.find();
   },
   reviewsListChecked() {
     return Reviews.find({ checked: 0 });
   },
+  hasTutorial(){
+    return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
+  },
+  isAdmin(){
+    return Users.findOne({ username: Meteor.user().profile.name }).admin;
+  }
 });
 
 Template.Reports_Page.events({

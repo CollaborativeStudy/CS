@@ -18,10 +18,11 @@ Template.Study_Session_Page.helpers({
     // Get the search value that was submitted.
     let searchValue = Session.get("searchValue");
     // Search the Sessions collection for any sessions with the same name as searchValue and return it.
-    if(searchValue){
-    return Sessions.find({ course: searchValue});}
-    else{
-      return  Sessions.find();
+    if (searchValue) {
+      return Sessions.find({ course: searchValue });
+    }
+    else {
+      return Sessions.find();
     }
   },
   hasTutorial(){
@@ -30,9 +31,13 @@ Template.Study_Session_Page.helpers({
 });
 
 Template.Study_Session_Page.events({
-  "submit #search": function (e) {
+  'submit #search': function (e) {
     e.preventDefault();
     Session.set("searchValue", $("#searchValue").val());
-
+  },
+  'click .reset'(event){
+    event.preventDefault();
+    Session.set("searchValue", null);
+    FlowRouter.reload();
   }
 });

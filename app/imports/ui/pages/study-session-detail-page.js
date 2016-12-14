@@ -33,8 +33,8 @@ Template.Study_Session_Detail_Page.helpers({
     }
     return false;
   },
-  findUserId(){
-    return Users.findOne({ username: Meteor.user().profile.name })._id;
+  findUserId(guest){
+    return Users.findOne({ username: guest })._id;
   },
   isPro(){
     const guestListPros = Sessions.findOne(FlowRouter.getParam('_id')).guestsPros;
@@ -77,7 +77,7 @@ Template.Study_Session_Detail_Page.events({
     if(_.contains(guestList, Meteor.user().profile.name) == false) {
       Sessions.update(
           { _id: FlowRouter.getParam('_id') },
-          { $push: { guestsStuds: Meteor.user().profile.name}  });
+          { $push: { guestsStuds: Meteor.user().profile.name}  *`*```});
       FlowRouter.reload();
     }
   },
@@ -94,6 +94,7 @@ Template.Study_Session_Detail_Page.events({
       if (_.contains(guestListStuds, Meteor.user().profile.name)) {
         Sessions.update(
             { _id: FlowRouter.getParam('_id') },
+
             { $pull: { guestsStuds: Meteor.user().profile.name } });
         FlowRouter.reload();
       }

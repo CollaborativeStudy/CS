@@ -34,7 +34,7 @@ Template.Create_New_User_Modal.events({
     const name = event.target.name.value;
     const username = Meteor.user().profile.name;
     console.log(event.target.profilePicture.value);
-    let profilePicture = 'images/CSLogo1W.png';
+    let profilePicture = 'images/CSLogo1.png';
     if (event.target.profilePicture.value != '' ) {
       profilePicture = event.target.profilePicture.value;
     }

@@ -39,7 +39,7 @@
               <button class="ui button edit-pro"> edit</button>
             </div>
             <!--Show after edit-->
-            <div class="ui form">
+            <form class="ui form add-pro">
               <div class="two fields">
                 <div class="field">
                   <label>Course</label>
@@ -55,11 +55,32 @@
                     <option value="MATH 371">MATH 371 - Elementary Probability Theory</option>
                   </select>
                 </div>
-                <div class="inline fields">
-
+                <div class="field">
+                  <label>Proficiency Level</label>
+                  <div id="level" class="inline fields">
+                    <div class="field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="profLevel" value="low" tabindex="0" class="hidden">
+                        <label>Low</label>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="profLevel" value="medium" tabindex="0" class="hidden">
+                        <label>Medium</label>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="ui radio checkbox">
+                        <input type="radio" name="profLevel" value="high" tabindex="0" class="hidden">
+                        <label>High</label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+              <button class="ui teal button" type="submit">Add</button>
+            </form>
 
             <div class="ui divided selection list">
               <a class="item">
@@ -109,9 +130,8 @@
     </div>
 
     <script>
-      $('.ui.rating')
-          .rating('disable')
-      ;
+      $('.ui.rating').rating('disable');
+      $('.ui.radio.checkbox').checkbox();
     </script>
 
   {{else}}

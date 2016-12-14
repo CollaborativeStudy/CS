@@ -6,9 +6,11 @@ import {_} from 'meteor/underscore';
 import {Reviews} from '../../api/reviews/reviews.js';
 import {Users} from '../../api/users/users.js';
 
-// Template.User_Profile_Page.onRendered(function enableSemantic() {
-//   this.$('#newUser').modal();
-// });
+
+Template.User_Profile_Page.onRendered(function enableSemantic() {
+  this.$('.ui.radio.checkbox').checkbox();
+  console.log('enable Semantic');
+});
 
 Template.User_Profile_Page.onCreated(function onCreated() {
   this.autorun(() => {
@@ -70,6 +72,12 @@ Template.User_Profile_Page.events({
   },
   'click .edit-stud'(event, instance) {
     console.log('edit stud');
+  },
+  'submit .add-pro'(event, instance) {
+    event.preventDefault();
+    const e = document.getElementById('level');
+    const f = e.getElementsByTagName('profLevel');
+    console.log(f);
   }
 }
 )

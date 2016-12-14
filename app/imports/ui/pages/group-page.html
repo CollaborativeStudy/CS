@@ -1,4 +1,6 @@
 <template name="Group_Page">
+
+  {{#if Template.subscriptionsReady}}
   <div class="ui yellow message transition container">
     <i class="close icon"></i>
     <div class="header">
@@ -10,77 +12,51 @@
   </div>
 
   <div class="ui raised segment container">
-    <h1 style="color: teal">ICS 311 Group</h1>
-    <table class="ui very basic collapsing celled table">
-      <thead>
-      <tr>
-        <th>Buddy</th>
-        <th>Skills</th>
-      </tr>
-      </thead>
-      <tbody>
-      {{#each sessions in sessionsList}}
-      <tr>
-        <td>
-          <h4 class="ui image header">
-            <img src="/images/avatar2/small/lena.png" class="ui mini rounded image">
-            <div class="content">
-              {{sessions.name}}
-              <div class="sub header">ICS 311
-              </div>
-            </div>
-          </h4></td>
-        <td>
-          Programming
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h4 class="ui image header">
-            <img src="/images/avatar2/small/matthew.png" class="ui mini rounded image">
-            <div class="content">
-              {{sessions.name}}
-              <div class="sub header">ICS 311
-              </div>
-            </div>
-          </h4></td>
-        <td>
-          Organizing
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h4 class="ui image header">
-            <img src="/images/avatar2/small/lindsay.png" class="ui mini rounded image">
-            <div class="content">
-              {{sessions.name}}
-              <div class="sub header">ICS 311
-              </div>
-            </div>
-          </h4></td>
-        <td>
-          Photographing
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h4 class="ui image header">
-            <img src="https://github.com/CollaborativeStudy/CS/blob/master/app/public/images/profile.png" class="ui mini rounded image">
-            <div class="content">
-              {{sessions.name}}
-              <div class="sub header">ICS 311
-              </div>
-            </div>
-          </h4></td>
-        <td>
-          Eating
-        </td>
+    <div class="ui container">
 
-      </tr>
-      {{/each}}
-      </tbody>
-    </table>
+      <table class="ui very basic stackable celled table">
+        <thead>
+        <tr>
+          <th><h2>Groups</h2></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each group in groupsList}}
+        <tr>
+          <td style="width: 800px">
+            <h3 class="ui image header">
+              <img class="ui tiny image" src="{{ group.image }}">
+              <div class="content">
+                <a href="{{pathFor 'Group_Details_Page' _id=group._id}}">{{group.name}}</a>
+                <div class="sub header">{{group.description}}</div>
+              </div>
+            </h3>
+            <button class="ui teal right floated labeled icon button create-session">
+              <i class="book icon"></i>
+              Start a Study Session
+            </button>
+          <div class="ui modal sessions-modal">
+            {{>Create_Study_Session_Page}}
+          </div>
+          </td>
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
+
+      <button class="ui right green button create-group">
+        <i class="icons">
+          <i class="inverted users icon"></i>
+          <i class="inverted corner add icon"></i>
+        </i>
+        Create Group
+      </button>
+      <div class="ui modal groups-modal">
+        {{>Create_Group_Page}}
+      </div>
+    </div>
   </div>
-
-
+  {{else}}
+  {{> Loading}}
+  {{/if}}
 </template>

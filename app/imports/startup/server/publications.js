@@ -1,6 +1,7 @@
 import { Sessions } from '../../api/sessions/sessions.js';
 import { Reviews } from '../../api/reviews/reviews.js';
 import { Messages } from '../../api/messages/messages.js';
+import { Groups } from '../../api/groups/groups.js';
 import { Users } from '../../api/users/users.js';
 // Change
 import { Events } from '../../api/events/events.js';
@@ -12,6 +13,10 @@ Meteor.publish('Sessions', function publishSessionsData() {
 
 Meteor.publish('Reviews', function publishReviewsData() {
   return Reviews.find();
+});
+
+Meteor.publish('Groups', function publishGroupsData() {
+  return Groups.find();
 });
 
 Meteor.publish('Messages', function publishMessagesData() {

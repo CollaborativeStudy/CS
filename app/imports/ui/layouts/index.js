@@ -5,8 +5,7 @@ import './cas-login.html'
 import './cas-login';
 import './footer.html';
 import './header.html';
-import './home-dropdown.html';
-import './home-dropdown';
+import './header.js';
 import './if-logged-in.html';
 import './if-logged-in.js';
 import './loading.html';

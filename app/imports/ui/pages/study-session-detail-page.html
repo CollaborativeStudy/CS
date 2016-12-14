@@ -36,11 +36,22 @@
       {{#if isPro}}
         <div class="item">
           Add a topic:
-          <form class="ui form add">
+          <form class="ui form add-topic">
             <div class="eight wide field">
               <div style="margin-top: 5px" class="ui action input">
-                <input type="text" name="topic" placeholder="Additional Topic">
+                <input type="text" name="addTopic" placeholder="Additional Topic">
                 <button class="ui blue button" type="submit">Add</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="item">
+          Or remove a topic:
+          <form class="ui form remove-topic">
+            <div class="eight wide field">
+              <div style="margin-top: 5px" class="ui action input">
+                <input type="text" name="removeTopic" placeholder="Current Topic">
+                <button class="ui red button" type="submit">Remove</button>
               </div>
             </div>
           </form>
@@ -72,7 +83,6 @@
     {{#if hasJoined}}
       <button class="ui teal button leave">Leave Study Session</button>
     {{/if}}
-    <button class="ui blue right floated button back">Back</button>
   </div>
 
   <script>

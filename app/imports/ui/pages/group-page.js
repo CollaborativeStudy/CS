@@ -1,14 +1,19 @@
-import {Template} from 'meteor/templating';
-import {ReactiveDict} from 'meteor/reactive-dict';
-import {FlowRouter} from 'meteor/kadira:flow-router';
-import {_} from 'meteor/underscore';
-import {Groups} from '../../api/groups/groups.js';
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { _ } from 'meteor/underscore';
+import { Groups } from '../../api/groups/groups.js';
+import { Users } from '../../api/users/users.js';
+
+Template.Group_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Groups');
+    this.subscribe('Users');
+  });
+});
 
 Template.Group_Page.helpers({
-
-  /**
-   * @returns {*} All of the Reviews documents.
-   */
   groupsList() {
     return Groups.find();
   },
@@ -17,12 +22,9 @@ Template.Group_Page.helpers({
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return groupData && groupData[fieldName];
   },
-});
-
-Template.Group_Page.onCreated(function onCreated() {
-  this.autorun(() => {
-    this.subscribe('Groups');
-  });
+  hasTutorial(){
+    return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
+  }
 });
 
 Template.Group_Page.events({

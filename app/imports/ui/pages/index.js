@@ -21,9 +21,6 @@ import './messages-page.js';
 
 import './public-landing-page.html';
 
-import './user-home-page.html';
-import './user-home-page.js';
-
 import './user-profile-detail-page.html';
 import './user-profile-page.html';
 import './user-profile-page.js';

@@ -83,32 +83,25 @@
                 </div>
                 <div class="field">
                   <label>Proficiency Level</label>
-                  <div id="level" class="inline fields">
-                    <div class="field">
-                      <div class="ui radio checkbox">
-                        <input type="radio" name="profLevel" value="low" tabindex="0" class="hidden">
-                        <label>Low</label>
-                      </div>
-                    </div>
-                    <div class="field">
-                      <div class="ui radio checkbox">
-                        <input type="radio" name="profLevel" value="medium" tabindex="0" class="hidden">
-                        <label>Medium</label>
-                      </div>
-                    </div>
-                    <div class="field">
-                      <div class="ui radio checkbox">
-                        <input type="radio" name="profLevel" value="high" tabindex="0" class="hidden">
-                        <label>High</label>
-                      </div>
-                    </div>
-                  </div>
+                  <select class="ui fluid search dropdown" name="profLevel" id="profLevel">
+                    <option value="">Select a proficiency level</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>x
+                    <option value="high">High</option>x
+                  </select>
                 </div>
               </div>
               <button class="ui teal button" type="submit">Add</button>
             </form>
 
             <div class="ui divided selection list">
+              {{#each course in prosList}}
+                <a class="item">
+                  <div class="ui large green horizontal label">{{course.course}}</div>
+                  {{course.profLevel}}
+                </a>
+              {{/each}}
+
               <a class="item">
                 <div class="ui large green horizontal label">ICS 141</div>
                 Discrete Mathematics for Computer Science I

@@ -40,12 +40,12 @@ export const UsersSchema = new SimpleSchema({
   },
   pros: {
     label: 'Pros',
-    type: [String],
+    type: [Object],
     optional: true,
   },
   studs: {
     label: 'Studs',
-    type: [String],
+    type: [Object],
     optional: true,
   },
   terms: {

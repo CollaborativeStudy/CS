@@ -20,3 +20,14 @@ Template.Group_Page.onCreated(function onCreated() {
     this.subscribe('Groups');
   });
 });
+
+Template.Group_Page.events({
+  // 'click .edit-pro'(event, instance){
+  //   console.log('edit pro');
+  // },
+  'click .link-icon'(event, instance) {
+    $('.ui.modal')
+        .modal('show')
+    ;
+  },
+});

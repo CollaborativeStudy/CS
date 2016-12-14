@@ -24,13 +24,13 @@
           </td>
           <td>
             <div class="content">
-              <button class="ui teal centered labeled icon button link-icon">
+              <button class="ui teal centered labeled icon button create-session">
                 <i class="book icon"></i>
                 Start a Study Session
               </button>
             </div>
           </td>
-          <div class="ui modal">
+          <div class="ui modal sessions-modal">
             {{>Create_Study_Session_Page}}
           </div>
         </tr>
@@ -47,6 +47,9 @@
         </i>
         Create Group
       </button>
+      <div class="ui modal groups-modal">
+        {{>Create_Group_Page}}
+      </div>
     </div>
 
   </div>

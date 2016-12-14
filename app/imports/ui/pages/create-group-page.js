@@ -35,20 +35,23 @@ Template.Create_Group_Page.onRendered(function enableSemantic() {
 Template.Create_Group_Page.events({
   'submit .group-data-form'(event, instance) {
     event.preventDefault();
-    console.log(Group.get('eventModal'));
-    let newGroup = Group.get('eventModal');
-    const id = event.target.id.value;
-    const name = Meteor.user().profile.name;
-    const e = document.getElementById(event.target.course.id);
-    let course = e.options[e.selectedIndex].value;
-    if (course === 'Select a Course') {
-      course = '';
-    }
-    const description = [event.target.description.value];
-    const members = [];
+    // console.log(Groups.get('eventModal'));
+    // let newGroup = Groups.get('eventModal');
+
+    const name = event.target.name.value;
+    const description = event.target.description.value;
+    // const e = document.getElementById(event.target.course.id);
+    const course =  event.target.course.value;
+
+    // let course = e.options[e.selectedIndex].value;
+    // if (course === 'Select a Course') {
+    //   course = '';
+    // }
+    let members = [];
+    let image = "../../../public/images/CSLogo1.png";
 
     // const newGroup = { name, course, description};
-    newGroup = { id, name, course, description, members };
+    newGroup = {name, course, description, members, image };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newGroup reflects what will be inserted.
@@ -58,7 +61,7 @@ Template.Create_Group_Page.events({
     if (instance.context.isValid()) {
       Groups.insert(newGroup);
       instance.messageFlags.set(displayErrorMessages, false);
-      $('.ui.modal')
+      $('.ui.modal.groups-modal')
           .modal('hide')
       ;
       //FlowRouter.go('Public_Landing_Page');
@@ -71,7 +74,7 @@ Template.Create_Group_Page.events({
   'click .cancel'(event, instance){
     event.preventDefault();
     console.log('cancel');
-    $('.ui.modal')
+    $('.ui.modal.groups-modal')
         .modal('hide')
     ;
   },

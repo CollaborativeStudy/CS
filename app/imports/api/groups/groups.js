@@ -9,11 +9,6 @@ export const Groups = new Mongo.Collection('Groups');
  * Create the schema for Stuff
  */
 export const GroupsSchema = new SimpleSchema({
-  id:{
-    label: 'id',
-    type: Number,
-    optional: false,
-  },
   name: {
     label: 'name',
     type: String,
@@ -32,8 +27,8 @@ export const GroupsSchema = new SimpleSchema({
     optional: false,
     max: 400,
   },
-  users: {
-    label: 'users',
+  members: {
+    label: 'members',
     type: [String],
   },
   image: {

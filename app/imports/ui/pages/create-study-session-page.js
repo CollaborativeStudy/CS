@@ -23,6 +23,13 @@ Template.Create_Study_Session_Page.helpers({
     const errorKeys = Template.instance().context.invalidKeys();
     return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
   },
+  isPro(){
+    const completed = Users.tutorial;
+    if(completed == true) {
+      return false;
+    }
+    return true;
+  }
 });
 
 Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
@@ -35,18 +42,18 @@ Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
 Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
-    // Get name (text field)
     console.log(Session.get('eventModal'));
     let newSession = Session.get('eventModal');
-    const title = 'Title';
+    const title = event.target.title.value;
     const name = Meteor.user().profile.name;
-    const guests = 0;
+    const guestsPros = [];
+    const guestsStuds = [];
     const e = document.getElementById(event.target.course.id);
     let course = e.options[e.selectedIndex].value;
     if (course === 'Select a Course') {
       course = '';
     }
-    const topic = event.target.topic.value;
+    const topic = [event.target.topic.value];
     const f = document.getElementById(event.target.start.id);
     // Get the date and add the time to the end.
     let start = newSession.date+"T"+f.options[f.selectedIndex].value+"-10:00";
@@ -69,7 +76,7 @@ Template.Create_Study_Session_Page.events({
     console.log(endString);
 
     // const newSession = { name, course, topic, start, end, startV, endV };
-    newSession = { title, name, guests, course, topic, start, end, startV, endV, startString, endString };
+    newSession = { title, name, course, topic, start, end, startV, endV, startString, endString, guestsPros, guestsStuds };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newSession reflects what will be inserted.
@@ -79,19 +86,18 @@ Template.Create_Study_Session_Page.events({
     if (instance.context.isValid()) {
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      $('.ui.modal')
+      $('#calendar')
           .modal('hide')
       ;
-      //FlowRouter.go('Public_Landing_Page');
     } else {
+      console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },
 
   'click .cancel'(event, instance){
     event.preventDefault();
-    console.log('cancel');
-    $('.ui.modal')
+    $('#calendar')
         .modal('hide')
     ;
   },

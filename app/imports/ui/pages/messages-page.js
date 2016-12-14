@@ -1,14 +1,19 @@
-import {Template} from 'meteor/templating';
-import {ReactiveDict} from 'meteor/reactive-dict';
-import {FlowRouter} from 'meteor/kadira:flow-router';
-import {_} from 'meteor/underscore';
-import {Messages, MessagesSchema} from '../../api/messages/messages.js';
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { _ } from 'meteor/underscore';
+import { Messages, MessagesSchema } from '../../api/messages/messages.js';
+import { Users } from '../../api/users/users.js';
+
+Template.Messages_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Messages');
+    this.subscribe('Users');
+  });
+});
 
 Template.Messages_Page.helpers({
-
-  /**
-   * @returns {*} All of the Messages documents.
-   */
   messagesList() {
     return Messages.find({}, { sort: { createdAt: -1 } });
   },
@@ -29,12 +34,6 @@ Template.Messages_Page.helpers({
       target.value = "";
     }
   },
-});
-
-Template.Messages_Page.onCreated(function onCreated() {
-  this.autorun(() => {
-    this.subscribe('Messages');
-  });
 });
 
 Template.Messages_Page.events({

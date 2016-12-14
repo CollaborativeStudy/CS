@@ -5,7 +5,12 @@ Template.App_Body.onCreated(function appBodyOnCreated() {
 });
 
 Template.App_Body.helpers({
-  // placeholder: if you display dynamic data in your layout, you will put your template helpers here.
+  authInProcess: function authInProcess() {
+    return Meteor.loggingIn();
+  },
+  canShow: function canShow() {
+    return !!Meteor.user();
+  },
 });
 
 Template.App_Body.events({

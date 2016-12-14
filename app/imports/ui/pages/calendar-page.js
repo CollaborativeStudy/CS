@@ -1,5 +1,7 @@
-import {Tracker} from 'meteor/tracker';
-import {Sessions, SessionsSchema} from '../../api/sessions/sessions.js';
+import { Meteor } from 'meteor/meteor';
+import { Tracker } from 'meteor/tracker';
+import { Sessions, SessionsSchema } from '../../api/sessions/sessions.js';
+import { Users } from '../../api/users/users.js';
 
 let isPast = (date) => {
   // Get access to today's moment
@@ -11,6 +13,7 @@ let isPast = (date) => {
 Template.Calendar_Page.onCreated(() => {
   let template = Template.instance();
   template.subscribe('Sessions');
+  template.subscribe('Users');
 });
 
 Template.Calendar_Page.onRendered(() => {
@@ -65,8 +68,7 @@ Template.Calendar_Page.onRendered(() => {
       Session.set('eventModal', { type: 'add', date: date.format() });
       // console.log(date.format());
       //$( '#add-edit-event-modal' ).modal( 'show' );
-      $('.ui.modal')
-          .modal('show')
+      $('#calendar').modal({ blurring: true }).modal('show')
       ;
     },
 
@@ -74,7 +76,6 @@ Template.Calendar_Page.onRendered(() => {
     eventClick(event) {
       Session.set('eventModal', { type: 'edit', event: event._id });
       FlowRouter.go('Study_Session_Detail_Page', { _id: event._id });
-      // $( '#add-edit-event-modal' ).modal( 'show' );
     }
   });
 
@@ -83,4 +84,10 @@ Template.Calendar_Page.onRendered(() => {
     Sessions.find().fetch();
     $('#sessions-calendar').fullCalendar('refetchEvents');
   });
+});
+
+Template.Calendar_Page.helpers({
+  hasTutorial(){
+    return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
+  }
 });

@@ -11,28 +11,26 @@
         </h1>
       </div>
 
-      {{#unless currentUser}}
-        <a class="item" href="{{pathFor 'Public_Landing_Page'}}"><h1>Home</h1></a>
-      {{/unless}}
-
       {{#if currentUser}}
+
         <!--a class="{{ isActiveRoute 'User_Home_Page'}} item" href="{{ pathFor 'User_Home_Page' }}"><h1>Home</h1></a-->
         {{> Home_Dropdown}}
 
         <a class="{{ isActiveRoute 'User_Profile_Page'}} item" href="{{ pathFor 'User_Profile_Page' }}">Profile</a>
         <a class="{{ isActiveRoute 'Study_Session_Page'}} item" href="{{ pathFor 'Study_Session_Page' }}">Study Session</a>
       <a class="{{ isActiveRoute 'Studs_Pros_Page'}} item" href="{{ pathFor 'Studs_Pros_Page' }}">Studs/Pros</a>
+
+        {{> Profile_Dropdown}}
+        <a class="{{ isActiveRoute 'Study_Session_Page'}} item" href="{{ pathFor 'Study_Session_Page' }}">Study
+          Sessions</a>
+
         <a class="{{ isActiveRoute 'Calendar_Page'}} item" href="{{ pathFor 'Calendar_Page' }}">Calendar</a>
-
-      <!--<a class="{{ isActiveRoute 'Study_Session_Page_Search'}} item" href="{{ pathFor 'Study_Session_Page_Search' }}"><h1>Search</h1></a>-->
-
         <a class="{{ isActiveRoute 'Messages_Page'}} item" href="{{ pathFor 'Messages_Page' }}">Chat Room</a>
-        <a class="{{ isActiveRoute 'Reports_Page'}} item" href="{{ pathFor 'Reports_Page' }}">Reports</a>
+        {{#if isAdmin}}
+          <a class="{{ isActiveRoute 'Reports_Page'}} item" href="{{ pathFor 'Reports_Page' }}">Reports</a>
+        {{/if}}
       {{/if}}
       {{> Cas_Login }}
-
-      <!--<a class="{{ isActiveRoute 'Study_Session_Detail_Page'}} item" href="/study-session/123">Study Session Detail</a>-->
-      <!--<a class="{{ isActiveRoute 'User_Profile_Detail_Page'}} item" href="/user-profile/chad-morita">Profile Detail</a>-->
 
     </div>
   </div>

@@ -7,7 +7,7 @@
         <thead>
         <tr>
           <th><h2>Groups</h2></th>
-          <th></th>
+          <!--<th></th>-->
         </tr>
         </thead>
         <tbody>
@@ -21,15 +21,15 @@
                 <div class="sub header">{{group.description}}</div>
               </div>
             </h3>
+            <button class="ui teal right floated labeled icon button create-session">
+              <i class="book icon"></i>
+              Start a Study Session
+            </button>
           </td>
-          <td>
-            <div class="content">
-              <button class="ui teal centered labeled icon button create-session">
-                <i class="book icon"></i>
-                Start a Study Session
-              </button>
-            </div>
-          </td>
+          <!--<td>-->
+
+
+          <!--</td>-->
           <div class="ui modal sessions-modal">
             {{>Create_Study_Session_Page}}
           </div>

@@ -74,7 +74,6 @@ Template.Edit_Group_Page.events({
     instance.context.validate(updatedGroup);
     if (instance.context.isValid()) {
       const id = Groups.update(FlowRouter.getParam('_id'), { $set: updatedGroup });
-      Groups.insert(updatedGroup);
       instance.messageFlags.set(displayErrorMessages, false);
       $('.ui.modal.edit-modal')
           .modal('hide')

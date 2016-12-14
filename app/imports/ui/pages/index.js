@@ -24,9 +24,6 @@ import './group-details-page.js';
 import './group-page.html';
 import './group-page.js';
 
-import './group-page-ics311.html';
-import './group-page-ics314.html';
-
 import './messages-page.html';
 import './messages-page.js';
 

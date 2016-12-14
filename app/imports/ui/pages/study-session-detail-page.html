@@ -62,14 +62,14 @@
     <a class="ui big teal ribbon label">Pros Signed Up</a>
     <div class="ui bulleted list">
       {{#each guest in findSession.guestsPros}}
-        <div class="item"><a href="/user-profile/{{findUserId}}">{{guest}}</a></div>
+        <div class="item"><a href="/user-profile/{{findUserId guest}}">{{guest}}</a></div>
       {{/each}}
     </div>
 
     <a class="ui big green ribbon label">Studs Signed Up</a>
     <div class="ui bulleted list">
       {{#each guest in findSession.guestsStuds}}
-        <div class="item"><a href="/user-profile/{{findUserId}}">{{guest}}</a></div>
+        <div class="item"><a href="/user-profile/{{findUserId guest}}">{{guest}}</a></div>
       {{/each}}
     </div>
 

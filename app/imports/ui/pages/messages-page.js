@@ -1,8 +1,10 @@
-import {Template} from 'meteor/templating';
-import {ReactiveDict} from 'meteor/reactive-dict';
-import {FlowRouter} from 'meteor/kadira:flow-router';
-import {_} from 'meteor/underscore';
-import {Messages, MessagesSchema} from '../../api/messages/messages.js';
+import { Meteor } from 'meteor/meteor';
+import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { _ } from 'meteor/underscore';
+import { Messages, MessagesSchema } from '../../api/messages/messages.js';
+import { Users } from '../../api/users/users.js';
 
 Template.Messages_Page.helpers({
 
@@ -34,6 +36,7 @@ Template.Messages_Page.helpers({
 Template.Messages_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Messages');
+    this.subscribe('Users');
   });
 });
 

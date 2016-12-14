@@ -1,5 +1,5 @@
 <template name="Messages_Page">
-  {{#unless hasTutorial}}
+  {{#if hasTutorial}}
     <div class="ui yellow message transition container">
       <i class="close icon"></i>
       <div class="header">
@@ -7,7 +7,7 @@
       </div>
       <p>Here you can chat with all other online users. Please be polite!</p>
     </div>
-  {{/unless}}
+  {{/if}}
 
   <div class="ui raised segment container">
     <div class="ui grid">

@@ -1,10 +1,12 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Reviews } from '../../api/reviews/reviews.js';
-import {Users} from '../../api/users/users.js';
+import { Users } from '../../api/users/users.js';
 
 Template.Reports_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Reviews');
+    this.subscribe('Users');
   });
 });
 

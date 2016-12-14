@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor';
-import {Template} from 'meteor/templating';
-import {ReactiveDict} from 'meteor/reactive-dict';
-import {FlowRouter} from 'meteor/kadira:flow-router';
-import {_} from 'meteor/underscore';
-import {Reviews} from '../../api/reviews/reviews.js';
-import {Users} from '../../api/users/users.js';
+import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { _ } from 'meteor/underscore';
+import { Reviews } from '../../api/reviews/reviews.js';
+import { Users } from '../../api/users/users.js';
 
 // Template.User_Profile_Page.onRendered(function enableSemantic() {
 //   this.$('#newUser').modal();
@@ -64,7 +64,6 @@ Template.User_Profile_Page.helpers({
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   }
 });
-
 
 Template.User_Profile_Page.events({
       'click .edit-pro'(event, instance){

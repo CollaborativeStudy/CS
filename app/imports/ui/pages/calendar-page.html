@@ -1,5 +1,5 @@
 <template name="Calendar_Page">
-  {{#unless hasTutorial}}
+  {{#if hasTutorial}}
     <div class="ui yellow message transition container">
       <i class="close icon"></i>
       <div class="header">
@@ -12,7 +12,7 @@
       <p>Visit the <a href="study-session">Study Sessions</a> page to search through upcoming study sessions. For a more
         visual representation, try the <a href="calendar-page">public Calendar</a> page!</p>
     </div>
-  {{/unless}}
+  {{/if}}
 
   <div class="ui raised segment container">
     <!--Add the events calendar to the template.-->

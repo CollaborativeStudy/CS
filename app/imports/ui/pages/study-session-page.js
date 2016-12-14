@@ -1,6 +1,7 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Sessions } from '../../api/sessions/sessions.js';
-import {Users} from '../../api/users/users.js';
+import { Users } from '../../api/users/users.js';
 
 Template.Study_Session_Page.helpers({
   /**
@@ -27,6 +28,7 @@ Template.Study_Session_Page.helpers({
 Template.Study_Session_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Sessions');
+    this.subscribe('Users');
   });
 
 });

@@ -35,4 +35,9 @@ Template.Group_Details_Page.events({
         .modal('show')
     ;
   },
+  'click .add-member'(event, instance) {
+    $('.ui.modal.add-member-modal')
+        .modal('show')
+    ;
+  },
 });

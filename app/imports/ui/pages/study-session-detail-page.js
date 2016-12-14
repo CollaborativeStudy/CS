@@ -1,13 +1,14 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Sessions } from '../../api/sessions/sessions.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
-import {Users} from '../../api/users/users.js';
-
+import { Users } from '../../api/users/users.js';
 
 Template.Study_Session_Detail_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Sessions');
+    this.subscribe('Users');
   });
 });
 
@@ -46,7 +47,6 @@ Template.Study_Session_Detail_Page.events({
         { $push: { topic: event.target.topic.value}  });
     FlowRouter.reload();
   },
-
   'click .join-pro'(event){
     event.preventDefault();
     const guestList = Sessions.findOne(FlowRouter.getParam('_id')).guestsPros;
@@ -71,7 +71,6 @@ Template.Study_Session_Detail_Page.events({
       console.log("Already in list");
     }
   },
-
   'click .leave'(event){
     event.preventDefault();
     const guestListPros = Sessions.findOne(FlowRouter.getParam('_id')).guestsPros;
@@ -91,16 +90,13 @@ Template.Study_Session_Detail_Page.events({
         console.log("You didn't even join weirdo");
       }
   },
-
   'click .delete'(event){
     event.preventDefault();
     Sessions.remove(FlowRouter.getParam('_id'));
     FlowRouter.go('Calendar_Page');
   },
-
   'click .back'(event){
     event.preventDefault();
     FlowRouter.go('Calendar_Page');
   }
-
 });

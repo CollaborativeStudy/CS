@@ -3,10 +3,14 @@ import { Template } from 'meteor/templating';
 import { Sessions } from '../../api/sessions/sessions.js';
 import { Users } from '../../api/users/users.js';
 
+Template.Study_Session_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Sessions');
+    this.subscribe('Users');
+  });
+});
+
 Template.Study_Session_Page.helpers({
-  /**
-   * @returns {*} All of the Contacts documents.
-   */
   sessionsList() {
     return Sessions.find();
   },
@@ -23,14 +27,6 @@ Template.Study_Session_Page.helpers({
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   }
-});
-
-Template.Study_Session_Page.onCreated(function onCreated() {
-  this.autorun(() => {
-    this.subscribe('Sessions');
-    this.subscribe('Users');
-  });
-
 });
 
 Template.Study_Session_Page.events({

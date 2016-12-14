@@ -6,11 +6,14 @@ import { _ } from 'meteor/underscore';
 import { Messages, MessagesSchema } from '../../api/messages/messages.js';
 import { Users } from '../../api/users/users.js';
 
-Template.Messages_Page.helpers({
+Template.Messages_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Messages');
+    this.subscribe('Users');
+  });
+});
 
-  /**
-   * @returns {*} All of the Messages documents.
-   */
+Template.Messages_Page.helpers({
   messagesList() {
     return Messages.find({}, { sort: { createdAt: -1 } });
   },
@@ -31,13 +34,6 @@ Template.Messages_Page.helpers({
       target.value = "";
     }
   },
-});
-
-Template.Messages_Page.onCreated(function onCreated() {
-  this.autorun(() => {
-    this.subscribe('Messages');
-    this.subscribe('Users');
-  });
 });
 
 Template.Messages_Page.events({

@@ -18,10 +18,6 @@ Template.User_Profile_Page.onCreated(function onCreated() {
 });
 
 Template.User_Profile_Page.helpers({
-
-  /**
-   * @returns {*} All of the Reviews documents.
-   */
   reviewsList() {
     return Reviews.find();
   },
@@ -35,7 +31,6 @@ Template.User_Profile_Page.helpers({
       size++;
     });
     averageRate = parseInt(Math.round(totalRate / size));
-
     return averageRate;
   },
   name: function user() {
@@ -66,11 +61,10 @@ Template.User_Profile_Page.helpers({
 });
 
 Template.User_Profile_Page.events({
-      'click .edit-pro'(event, instance){
-        console.log('edit pro');
-      },
-      'click .edit-stud'(event, instance) {
-        console.log('edit stud');
-      }
-    }
-)
+  'click .edit-pro'(event, instance){
+    console.log('edit pro');
+  },
+  'click .edit-stud'(event, instance) {
+    console.log('edit stud');
+  }
+});

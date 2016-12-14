@@ -6,11 +6,14 @@ import { _ } from 'meteor/underscore';
 import { Reviews } from '../../api/reviews/reviews.js';
 import { Users } from '../../api/users/users.js';
 
-Template.Review_Page.helpers({
+Template.Review_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Reviews');
+    this.subscribe('Users');
+  });
+});
 
-  /**
-   * @returns {*} All of the Reviews documents.
-   */
+Template.Review_Page.helpers({
   reviewsList() {
     return Reviews.find();
   },
@@ -19,10 +22,3 @@ Template.Review_Page.helpers({
   }
 });
 
-Template.Review_Page.onCreated(function onCreated() {
-  this.autorun(() => {
-    this.subscribe('Reviews');
-    this.subscribe('Users');
-  });
-
-});

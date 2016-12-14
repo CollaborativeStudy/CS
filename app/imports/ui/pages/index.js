@@ -26,7 +26,11 @@ import './create-study-session-page.js';
 import './create-review-page.html';
 import './create-review-page.js';
 
+import './edit-group-page.html';
+import './edit-group-page.js';
+
 import './group-details-page.html';
+import './group-details-page.js';
 
 import './group-page.html';
 import './group-page.js';

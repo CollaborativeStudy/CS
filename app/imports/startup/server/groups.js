@@ -8,17 +8,17 @@ import {_} from 'meteor/underscore';
 const groupsSeeds = [
   {
     name: 'Study Buddy',
-    course: 'ICS 314',
+    course: "ICS 314",
     description: 'Final Project Group. Creating a study buddy app that...',
     members: ['Mary', 'Chad', 'Mariah', 'Neal'],
-    image: '../../../public/images/CSLogo1.png',
+    image: '/images/CSLogo1.png',
   },
   {
     name: 'Death',
     course: 'ICS 311',
     description: 'Group of death. Algorithms final review.',
     members: ['Mary', 'Chad', 'Neal'],
-    image: '../../../public/images/CSLogo1.png'
+    image: '/images/CSLogo1.png',
   },
 ];
 

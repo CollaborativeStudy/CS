@@ -9,13 +9,13 @@ import { Groups, GroupsSchema } from '../../api/groups/groups.js';
 
 const displayErrorMessages = 'displayErrorMessages';
 
-Template.Create_Group_Page.onCreated(function onCreated() {
+Template.Edit_Group_Page.onCreated(function onCreated() {
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displayErrorMessages, false);
-  this.context = GroupsSchema.namedContext('Create_Group_Page');
+  this.context = GroupsSchema.namedContext('Edit_Group_Page');
 });
 
-Template.Create_Group_Page.helpers({
+Template.Edit_Group_Page.helpers({
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },
@@ -23,20 +23,37 @@ Template.Create_Group_Page.helpers({
     const errorKeys = Template.instance().context.invalidKeys();
     return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
   },
+  groupsList() {
+    return Groups.find();
+  },
+  groupDataField(fieldName) {
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    return groupData && groupData[fieldName];
+  },
+  courseSelected(course) {
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    return groupData && (groupData.course === course) && true;
+  },
+  membersList() {
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    return groupData['members'];
+  }
 });
 
-Template.Create_Group_Page.onRendered(function enableSemantic() {
+Template.Edit_Group_Page.onRendered(function enableSemantic() {
   const instance = this;
   instance.$('select.ui.dropdown').dropdown();
   instance.$('.ui.selection.dropdown').dropdown();
   instance.$('ui.fluid.search.dropdown').dropdown();
 });
 
-Template.Create_Group_Page.events({
+Template.Edit_Group_Page.events({
   'submit .group-data-form'(event, instance) {
     event.preventDefault();
     // console.log(Groups.get('eventModal'));
-    // let newGroup = Groups.get('eventModal');
+    // let updatedGroup = Groups.get('eventModal');
 
     const name = event.target.name.value;
     const description = event.target.description.value;
@@ -47,18 +64,19 @@ Template.Create_Group_Page.events({
       image = event.target.image.value;
     }
 
-    // const newGroup = { name, course, description};
-    newGroup = {name, course, description, members, image };
+    // const updatedGroup = { name, course, description};
+    updatedGroup = {name, course, description, members, image };
     // Clear out any old validation errors.
     instance.context.resetValidation();
-    // Invoke clean so that newGroup reflects what will be inserted.
-    GroupsSchema.clean(newGroup);
+    // Invoke clean so that updatedGroup reflects what will be inserted.
+    GroupsSchema.clean(updatedGroup);
     // Determine validity.
-    instance.context.validate(newGroup);
+    instance.context.validate(updatedGroup);
     if (instance.context.isValid()) {
-      Groups.insert(newGroup);
+      const id = Groups.update(FlowRouter.getParam('_id'), { $set: updatedGroup });
+      Groups.insert(updatedGroup);
       instance.messageFlags.set(displayErrorMessages, false);
-      $('.ui.modal.groups-modal')
+      $('.ui.modal.edit-modal')
           .modal('hide')
       ;
       //FlowRouter.go('Public_Landing_Page');
@@ -71,7 +89,7 @@ Template.Create_Group_Page.events({
   'click .cancel'(event, instance){
     event.preventDefault();
     console.log('cancel');
-    $('.ui.modal.groups-modal')
+    $('.ui.modal.edit-modal')
         .modal('hide')
     ;
   },

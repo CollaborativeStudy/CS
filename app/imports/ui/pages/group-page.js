@@ -12,6 +12,11 @@ Template.Group_Page.helpers({
   groupsList() {
     return Groups.find();
   },
+  groupDataField(fieldName) {
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    return groupData && groupData[fieldName];
+  },
 });
 
 Template.Group_Page.onCreated(function onCreated() {
@@ -30,7 +35,6 @@ Template.Group_Page.events({
     ;
   },
   'click .create-group'(event, instance) {
-    console.log("Entered click group")
     $('.ui.modal.groups-modal')
         .modal('show')
     ;

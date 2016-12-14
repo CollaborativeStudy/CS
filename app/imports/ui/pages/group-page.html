@@ -1,8 +1,8 @@
 <template name="Group_Page">
+  {{#if Template.subscriptionsReady}}
   <div class="ui raised segment container">
     <div class="ui container">
 
-      {{#if Template.subscriptionsReady}}
       <table class="ui very basic stackable celled table">
         <thead>
         <tr>
@@ -15,7 +15,7 @@
         <tr>
           <td style="width: 800px">
             <h3 class="ui image header">
-              <i class="huge fluid circular green users icon"></i>
+              <img class="ui tiny image" src="{{ group.image }}">
               <div class="content">
                 <a href="{{pathFor 'Group_Details_Page' _id=group._id}}">{{group.name}}</a>
                 <div class="sub header">{{group.description}}</div>
@@ -37,9 +37,7 @@
         {{/each}}
         </tbody>
       </table>
-      {{else}}
-      {{> Loading}}
-      {{/if}}
+
       <button class="ui right green button create-group">
         <i class="icons">
           <i class="inverted users icon"></i>
@@ -51,6 +49,8 @@
         {{>Create_Group_Page}}
       </div>
     </div>
-
   </div>
+  {{else}}
+  {{> Loading}}
+  {{/if}}
 </template>

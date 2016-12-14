@@ -23,6 +23,8 @@ import './create-study-session-page.js';
 import './create-review-page.html';
 import './create-review-page.js';
 
+import './group-details-page.html';
+
 import './group-page.html';
 import './group-page.js';
 

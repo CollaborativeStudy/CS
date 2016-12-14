@@ -1,0 +1,39 @@
+<template name="Group_Details_Page">
+  {{#if Template.subscriptionsReady}}
+  <div class="ui three column grid container">
+
+    <div class="row">
+      <h1>Group Picture</h1>
+    </div>
+    <div class="row">
+      <div class="ui four wide column">
+        <div class="ui raised segment">
+          <a class="ui huge green ribbon label">Members</a>
+          <div class="ui middle aligned animated list">
+            <!--{{#each member}}-->
+            <div class="item">
+              <img class="ui avatar image" src="../../../public/images/CSLogo1.png">
+              <div class="content">
+                <div class="header">Neal</div>
+              </div>
+            </div>
+            <!--{{/each}}-->
+          </div>
+        </div>
+      </div>
+
+      <div class="ui twelve wide column">
+        <div class="ui raised segment">
+          <h1>Description</h1>
+        </div>
+
+        <div class="ui raised segment">
+          <h1>Sessions</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  {{>Loading}}
+  {{/if}}
+</template>

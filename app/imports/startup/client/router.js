@@ -122,6 +122,13 @@ FlowRouter.route('/group-page', {
   },
 });
 
+FlowRouter.route('/group-details/:_id', {
+  name: 'Group_Details_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Group_Details_Page' });
+  },
+});
+
 FlowRouter.route('/messages-page', {
   name: 'Messages_Page',
   action() {

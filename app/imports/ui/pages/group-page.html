@@ -17,7 +17,7 @@
             <h3 class="ui image header">
               <i class="huge fluid circular green users icon"></i>
               <div class="content">
-                {{group.name}}
+                <a href="{{pathFor 'Group_Details_Page' _id=group._id}}">{{group.name}}</a>
                 <div class="sub header">{{group.description}}</div>
               </div>
             </h3>

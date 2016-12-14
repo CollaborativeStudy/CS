@@ -33,6 +33,9 @@ Template.Study_Session_Detail_Page.helpers({
     }
     return false;
   },
+  findUserId(){
+    return Users.findOne({ username: Meteor.user().profile.name })._id;
+  },
   isPro(){
     const guestListPros = Sessions.findOne(FlowRouter.getParam('_id')).guestsPros;
     return _.contains(guestListPros, Meteor.user().profile.name);

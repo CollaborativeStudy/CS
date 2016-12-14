@@ -1,5 +1,14 @@
 <template name="Group_Page_Ics314">
-  <div class="ui raised segment container">
+  {{#unless hasTutorial}}
+    <div class="ui yellow message transition container">
+      <i class="close icon"></i>
+      <div class="header">
+        <h1>Tutorial</h1>
+      </div>
+      <p>Here you can chat with all other online users. Please be polite!</p>
+    </div>
+  {{/unless}}
+    <div class="ui raised segment container">
     <h1 style="color: teal">ICS 314 Group</h1>
     <table class="ui very basic collapsing celled table">
       <thead>
@@ -69,5 +78,15 @@
     </table>
   </div>
 
+  <script>
+    $('.message .close')
+        .on('click', function() {
+          $(this)
+              .closest('.message')
+              .transition('fade')
+          ;
+        })
+    ;
+  </script>
 
 </template>

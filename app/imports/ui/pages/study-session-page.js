@@ -1,15 +1,19 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Sessions } from '../../api/sessions/sessions.js';
+import { Users } from '../../api/users/users.js';
+
+Template.Study_Session_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Sessions');
+    this.subscribe('Users');
+  });
+});
 
 Template.Study_Session_Page.helpers({
-
-  /**
-   * @returns {*} All of the Contacts documents.
-   */
   sessionsList() {
     return Sessions.find();
   },
-
   search() {
     // Get the search value that was submitted.
     let searchValue = Session.get("searchValue");
@@ -19,14 +23,10 @@ Template.Study_Session_Page.helpers({
     else{
       return  Sessions.find();
     }
+  },
+  hasTutorial(){
+    return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   }
-});
-
-Template.Study_Session_Page.onCreated(function onCreated() {
-  this.autorun(() => {
-    this.subscribe('Sessions');
-  });
-
 });
 
 Template.Study_Session_Page.events({

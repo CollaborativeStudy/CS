@@ -15,9 +15,10 @@
     <table class="ui celled table">
       <thead>
       <tr>
+        <th>Studs</th>
+        <th>Pros</th>
         <th>Name</th>
         <th>Major</th>
-        <th>Stud or Pro</th>
         <th>Course</th>
         <th>More Info</th>
       </tr>
@@ -25,9 +26,10 @@
       <tbody>
       {{#each users in search}}
       <tr>
+        <td>{{users.studs}}</td>
+        <td>{{users.pros}}</td>
         <td>{{users.name}}</td>
         <td>{{users.major}}</td>
-        <td>{{users.status}}</td>
         <td>{{users.course}}</td>
 
         <td><a href="study-session/bPpm7TFddomLqto5K"><label class="ui label">More Info</label></a></td>

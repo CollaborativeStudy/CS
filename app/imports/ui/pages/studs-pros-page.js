@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Sessions } from '../../api/sessions/sessions.js';
+import { Users } from '../../api/users/users.js';
 
 Template.Studs_Pros_Page.helpers({
 

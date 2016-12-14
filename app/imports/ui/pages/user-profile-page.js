@@ -6,9 +6,9 @@ import { _ } from 'meteor/underscore';
 import { Reviews } from '../../api/reviews/reviews.js';
 import { Users } from '../../api/users/users.js';
 
-// Template.User_Profile_Page.onRendered(function enableSemantic() {
-//   this.$('#newUser').modal();
-// });
+
+Template.User_Profile_Page.onRendered(function enableSemantic() {
+});
 
 Template.User_Profile_Page.onCreated(function onCreated() {
   this.autorun(() => {
@@ -40,12 +40,9 @@ Template.User_Profile_Page.helpers({
   userExists() {
     // let val = _.find(Users.find().username, function(user){ return user == Meteor.user().profile.name});
     let val = Users.findOne({ username: Meteor.user().profile.name});
-    console.log("val return "+val);
     if(val == undefined){
-      console.log('user doesnt exist');
       return false;
     }
-    console.log('user exists');
     return true;
   },
   createNewUser(){
@@ -57,6 +54,9 @@ Template.User_Profile_Page.helpers({
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
+  },
+  prosList () {
+    return Users.findOne({ username: Meteor.user().profile.name }).pros;
   }
 });
 
@@ -66,5 +66,32 @@ Template.User_Profile_Page.events({
   },
   'click .edit-stud'(event, instance) {
     console.log('edit stud');
+  },
+  'submit .add-pro'(event, instance) {
+    event.preventDefault();
+    // const e = document.getElementById('level');
+    // const f = e.getElementsByTagName('profLevel');
+    const e = document.getElementById(event.target.course.id);
+    let course = e.options[e.selectedIndex].value;
+    if (course === 'Select a Course') {
+      course = 0;
+    }
+    const f = document.getElementById(event.target.profLevel.id);
+    let profLevel = f.options[e.selectedIndex].value;
+    if (profLevel === 'Select a proficiency level') {
+      profLevel = 0;
+    }
+    const addPro = {course, profLevel};
+    // const proList = Users.findOne(FlowRouter.getParam('_id')).pros;
+    // if(_.contains(proList, Meteor.user().profile.name) == false) {
+    // console.log(addPro);
+    console.log(addPro);
+    const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
+    Users.update(
+      { _id: userID },
+      { $push: { pros: addPro } });
+    // }
+    console.log(addPro);
+    console.log(Users.findOne({ username: Meteor.user().profile.name }));
   }
 });

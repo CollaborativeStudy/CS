@@ -1,58 +1,120 @@
 <template name="User_Profile_Detail_Page">
-  <div class="ui three column grid container">
-    <div class="row">
-      <div class="ui four wide column">
-        <div class="ui raised card profile">
-          <img class="ui medium fluid image" src="https://chadmorita.github.io/chadmorita.github.io/images/chad2.jpg">
-          <!--add rating-->
-          <p>Major: Computer Science</p>
-          <p>Expected Graduation: Spring 2019</p>
-          <p>GPA: 4.0</p>
-        </div>
+  {{#if hasTutorial}}
+    <div class="ui yellow message transition container">
+      <p style="font-size: 14px;">Want to turn off tutorials? Change the tutorial settings in the Profile dropdown.</p>
+      <i class="close icon"></i>
+      <div class="header">
+        <h1>Tutorial</h1>
       </div>
-
-      <div class="ui twelve wide column">
-        <div class="ui raised segment">
-          <a class="ui huge red ribbon label">Pros</a>
-          <div class="ui divided selection list">
-            <a class="item">
-              <div class="ui large green horizontal label">ICS 141</div>
-              Discrete Mathematics for Computer Science I
-            </a>
-
-            <a class="item">
-              <div class="ui large green horizontal label">ICS 241</div>
-              Discrete Mathematics for Computer Science II
-            </a>
-
-            <a class="item">
-              <div class="ui large green horizontal label">MATH 241</div>
-              Calculus I
-            </a>
-
-            <a class="item">
-              <div class="ui large yellow horizontal label">MATH 242</div>
-              Calculus II
-            </a>
-
-            <a class="item">
-              <div class="ui large yellow horizontal label">MATH 371</div>
-              Elementary Probability Theory
-            </a>
-          </div>
-        </div>
-
-        <div class="ui raised segment">
-          <a class="ui huge green ribbon label">Studs</a>
-          <div class="ui divided selection list">
-            <a class="item">
-              <div class="ui large red horizontal label">ICS 311</div>
-              Algorithms
-            </a>
-
-          </div>
-        </div>
-      </div>
+      <p>This is your profile page! You should add your information here so other's can get to know you.</p>
+      <h2 style="margin: 0px;">What's a Pro and Stud?</h2>
+      <p>List the courses you're strong in under "Pros". Make sure they're classes you're comfortable teachings, since
+        others may ask you to lead a study session on it! You can change these at any time by clicking edit.</p>
+      <p>List the courses you're weak in under "Studs". Pros may reach out to you to help you with these courses. You
+        can change these at any time by clicking edit.</p>
     </div>
-  </div>
+  {{/if}}
+
+  {{#if Template.subscriptionsReady}}
+
+    <div class="ui raised segment container">
+      <h2>{{ getUser.name }}</h2>
+    </div>
+
+    <div class="ui three column grid container">
+      <div class="row">
+        <div class="ui four wide column">
+          <div class="ui raised card profile">
+            <img class="ui medium fluid image" src="{{ getUser.profilePicture }}">
+            <p>Interests: {{ getUser.interests }}</p>
+            <div class="extra">Rate:
+              <div class="ui centered huge star rating" data-rating={{getAverageRate}} data-max-rating="5"></div>
+            </div>
+            <a href="reviews">
+              <div class="ui bottom attached button" href="reviews">
+                Reviews
+              </div>
+            </a>
+          </div>
+          {{#if hasTutorial}}
+            <div class="ui yellow message transition container">
+              <i class="close icon"></i>
+              <div class="header">
+                <h3>Hey, over here!</h3>
+              </div>
+              <p>Your star rating is based on reviews other users have written about you. Click on the "Reviews" button above to
+                see what they're written.</p>
+            </div>
+          {{/if}}
+        </div>
+
+        <div class="ui twelve wide column">
+          <div class="ui raised segment">
+            <a class="ui huge teal ribbon label">Pros</a>
+
+            <div class="ui divided selection list">
+              {{#each course in prosList}}
+                <a class="item">
+                  <div class="ui large green horizontal label">{{course.course}}</div>
+                  {{course.profLevel}}
+                </a>
+              {{/each}}
+
+              <a class="item">
+                <div class="ui large green horizontal label">ICS 141</div>
+                Discrete Mathematics for Computer Science I
+              </a>
+
+              <a class="item">
+                <div class="ui large green horizontal label">ICS 241</div>
+                Discrete Mathematics for Computer Science II
+              </a>
+
+              <a class="item">
+                <div class="ui large green horizontal label">MATH 241</div>
+                Calculus I
+              </a>
+
+              <a class="item">
+                <div class="ui large yellow horizontal label">MATH 242</div>
+                Calculus II
+              </a>
+
+              <a class="item">
+                <div class="ui large yellow horizontal label">MATH 371</div>
+                Elementary Probability Theory
+              </a>
+            </div>
+          </div>
+
+          <div class="ui raised segment">
+            <a class="ui huge green ribbon label">Studs</a>
+            <div class="ui divided selection list">
+              <a class="item">
+                <div class="ui large red horizontal label">ICS 311</div>
+                Algorithms
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <script>
+      $('.ui.rating').rating('disable');
+      $('.message .close').on('click', function() {
+        $(this)
+            .closest('.message')
+            .transition('fade')
+        ;
+      })
+      ;
+    </script>
+
+  {{else}}
+    {{>Loading}}
+  {{/if}}
 </template>

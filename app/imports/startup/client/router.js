@@ -5,7 +5,7 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 FlowRouter.route('/', {
   name: 'Public_Landing_Page',
   action() {
-    BlazeLayout.render('App_Body', { main: 'Public_Landing_Page' });
+    BlazeLayout.render('Landing_Page_Layout', { main: 'Public_Landing_Page' });
   },
 });
 
@@ -51,20 +51,6 @@ FlowRouter.route('/group-page', {
   },
 });
 
-FlowRouter.route('/group-page-ics314', {
-  name: 'Group_Page_Ics314',
-  action() {
-    BlazeLayout.render('App_Body', { main: 'Group_Page_Ics314' });
-  },
-});
-
-FlowRouter.route('/group-page-ics311', {
-  name: 'Group_Page_Ics311',
-  action() {
-    BlazeLayout.render('App_Body', { main: 'Group_Page_Ics311' });
-  },
-});
-
 FlowRouter.route('/messages', {
   name: 'Messages_Page',
   action() {
@@ -90,6 +76,14 @@ FlowRouter.route('/study-session', {
   name: 'Study_Session_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Study_Session_Page' });
+  },
+});
+
+
+FlowRouter.route('/studs-pros-page', {
+  name: 'Studs_Pros_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Studs_Pros_Page' });
   },
 });
 
@@ -128,6 +122,13 @@ FlowRouter.notFound = {
 };
 
 //Change
+FlowRouter.route('/events', {
+  name: 'events',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'events' });
+  },
+});
+
 FlowRouter.route('/events', {
   name: 'events',
   action() {

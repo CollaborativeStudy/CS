@@ -97,7 +97,12 @@ Template.Study_Session_Detail_Page.events({
   'click .delete'(event){
     event.preventDefault();
     Sessions.remove(FlowRouter.getParam('_id'));
-    FlowRouter.reload();
+    FlowRouter.go('Calendar_Page');
+  },
+
+  'click .back'(event){
+    event.preventDefault();
+    FlowRouter.go('Calendar_Page');
   }
 
 });

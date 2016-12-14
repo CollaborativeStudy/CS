@@ -17,6 +17,9 @@ import './calendar-page.js';
 import './create-group-page.html';
 import './create-group-page.js';
 
+import './create-new-user-modal.html';
+import './create-new-user-modal.js';
+
 import './create-study-session-page.html';
 import './create-study-session-page.js';
 

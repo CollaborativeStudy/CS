@@ -28,9 +28,6 @@ Template.Profile_Dropdown.events({
   },
   'click .tutorials-on'(event) {
     event.preventDefault();
-    console.log("meteor: " + Meteor.user().profile.name);
-    console.log("all: " + Users.find().fetch);
-    console.log(Users.findOne({ username: Meteor.user().profile.name }));
     Users.update(
         { _id: Users.findOne({ username: Meteor.user().profile.name })._id },
         { $set: { tutorial: true  }}
@@ -39,9 +36,6 @@ Template.Profile_Dropdown.events({
   },
   'click .tutorials-off'(event) {
     event.preventDefault();
-    console.log("meteor: " + Meteor.user().profile.name);
-    console.log("all: " + Users.find().fetch);
-    console.log(Users.findOne({ username: Meteor.user().profile.name }));
     Users.update(
         { _id: Users.findOne({ username: Meteor.user().profile.name })._id },
         { $set: { tutorial: false } }

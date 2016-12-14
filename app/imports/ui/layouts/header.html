@@ -12,6 +12,7 @@
       </div>
 
       {{#if currentUser}}
+<<<<<<< HEAD
 
         <!--a class="{{ isActiveRoute 'User_Home_Page'}} item" href="{{ pathFor 'User_Home_Page' }}"><h1>Home</h1></a-->
         {{> Home_Dropdown}}
@@ -19,6 +20,11 @@
         <a class="{{ isActiveRoute 'User_Profile_Page'}} item" href="{{ pathFor 'User_Profile_Page' }}">Profile</a>
         <a class="{{ isActiveRoute 'Study_Session_Page'}} item" href="{{ pathFor 'Study_Session_Page' }}">Study Session</a>
       <a class="{{ isActiveRoute 'Studs_Pros_Page'}} item" href="{{ pathFor 'Studs_Pros_Page' }}">Studs/Pros</a>
+
+        {{> Profile_Dropdown}}
+        <a class="{{ isActiveRoute 'Study_Session_Page'}} item" href="{{ pathFor 'Study_Session_Page' }}">Study
+          Sessions</a>
+
 
         {{> Profile_Dropdown}}
         <a class="{{ isActiveRoute 'Study_Session_Page'}} item" href="{{ pathFor 'Study_Session_Page' }}">Study

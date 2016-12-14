@@ -1,6 +1,5 @@
 /** ALL IMPORTS ARE ALPHABETIZED  **/
 
-//CS imports
 import './calendar-page.html';
 import './calendar-page.js';
 
@@ -43,6 +42,3 @@ import './study-session-page-search.js';
 
 import './study-session-detail-page.html';
 import './study-session-detail-page.js';
-
-import './test-page.html';
-import './test-page.js';

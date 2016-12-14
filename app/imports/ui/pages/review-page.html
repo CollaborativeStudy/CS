@@ -1,17 +1,19 @@
 <template name="Review_Page">
-  <div class="ui yellow message transition container">
-    <i class="close icon"></i>
-    <div class="header">
-      <h1>Tutorial</h1>
+  {{#unless hasTutorial}}
+    <div class="ui yellow message transition container">
+      <i class="close icon"></i>
+      <div class="header">
+        <h1>Tutorial</h1>
+      </div>
+      <p>Here other users can rate you and leave reviews. Make sure to leave a good impression!</p>
     </div>
-    <p>Here other users can rate you and leave reviews. Make sure to leave a good impression!</p>
-  </div>
+  {{/unless}}
 
   <div class="ui container">
     <a href="create-review">
       <button id="create-review-button" class="ui labeled icon button">
         <i class="star icon"></i>
-        Submit a Banana
+        Submit a Review
       </button>
     </a>
     {{#if Template.subscriptionsReady}}
@@ -39,5 +41,16 @@
     {{> Loading}}
     {{/if}}
   </div>
+
+  <script>
+    $('.message .close')
+        .on('click', function() {
+          $(this)
+              .closest('.message')
+              .transition('fade')
+          ;
+        })
+    ;
+  </script>
 
 </template>

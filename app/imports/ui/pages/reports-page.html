@@ -1,13 +1,15 @@
 <template name="Reports_Page">
-  <div class="ui yellow message transition container">
-    <i class="close icon"></i>
-    <div class="header">
-      <h1>Tutorial</h1>
+  {{#if hasTutorial}}
+    <div class="ui yellow message transition container">
+      <i class="close icon"></i>
+      <div class="header">
+        <h1>Tutorial</h1>
+      </div>
+      <p>Welcome administrator! Here you sort through all the reviews submitted on the site. If you find a review
+        inappropriate, select "Remove" and it will be removed from the site. Otherwise, select "Allow", so it will be
+        removed from this feed, but remain on the user's review page.</p>
     </div>
-    <p>Welcome administrator! Here you sort through all the reviews submitted on the site. If you find a review
-      inappropriate, select "Remove" and it will be removed from the site. Otherwise, select "Allow", so it will be
-      removed from this feed, but remain on the user's review page.</p>
-  </div>
+  {{/if}}
 
   <div class="ui raised segment container">
     <h2 class="ui header">Recent Reviews</h2>
@@ -36,5 +38,16 @@
       {{/each}}
     </div>
   </div>
+
+  <script>
+    $('.message .close')
+        .on('click', function() {
+          $(this)
+              .closest('.message')
+              .transition('fade')
+          ;
+        })
+    ;
+  </script>
 
 </template>

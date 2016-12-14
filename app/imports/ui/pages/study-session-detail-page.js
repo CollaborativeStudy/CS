@@ -30,12 +30,8 @@ Template.Study_Session_Detail_Page.helpers({
     }
     return false;
   },
-  isPro(){
-    const guestListPros = Sessions.findOne(FlowRouter.getParam('_id')).guestsPros;
-    if (_.contains(guestListPros, Meteor.user().profile.name)) {
-      return true;
-    }
-    return false;
+  hasTutorial(){
+    return (Users.findOne({ username: Meteor.user().profile.name }).tutorial);
   }
 });
 

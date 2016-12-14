@@ -8,7 +8,6 @@ Template.Reports_Page.onCreated(function onCreated() {
 });
 
 Template.Reports_Page.helpers({
-
   /**
    * @returns {*} All of the Reviews documents.
    */
@@ -18,6 +17,9 @@ Template.Reports_Page.helpers({
   reviewsListChecked() {
     return Reviews.find({ checked: 0 });
   },
+  hasTutorial(){
+    return (Users.findOne({ username: Meteor.user().profile.name }).tutorial);
+  }
 });
 
 Template.Reports_Page.events({

@@ -1,11 +1,13 @@
 <template name="Messages_Page">
-  <div class="ui yellow message transition container">
-    <i class="close icon"></i>
-    <div class="header">
-      <h1>Tutorial</h1>
+  {{#unless hasTutorial}}
+    <div class="ui yellow message transition container">
+      <i class="close icon"></i>
+      <div class="header">
+        <h1>Tutorial</h1>
+      </div>
+      <p>Here you can chat with all other online users. Please be polite!</p>
     </div>
-    <p>Here you can chat with all other online users. Please be polite!</p>
-  </div>
+  {{/unless}}
 
   <div class="ui raised segment container">
     <div class="ui grid">
@@ -49,6 +51,14 @@
 
   <script>
     $('.menu .vertical .item').tab();
+    $('.message .close')
+        .on('click', function() {
+          $(this)
+              .closest('.message')
+              .transition('fade')
+          ;
+        })
+    ;
   </script>
 
 </template>

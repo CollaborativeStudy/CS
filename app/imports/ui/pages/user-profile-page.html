@@ -1,16 +1,18 @@
 <template name="User_Profile_Page">
-  <div class="ui yellow message transition container">
-    <i class="close icon"></i>
-    <div class="header">
-      <h1>Tutorial</h1>
+  {{#unless hasTutorial}}
+    <div class="ui yellow message transition container">
+      <i class="close icon"></i>
+      <div class="header">
+        <h1>Tutorial</h1>
+      </div>
+      <p>This is your profile page! Here you should add your information so other's can get to know you.</p>
+      <h3 style="margin: 0px">What's a Pro and Stud?</h3>
+      <p>List the courses you're strong in under "Pros". Make sure they're classes you're comfortable teachings, since
+        others may ask you to lead a study session on it! You can change these at any time by clicking edit.</p>
+      <p>List the courses you're weak in under "Studs". Pros may reach out to you to help you with these courses. You
+        can change these at any time by clicking edit.</p>
     </div>
-    <p>This is your profile page! Here you should add your information so other's can get to know you.</p>
-    <h3 style="margin: 0px">What's a Pro and Stud?</h3>
-    <p>List the courses you're strong in under "Pros". Make sure they're classes you're comfortable teachings, since
-      others may ask you to lead a study session on it! You can change these at any time by clicking _______ following
-      the instructions.</p>
-    <p>List the courses you're weak in under "Studs". Pros may reach out to you to help you with these courses. You
-      can change these at any time by clicking _______ following the instructions.</p>
+  {{/unless}}
 
   {{#if Template.subscriptionsReady}}
     <div id="newUser" class="ui modal">
@@ -43,6 +45,16 @@
               </div>
             </a>
           </div>
+          {{#unless hasTutorial}}
+            <div class="ui yellow message transition container">
+              <i class="close icon"></i>
+              <div class="header">
+                <h3>Hey, over here!</h3>
+              </div>
+              <p>Your star rating is based on reviews other users have written about you. Click on "Reviews" above to
+                see what they're written.</p>
+            </div>
+          {{/unless}}
         </div>
 
         <div class="ui twelve wide column">
@@ -124,6 +136,14 @@
     <script>
       $('.ui.rating')
           .rating('disable')
+      ;
+      $('.message .close')
+          .on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+          })
       ;
     </script>
 

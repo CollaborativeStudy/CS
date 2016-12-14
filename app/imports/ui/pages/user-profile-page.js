@@ -26,7 +26,6 @@ Template.User_Profile_Page.helpers({
     return Reviews.find();
   },
   getAverageRate(){
-
     let totalRate = 0;
     let size = 0;
     let averageRate = 0;

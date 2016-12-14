@@ -30,6 +30,8 @@ import './messages-page.js';
 import './public-landing-page.html';
 
 import './user-profile-detail-page.html';
+import './user-profile-detail-page.js';
+
 import './user-profile-page.html';
 import './user-profile-page.js';
 

@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor';
-import {Template} from 'meteor/templating';
-import {ReactiveDict} from 'meteor/reactive-dict';
-import {FlowRouter} from 'meteor/kadira:flow-router';
-import {_} from 'meteor/underscore';
-import {Reviews} from '../../api/reviews/reviews.js';
-import {Users} from '../../api/users/users.js';
+import { Template } from 'meteor/templating';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { _ } from 'meteor/underscore';
+import { Reviews } from '../../api/reviews/reviews.js';
+import { Users } from '../../api/users/users.js';
 
 
 Template.User_Profile_Page.onRendered(function enableSemantic() {
@@ -20,15 +20,10 @@ Template.User_Profile_Page.onCreated(function onCreated() {
 });
 
 Template.User_Profile_Page.helpers({
-
-  /**
-   * @returns {*} All of the Reviews documents.
-   */
   reviewsList() {
     return Reviews.find();
   },
   getAverageRate(){
-
     let totalRate = 0;
     let size = 0;
     let averageRate = 0;
@@ -38,7 +33,6 @@ Template.User_Profile_Page.helpers({
       size++;
     });
     averageRate = parseInt(Math.round(totalRate / size));
-
     return averageRate;
   },
   name: function user() {
@@ -62,9 +56,11 @@ Template.User_Profile_Page.helpers({
   },
   getUser () {
     return Users.findOne({ username: Meteor.user().profile.name });
+  },
+  hasTutorial(){
+    return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   }
 });
-
 
 Template.User_Profile_Page.events({
   'click .edit-pro'(event, instance){
@@ -79,6 +75,4 @@ Template.User_Profile_Page.events({
     const f = e.getElementsByTagName('profLevel');
     console.log(f);
   }
-}
-)
-
+});

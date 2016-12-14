@@ -1,4 +1,20 @@
 <template name="User_Profile_Page">
+  {{#if hasTutorial}}
+    <div class="ui yellow message transition container">
+      <p style="font-size: 14px;">Want to turn off tutorials? Change the tutorial settings in the Profile dropdown.</p>
+      <i class="close icon"></i>
+      <div class="header">
+        <h1>Tutorial</h1>
+      </div>
+      <p>This is your profile page! You should add your information here so other's can get to know you.</p>
+      <h2 style="margin: 0px;">What's a Pro and Stud?</h2>
+      <p>List the courses you're strong in under "Pros". Make sure they're classes you're comfortable teachings, since
+        others may ask you to lead a study session on it! You can change these at any time by clicking edit.</p>
+      <p>List the courses you're weak in under "Studs". Pros may reach out to you to help you with these courses. You
+        can change these at any time by clicking edit.</p>
+    </div>
+  {{/if}}
+
   {{#if Template.subscriptionsReady}}
     <div id="newUser" class="ui modal">
       {{> Create_New_User_Modal}}
@@ -30,6 +46,16 @@
               </div>
             </a>
           </div>
+          {{#if hasTutorial}}
+            <div class="ui yellow message transition container">
+              <i class="close icon"></i>
+              <div class="header">
+                <h3>Hey, over here!</h3>
+              </div>
+              <p>Your star rating is based on reviews other users have written about you. Click on the "Reviews" button above to
+                see what they're written.</p>
+            </div>
+          {{/if}}
         </div>
 
         <div class="ui twelve wide column">
@@ -130,8 +156,15 @@
     </div>
 
     <script>
-      $('.ui.rating').rating('disable');
       $('.ui.radio.checkbox').checkbox();
+      $('.ui.rating').rating('disable');
+      $('.message .close').on('click', function() {
+            $(this)
+                .closest('.message')
+                .transition('fade')
+            ;
+          })
+      ;
     </script>
 
   {{else}}

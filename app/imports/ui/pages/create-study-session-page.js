@@ -86,10 +86,9 @@ Template.Create_Study_Session_Page.events({
     if (instance.context.isValid()) {
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      $('.ui.modal')
+      $('#calendar')
           .modal('hide')
       ;
-      //FlowRouter.go('Public_Landing_Page');
     } else {
       console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);
@@ -98,8 +97,7 @@ Template.Create_Study_Session_Page.events({
 
   'click .cancel'(event, instance){
     event.preventDefault();
-    console.log('cancel');
-    $('.ui.modal')
+    $('#calendar')
         .modal('hide')
     ;
   },

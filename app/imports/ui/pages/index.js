@@ -14,6 +14,9 @@ import './list-stuff-page.js';
 import './calendar-page.html';
 import './calendar-page.js';
 
+import './create-new-user-modal.html';
+import './create-new-user-modal.js';
+
 import './create-study-session-page.html';
 import './create-study-session-page.js';
 

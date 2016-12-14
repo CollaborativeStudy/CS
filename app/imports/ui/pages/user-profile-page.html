@@ -1,27 +1,39 @@
 <template name="User_Profile_Page">
+  <div class="ui yellow message transition container">
+    <i class="close icon"></i>
+    <div class="header">
+      <h1>Tutorial</h1>
+    </div>
+    <p>This is your profile page! Here you should add your information so other's can get to know you.</p>
+    <h3 style="margin: 0px">What's a Pro and Stud?</h3>
+    <p>List the courses you're strong in under "Pros". Make sure they're classes you're comfortable teachings, since
+      others may ask you to lead a study session on it! You can change these at any time by clicking _______ following
+      the instructions.</p>
+    <p>List the courses you're weak in under "Studs". Pros may reach out to you to help you with these courses. You
+      can change these at any time by clicking _______ following the instructions.</p>
+
   {{#if Template.subscriptionsReady}}
-    <div class="ui yellow message transition container">
-      <i class="close icon"></i>
-      <div class="header">
-        <h1>Tutorial</h1>
-      </div>
-      <p>This is your profile page! Here you should add your information so other's can get to know you.</p>
-      <h3 style="margin: 0px">What's a Pro and Stud?</h3>
-      <p>List the courses you're strong in under "Pros". Make sure they're classes you're comfortable teachings, since
-        others may ask you to lead a study session on it! You can change these at any time by clicking _______ following
-        the instructions.</p>
-      <p>List the courses you're weak in under "Studs". Pros may reach out to you to help you with these courses. You
-        can change these at any time by clicking _______ following the instructions.</p>
+    <div id="newUser" class="ui modal">
+      {{> Create_New_User_Modal}}
+    </div>
+
+    <div class="ui raised segment container">
+      <h2>{{ getUser.name }}</h2>
+      {{#if userExists}}
+      {{else}}
+        <script>
+          $('#newUser').modal({ blurring: true, closable: false }).modal('show');
+        </script>
+        <!--{{createNewUser}}-->
+      {{/if}}
     </div>
 
     <div class="ui three column grid container">
       <div class="row">
         <div class="ui four wide column">
-          <div class="ui raised card profile">sessions
-            <img class="ui medium fluid image" src="https://chadmorita.github.io/chadmorita.github.io/images/chad2.jpg">
-            <p>Major: Computer Science</p>
-            <p>Expected Graduation: Spring 2019</p>
-            <p>GPA: 4.0</p>
+          <div class="ui raised card profile">
+            <img class="ui medium fluid image" src="{{ getUser.profilePicture }}">
+            <p>Interests: {{ getUser.interests }}</p>
             <div class="extra">Rate:
               <div class="ui centered huge star rating" data-rating={{getAverageRate}} data-max-rating="5"></div>
             </div>
@@ -30,18 +42,38 @@
                 Reviews
               </div>
             </a>
-
-          </div>
-          <div class="ui yellow message transition pointing label">
-            <i class="close icon"></i>
-            <p>Others can see a star rating of you based on reviews other users have written on you. Click on "Reviews"
-              above to see what they're written.</p>
           </div>
         </div>
 
         <div class="ui twelve wide column">
           <div class="ui raised segment">
-            <a class="ui huge red ribbon label">Pros</a>
+            <a class="ui huge teal ribbon label">Pros</a>
+            <div align="right">
+              <button class="ui button edit-pro"> edit</button>
+            </div>
+            <!--Show after edit-->
+            <div class="ui form">
+              <div class="two fields">
+                <div class="field">
+                  <label>Course</label>
+                  <select class="ui fluid search dropdown" name="course" id="course">
+                    <option value="">Select a Course</option>
+                    <option value="ICS 111">ICS 111 - Introduction to Computer Science I</option>
+                    <option value="ICS 141">ICS 141 - Discrete Mathematics for Computer Science I</option>
+                    <option value="ICS 211">ICS 211 - Introduction to Computer Science II</option>
+                    <option value="ICS 241">ICS 241 - Discrete Mathematics for Computer Science II</option>
+                    <option value="ICS 314">ICS 314 - Software Engineering I</option>
+                    <option value="MATH 241">MATH 241 - Calculus I</option>
+                    <option value="MATH 242">MATH 242 - Calculus II</option>
+                    <option value="MATH 371">MATH 371 - Elementary Probability Theory</option>
+                  </select>
+                </div>
+                <div class="inline fields">
+
+                </div>
+              </div>
+            </div>
+
             <div class="ui divided selection list">
               <a class="item">
                 <div class="ui large green horizontal label">ICS 141</div>
@@ -72,6 +104,9 @@
 
           <div class="ui raised segment">
             <a class="ui huge green ribbon label">Studs</a>
+            <div align="right">
+              <button class="ui button edit-stud"> edit</button>
+            </div>
             <div class="ui divided selection list">
               <a class="item">
                 <div class="ui large red horizontal label">ICS 311</div>
@@ -86,21 +121,11 @@
 
     </div>
 
-
-  <script>
-    $('.ui.rating')
-        .rating('disable')
-    ;
-
-    $('.message .close')
-        .on('click', function() {
-          $(this)
-              .closest('.message')
-              .transition('fade')
-          ;
-        })
-    ;
-  </script>
+    <script>
+      $('.ui.rating')
+          .rating('disable')
+      ;
+    </script>
 
   {{else}}
     {{>Loading}}

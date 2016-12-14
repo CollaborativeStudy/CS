@@ -1,5 +1,5 @@
 <template name="Study_Session_Page">
-  {{#unless hasTutorial}}
+  {{#if hasTutorial}}
     <div class="ui yellow message transition container">
       <i class="close icon"></i>
       <div class="header">
@@ -9,7 +9,7 @@
         the session and join it.</p>
       <p>* NOTE: the search bar is capitalization sensitive</p>
     </div>
-  {{/unless}}
+  {{/if}}
 
   <div class="ui raised segment container">
     <form id="search">

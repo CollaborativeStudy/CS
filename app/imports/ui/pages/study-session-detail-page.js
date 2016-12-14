@@ -2,6 +2,8 @@ import { Template } from 'meteor/templating';
 import { Sessions } from '../../api/sessions/sessions.js';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
+import {Users} from '../../api/users/users.js';
+
 
 Template.Study_Session_Detail_Page.onCreated(function onCreated() {
   this.autorun(() => {
@@ -31,7 +33,7 @@ Template.Study_Session_Detail_Page.helpers({
     return false;
   },
   hasTutorial(){
-    return (Users.findOne({ username: Meteor.user().profile.name }).tutorial);
+    return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   }
 });
 

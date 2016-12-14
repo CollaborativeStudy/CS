@@ -59,6 +59,9 @@ Template.User_Profile_Page.helpers({
   },
   getUser () {
     return Users.findOne({ username: Meteor.user().profile.name });
+  },
+  hasTutorial(){
+    return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   }
 });
 

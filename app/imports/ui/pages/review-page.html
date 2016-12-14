@@ -1,5 +1,5 @@
 <template name="Review_Page">
-  {{#unless hasTutorial}}
+  {{#if hasTutorial}}
     <div class="ui yellow message transition container">
       <i class="close icon"></i>
       <div class="header">
@@ -7,7 +7,7 @@
       </div>
       <p>Here other users can rate you and leave reviews. Make sure to leave a good impression!</p>
     </div>
-  {{/unless}}
+  {{/if}}
 
   <div class="ui container">
     <a href="create-review">

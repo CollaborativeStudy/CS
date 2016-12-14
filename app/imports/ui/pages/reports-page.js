@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Reviews } from '../../api/reviews/reviews.js';
+import {Users} from '../../api/users/users.js';
 
 Template.Reports_Page.onCreated(function onCreated() {
   this.autorun(() => {
@@ -18,7 +19,7 @@ Template.Reports_Page.helpers({
     return Reviews.find({ checked: 0 });
   },
   hasTutorial(){
-    return (Users.findOne({ username: Meteor.user().profile.name }).tutorial);
+    return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   }
 });
 

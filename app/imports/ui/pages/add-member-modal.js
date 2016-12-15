@@ -47,26 +47,30 @@ Template.Add_Member_Modal.events({
     //update the member values
     const newMember = event.target.member.value;
 
+    /////////////////////////////////////////////////////////////
+    //This section below would be great if we can find users
+    //
     //determine if user exists
     let userExists = true;
-    let val = Users.findOne({ 'username': newMember });
-    if (val == undefined) {
-      console.log('user doesnt exist');
-      userExists = false;
-    }
-    else {
-      console.log('user exists');
-    }
-
+    // let val = Users.findOne({ 'username': newMember });
+    // if (val == undefined) {
+    //   console.log('user doesnt exist');
+    //   userExists = false;
+    // }
+    // else {
+    //   console.log('user exists');
+    // }
+    //
     //determine if user is already in the group
     let alreadyIn = false;
-    let search = _.find(groupData['members'], function (user) {
-      return user == newMember;
-    })
-    if (search != undefined) {
-      console.log('User is already in group.');
-      alreadyIn = true;
-    }
+    // let search = _.find(groupData['members'], function (user) {
+    //   return user == newMember;
+    // })
+    // if (search != undefined) {
+    //   console.log('User is already in group.');
+    //   alreadyIn = true;
+    // }
+    ////////////////////////////////////////////////////////////////
 
     if (userExists && !alreadyIn) {
       const id = Groups.update(FlowRouter.getParam('_id'), { $push: { members: newMember } });

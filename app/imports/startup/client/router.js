@@ -58,6 +58,13 @@ FlowRouter.route('/messages', {
   },
 });
 
+FlowRouter.route('/my-calendar-page', {
+  name: 'My_Calendar_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'My_Calendar_Page' });
+  },
+});
+
 FlowRouter.route('/reports-page', {
   name: 'Reports_Page',
   action() {

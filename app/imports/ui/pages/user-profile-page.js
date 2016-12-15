@@ -8,6 +8,7 @@ import { Users } from '../../api/users/users.js';
 
 
 Template.User_Profile_Page.onRendered(function enableSemantic() {
+  this.$('.ui.accordion').accordion();
 });
 
 Template.User_Profile_Page.onCreated(function onCreated() {
@@ -55,18 +56,45 @@ Template.User_Profile_Page.helpers({
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   },
+  getCourseTitle (course) {
+    switch(course) {
+      case "ICS 111":
+        return "Introduction to Computer Science I";
+      case "ICS 141":
+        return "Discrete Mathematics for Computer Science I";
+      case "ICS 211":
+        return "Introduction to Computer Science II";
+      case "ICS 241":
+        return "Discrete Mathematics for Computer Science II";
+      case "ICS 314":
+        return "Software Engineering I";
+      case "MATH 241":
+        return "Calculus I";
+      case "MATH 242":
+        return "Calculus II";
+      case "MATH 371":
+        return "Elementary Probability Theory";
+    }
+  },
+  getProfLevelColor(level){
+    switch(level){
+      case "low":
+        return "red";
+      case "medium":
+        return "yellow";
+      case "high":
+        return "green";
+    }
+  },
   prosList () {
     return Users.findOne({ username: Meteor.user().profile.name }).pros;
-  }
+  },
+  studsList () {
+    return Users.findOne({ username: Meteor.user().profile.name }).studs;
+  },
 });
 
 Template.User_Profile_Page.events({
-  'click .edit-pro'(event, instance){
-    console.log('edit pro');
-  },
-  'click .edit-stud'(event, instance) {
-    console.log('edit stud');
-  },
   'submit .add-pro'(event, instance) {
     event.preventDefault();
     // const e = document.getElementById('level');
@@ -77,7 +105,7 @@ Template.User_Profile_Page.events({
       course = 0;
     }
     const f = document.getElementById(event.target.profLevel.id);
-    let profLevel = f.options[e.selectedIndex].value;
+    let profLevel = f.options[f.selectedIndex].value;
     if (profLevel === 'Select a proficiency level') {
       profLevel = 0;
     }
@@ -85,13 +113,31 @@ Template.User_Profile_Page.events({
     // const proList = Users.findOne(FlowRouter.getParam('_id')).pros;
     // if(_.contains(proList, Meteor.user().profile.name) == false) {
     // console.log(addPro);
-    console.log(addPro);
     const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
     Users.update(
       { _id: userID },
       { $push: { pros: addPro } });
     // }
-    console.log(addPro);
-    console.log(Users.findOne({ username: Meteor.user().profile.name }));
-  }
+  },
+  'submit .add-stud'(event, instance) {
+    event.preventDefault();
+    const e = document.getElementById(event.target.course2.id);
+    let course = e.options[e.selectedIndex].value;
+    if (course === 'Select a Course') {
+      course = 0;
+    }
+    const f = document.getElementById(event.target.profLevel2.id);
+    let profLevel = f.options[f.selectedIndex].value;
+    if (profLevel === 'Select a proficiency level') {
+      profLevel = 0;
+    }
+    const addStud = { course, profLevel };
+    // const proList = Users.findOne(FlowRouter.getParam('_id')).pros;
+    // if(_.contains(proList, Meteor.user().profile.name) == false) {
+    const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
+    Users.update(
+        { _id: userID },
+        { $push: { studs: addStud } });
+    // }
+  },
 });

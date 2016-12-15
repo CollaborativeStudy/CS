@@ -91,5 +91,6 @@ Template.Edit_Group_Page.events({
     $('.ui.modal.edit-modal')
         .modal('hide')
     ;
+    FlowRouter.reload();
   },
 });

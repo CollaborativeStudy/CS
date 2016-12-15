@@ -1,5 +1,8 @@
 /** ALL IMPORTS ARE ALPHABETIZED  **/
 
+import './add-member-modal.html';
+import './add-member-modal.js';
+
 import './calendar-page.html';
 import './calendar-page.js';
 
@@ -26,6 +29,9 @@ import './group-page.js';
 
 import './messages-page.html';
 import './messages-page.js';
+
+import './my-calendar-page.html';
+import './my-calendar-page.js';
 
 import './public-landing-page.html';
 

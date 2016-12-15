@@ -42,11 +42,13 @@ export const UsersSchema = new SimpleSchema({
     label: 'Pros',
     type: [Object],
     optional: true,
+    blackbox: true,
   },
   studs: {
     label: 'Studs',
     type: [Object],
     optional: true,
+    blackbox: true,
   },
   terms: {
     label:'Terms of Use',

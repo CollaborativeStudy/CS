@@ -34,6 +34,9 @@ Template.Messages_Page.helpers({
       target.value = "";
     }
   },
+  hasTutorial(){
+    return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
+  }
 });
 
 Template.Messages_Page.events({

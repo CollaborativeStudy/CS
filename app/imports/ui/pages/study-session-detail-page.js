@@ -77,7 +77,7 @@ Template.Study_Session_Detail_Page.events({
     if(_.contains(guestList, Meteor.user().profile.name) == false) {
       Sessions.update(
           { _id: FlowRouter.getParam('_id') },
-          { $push: { guestsStuds: Meteor.user().profile.name}  *`*```});
+          { $push: { guestsStuds: Meteor.user().profile.name}  });
       FlowRouter.reload();
     }
   },

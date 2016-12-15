@@ -16,3 +16,5 @@ node_modules/
 config/settings.json
 
 app/npm-debug.log
+
+config/settings.deployment.json

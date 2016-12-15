@@ -52,7 +52,8 @@
               <div class="header">
                 <h3>Hey, over here!</h3>
               </div>
-              <p>Your star rating is based on reviews other users have written about you. Click on the "Reviews" button above to
+              <p>Your star rating is based on reviews other users have written about you. Click on the "Reviews" button
+                above to
                 see what they're written.</p>
             </div>
           {{/if}}
@@ -61,72 +62,110 @@
         <div class="ui twelve wide column">
           <div class="ui raised segment">
             <a class="ui huge teal ribbon label">Pros</a>
-            <div align="right">
-              <button class="ui button edit-pro"> edit</button>
-            </div>
             <!--Show after edit-->
-            <div class="ui form">
-              <div class="two fields">
-                <div class="field">
-                  <label>Course</label>
-                  <select class="ui fluid search dropdown" name="course" id="course">
-                    <option value="">Select a Course</option>
-                    <option value="ICS 111">ICS 111 - Introduction to Computer Science I</option>
-                    <option value="ICS 141">ICS 141 - Discrete Mathematics for Computer Science I</option>
-                    <option value="ICS 211">ICS 211 - Introduction to Computer Science II</option>
-                    <option value="ICS 241">ICS 241 - Discrete Mathematics for Computer Science II</option>
-                    <option value="ICS 314">ICS 314 - Software Engineering I</option>
-                    <option value="MATH 241">MATH 241 - Calculus I</option>
-                    <option value="MATH 242">MATH 242 - Calculus II</option>
-                    <option value="MATH 371">MATH 371 - Elementary Probability Theory</option>
-                  </select>
-                </div>
-                <div class="inline fields">
-
-                </div>
+            <div class="ui accordion">
+              <div class="title">
+                <i class="dropdown icon"></i>
+                Edit Pros
+              </div>
+              <div class="content">
+                <form class="ui form add-pro">
+                  <div class="two fields">
+                    <div class="field">
+                      <label>Course</label>
+                      <select class="ui fluid search dropdown" name="course" id="course">
+                        <option value="">Select a Course</option>
+                        <option value="ICS 111">ICS 111 - Introduction to Computer Science I</option>
+                        <option value="ICS 141">ICS 141 - Discrete Mathematics for Computer Science I</option>
+                        <option value="ICS 211">ICS 211 - Introduction to Computer Science II</option>
+                        <option value="ICS 241">ICS 241 - Discrete Mathematics for Computer Science II</option>
+                        <option value="ICS 314">ICS 314 - Software Engineering I</option>
+                        <option value="MATH 241">MATH 241 - Calculus I</option>
+                        <option value="MATH 242">MATH 242 - Calculus II</option>
+                        <option value="MATH 371">MATH 371 - Elementary Probability Theory</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label>Proficiency Level</label>
+                      <select class="ui fluid search dropdown" name="profLevel" id="profLevel">
+                        <option value="">Select a proficiency level</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        x
+                        <option value="high">High</option>
+                        x
+                      </select>
+                    </div>
+                  </div>
+                  <button class="ui teal button" type="submit">Add</button>
+                </form>
               </div>
             </div>
 
+
             <div class="ui divided selection list">
-              <a class="item">
-                <div class="ui large green horizontal label">ICS 141</div>
-                Discrete Mathematics for Computer Science I
-              </a>
-
-              <a class="item">
-                <div class="ui large green horizontal label">ICS 241</div>
-                Discrete Mathematics for Computer Science II
-              </a>
-
-              <a class="item">
-                <div class="ui large green horizontal label">MATH 241</div>
-                Calculus I
-              </a>
-
-              <a class="item">
-                <div class="ui large yellow horizontal label">MATH 242</div>
-                Calculus II
-              </a>
-
-              <a class="item">
-                <div class="ui large yellow horizontal label">MATH 371</div>
-                Elementary Probability Theory
-              </a>
+              {{#each course in prosList}}
+                <a class="item">
+                  <div class="ui large {{getProfLevelColor course.profLevel}} horizontal label">{{course.course}}</div>
+                  {{getCourseTitle course.course}}
+                </a>
+              {{/each}}
             </div>
           </div>
 
           <div class="ui raised segment">
             <a class="ui huge green ribbon label">Studs</a>
-            <div align="right">
-              <button class="ui button edit-stud"> edit</button>
-            </div>
-            <div class="ui divided selection list">
-              <a class="item">
-                <div class="ui large red horizontal label">ICS 311</div>
-                Algorithms
-              </a>
 
+            <div class="ui accordion">
+              <div class="title">
+                <i class="dropdown icon"></i>
+                Edit Studs
+              </div>
+              <div class="content">
+                <form class="ui form add-stud">
+                  <div class="two fields">
+                    <div class="field">
+                      <label>Course</label>
+                      <select class="ui fluid search dropdown" name="course2" id="course2">
+                        <option value="">Select a Course</option>
+                        <option value="ICS 111">ICS 111 - Introduction to Computer Science I</option>
+                        <option value="ICS 141">ICS 141 - Discrete Mathematics for Computer Science I</option>
+                        <option value="ICS 211">ICS 211 - Introduction to Computer Science II</option>
+                        <option value="ICS 241">ICS 241 - Discrete Mathematics for Computer Science II</option>
+                        <option value="ICS 314">ICS 314 - Software Engineering I</option>
+                        <option value="MATH 241">MATH 241 - Calculus I</option>
+                        <option value="MATH 242">MATH 242 - Calculus II</option>
+                        <option value="MATH 371">MATH 371 - Elementary Probability Theory</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label>Proficiency Level</label>
+                      <select class="ui fluid search dropdown" name="profLevel2" id="profLevel2">
+                        <option value="">Select a proficiency level</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        x
+                        <option value="high">High</option>
+                        x
+                      </select>
+                    </div>
+                  </div>
+                  <button class="ui teal button" type="submit">Add</button>
+                </form>
+              </div>
             </div>
+
+
+            <div class="ui divided selection list">
+              {{#each course in studsList}}
+                <a class="item">
+                  <div class="ui large {{getProfLevelColor course.profLevel}} horizontal label">{{course.course}}</div>
+                  {{getCourseTitle course.course}}
+                </a>
+              {{/each}}
+            </div>
+
+
           </div>
         </div>
       </div>
@@ -135,16 +174,15 @@
     </div>
 
     <script>
-      $('.ui.rating')
-          .rating('disable')
-      ;
-      $('.message .close')
-          .on('click', function() {
-            $(this)
-                .closest('.message')
-                .transition('fade')
-            ;
-          })
+      $('.ui.radio.checkbox').checkbox();
+      $('.ui.accordion').accordion();
+      $('.ui.rating').rating('disable');
+      $('.message .close').on('click', function () {
+        $(this)
+            .closest('.message')
+            .transition('fade')
+        ;
+      })
       ;
     </script>
 

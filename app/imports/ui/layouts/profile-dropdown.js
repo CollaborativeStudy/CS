@@ -16,7 +16,7 @@ Template.Profile_Dropdown.events({
   },
   'click .my-calendar'(event) {
     event.preventDefault();
-    FlowRouter.go('Calendar_Page');
+    FlowRouter.go('My_Calendar_Page');
     $('.dropdown').dropdown('restore defaults');
 
   },

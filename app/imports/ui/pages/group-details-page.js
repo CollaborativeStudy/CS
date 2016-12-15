@@ -22,6 +22,7 @@ Template.Group_Details_Page.helpers({
   membersList() {
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    console.log('Details Members' + groupData['members']);
     return groupData['members'];
   },
   hasTutorial(){

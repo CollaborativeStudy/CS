@@ -1,32 +1,54 @@
-
 <template name="Add_Member_Modal">
-  <div class="ui segment container">
-    <form class="ui form new-member">
-      <h4 class="ui dividing header">Add members</h4>
-      <div class="field">
-        <div class="required wide field">
-          <label>Username</label>
-          <div class="ui action input" type="text" name="username" placeholder="User Name">
-            <input type="text" placeholder="Search Username">
-            <button class="ui teal right floated button" type="submit">Add Member</button>
-          </div>
-          <!--{{#if displayFieldError 'name' }}-->
-          <!--<div class="ui red message">-->
-          <!--You must specify your name.-->
-          <!--</div>-->
-          <!--{{/if}}-->
-        </div>
-      </div>
-    </form>
 
-    <h4 class="ui dividing header">Members Successfully Added</h4>
-    <div class="ui list">
-      <div class="item">
-        <img class="ui avatar image" src="/images/CSLogo1.png">
-        <div class="content">
-          <a class="header">Username</a>
+  {{#if Template.subscriptionsReady}}
+
+  <form class="ui form add-member-form {{errorClass}}">
+    <h3 class="ui dividing header">Add members</h3>
+    <div class="field">
+      <div class="required wide field">
+        <label>Username</label>
+        <div class="ui input">
+          <input type="text" name="member" id="member" placeholder="Search Username">
+          <button class="ui teal right floated button submit" type="submit">Add Member</button>
         </div>
+        {{#if displayFieldError 'members'}}
+        <div class="ui negative message">
+          <i class="close icon"></i>
+          <p>This user does not exist or is already in this group.</p>
+        </div>
+        {{/if}}
+        {{#if displaySuccessMessage}}
+        <div class="ui success message">
+          <i class="close icon"></i>
+          <p>Success!</p>
+        </div>
+        {{/if}}
       </div>
     </div>
-  </div>
+  </form>
+  <p></p>
+  <button class="ui red button exit">Exit</button>
+  {{else}}
+  {{>Loading}}
+  {{/if}}
+
+
+  <script>
+    $('.positive.message .close')
+        .on('click', function () {
+          $(this)
+              .closest('.message')
+              .transition('fade')
+          ;
+        })
+    ;
+    $('.negative.message .close')
+        .on('click', function () {
+          $(this)
+              .closest('.message')
+              .transition('fade')
+          ;
+        })
+    ;
+  </script>
 </template>

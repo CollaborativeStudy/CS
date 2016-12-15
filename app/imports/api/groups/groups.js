@@ -13,19 +13,17 @@ export const GroupsSchema = new SimpleSchema({
     label: 'name',
     type: String,
     optional: false,
-    max: 20,
   },
   course: {
     label: 'course',
     type: String,
     optional: false,
-    max: 40,
+    max: 20,
   },
   description:{
     label: 'description',
     type: String,
     optional: false,
-    max: 400,
   },
   members: {
     label: 'members',

@@ -27,6 +27,9 @@ import './group-page.js';
 import './messages-page.html';
 import './messages-page.js';
 
+import './my-calendar-page.html';
+import './my-calendar-page.js';
+
 import './public-landing-page.html';
 
 import './user-profile-detail-page.html';

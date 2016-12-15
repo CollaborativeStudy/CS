@@ -65,7 +65,7 @@
               <button class="ui button edit-pro"> edit</button>
             </div>
             <!--Show after edit-->
-            <div class="ui form">
+            <form class="ui form add-pro">
               <div class="two fields">
                 <div class="field">
                   <label>Course</label>
@@ -81,13 +81,27 @@
                     <option value="MATH 371">MATH 371 - Elementary Probability Theory</option>
                   </select>
                 </div>
-                <div class="inline fields">
-
+                <div class="field">
+                  <label>Proficiency Level</label>
+                  <select class="ui fluid search dropdown" name="profLevel" id="profLevel">
+                    <option value="">Select a proficiency level</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>x
+                    <option value="high">High</option>x
+                  </select>
                 </div>
               </div>
-            </div>
+              <button class="ui teal button" type="submit">Add</button>
+            </form>
 
             <div class="ui divided selection list">
+              {{#each course in prosList}}
+                <a class="item">
+                  <div class="ui large green horizontal label">{{course.course}}</div>
+                  {{course.profLevel}}
+                </a>
+              {{/each}}
+
               <a class="item">
                 <div class="ui large green horizontal label">ICS 141</div>
                 Discrete Mathematics for Computer Science I
@@ -135,11 +149,9 @@
     </div>
 
     <script>
-      $('.ui.rating')
-          .rating('disable')
-      ;
-      $('.message .close')
-          .on('click', function() {
+      $('.ui.radio.checkbox').checkbox();
+      $('.ui.rating').rating('disable');
+      $('.message .close').on('click', function() {
             $(this)
                 .closest('.message')
                 .transition('fade')

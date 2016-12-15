@@ -30,6 +30,8 @@ import './messages-page.js';
 import './public-landing-page.html';
 
 import './user-profile-detail-page.html';
+import './user-profile-detail-page.js';
+
 import './user-profile-page.html';
 import './user-profile-page.js';
 
@@ -47,3 +49,7 @@ import './study-session-page-search.js';
 
 import './study-session-detail-page.html';
 import './study-session-detail-page.js';
+
+import './studs-pros-page.html';
+import './studs-pros-page.js';
+

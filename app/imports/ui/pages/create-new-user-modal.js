@@ -31,7 +31,8 @@ Template.Create_New_User_Modal.helpers({
 Template.Create_New_User_Modal.events({
   'submit .new-user'(event, instance) {
     event.preventDefault();
-    const name = event.target.name.value;
+    const firstname = event.target.firstname.value;
+    const lastname = event.target.lastname.value;
     const username = Meteor.user().profile.name;
     let profilePicture = 'images/CSLogo1.png';
     if (event.target.profilePicture.value != '' ) {
@@ -43,7 +44,7 @@ Template.Create_New_User_Modal.events({
     const tutorial = true;
     const interests = event.target.interests.value;
 
-    const newUser = { name, username, profilePicture, terms, admin, tutorial, interests}
+    const newUser = { firstname, lastname, username, profilePicture, terms, admin, tutorial, interests}
 
     instance.context.resetValidation();
     UsersSchema.clean(newUser);

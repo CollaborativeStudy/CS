@@ -3,16 +3,30 @@
     <form class="ui form new-user">
       <h4 class="ui dividing header">Create Your Profile</h4>
       <div class="field">
+
         <div class="two fields">
           <div class="required field">
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Your Name">
-            {{#if displayFieldError 'name' }}
+            <label>First Name</label>
+            <input type="text" name="firstname" placeholder="First Name">
+            {{#if displayFieldError 'firstname' }}
               <div class="ui red message">
-                You must specify your name.
+                You must specify your first name.
               </div>
             {{/if}}
           </div>
+
+          <div class="required field">
+            <label>Last Name</label>
+            <input type="text" name="lastname" placeholder="Last Name">
+            {{#if displayFieldError 'lastname' }}
+              <div class="ui red message">
+                You must specify your last name.
+              </div>
+            {{/if}}
+          </div>
+        </div>
+
+        <div class="two fields">
           <div class="field">
             <label>Profile Picture URL</label>
             <input type="text" name="profilePicture" placeholder="URL of your profile picture">
@@ -22,12 +36,11 @@
               </div>
             {{/if}}
           </div>
-        </div>
 
-        <div class="field">
-          <label>Interests</label>
-          <input type="text" name="interests" placeholder="List a few of your interests.">
-
+          <div class="field">
+            <label>Interests</label>
+            <input type="text" name="interests" placeholder="List a few of your interests.">
+          </div>
         </div>
 
         <div class="ui accordion">

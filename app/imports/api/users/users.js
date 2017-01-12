@@ -23,8 +23,13 @@ export const Users = new Mongo.Collection('Users');
  */
 export const UsersSchema = new SimpleSchema({
   //
-  name: {
-    label: 'Name',
+  firstname: {
+    label: 'First Name',
+    type: String,
+    optional: false,
+  },
+  lastname: {
+    label: 'Last Name',
     type: String,
     optional: false,
   },

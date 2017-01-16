@@ -34,9 +34,13 @@ Template.Create_Study_Session_Page.helpers({
 
 Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
   const instance = this;
-  instance.$('select.ui.dropdown').dropdown();
-  instance.$('.ui.selection.dropdown').dropdown();
-  instance.$('ui.fluid.search.dropdown').dropdown();
+  instance.$('.ui.radio.checkbox').checkbox();
+  instance.$('.ui.fluid.search.dropdown').dropdown();
+  /*
+   instance.$('select.ui.dropdown').dropdown();
+   instance.$('.ui.selection.dropdown').dropdown();
+   instance.$('ui.fluid.search.dropdown').dropdown();
+  * */
 });
 
 Template.Create_Study_Session_Page.events({
@@ -44,6 +48,7 @@ Template.Create_Study_Session_Page.events({
     event.preventDefault();
     console.log(Session.get('eventModal'));
     let newSession = Session.get('eventModal');
+    const join = event.target.join.value;
     const title = event.target.title.value;
     const name = Meteor.user().profile.name;
     const guestsPros = [];
@@ -74,6 +79,14 @@ Template.Create_Study_Session_Page.events({
 
     console.log(startString);
     console.log(endString);
+
+    console.log("joinAs: " + event.target.join.value);
+    if(join === 'joinPro'){
+      //
+      guestsPros.push(name);
+    }else{
+      guestsStuds.push(name);
+    }
 
     // const newSession = { name, course, topic, start, end, startV, endV };
     newSession = { title, name, course, topic, start, end, startV, endV, startString, endString, guestsPros, guestsStuds };

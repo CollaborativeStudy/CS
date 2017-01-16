@@ -127,6 +127,23 @@
             <p>Please enter an end time for this session later than it's start time.</p>
           </div>
         {{/if}}
+
+        <div class="grouped fields">
+          <label>Join session</label>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="join" checked value="joinPro">
+              <label>As a Pro</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="join" value="joinStud">
+              <label>As a Stud</label>
+            </div>
+          </div>
+        </div>
+
       </div>
       <button class="ui teal button" type="submit">Create Study Session</button>
       <button class="ui red button cancel">Cancel</button>

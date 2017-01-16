@@ -12,6 +12,8 @@
         this session.</p>
       <h2 style="margin: 0px;">Join as a Stud</h2>
       <p>Select "Join as a Stud" to be a tutee during this study session.</p>
+      <h2 style="margin: 0px;">Leaving a Session</h2>
+      <p>If you decide to leave a study session after joining, select "Leave Study Session" to be removed as a participant. Note, however, that study sessions found without participants will be deleted by administrators.</p>
     </div>
   {{/if}}
 
@@ -82,6 +84,7 @@
     {{/unless}}
     {{#if hasJoined}}
       <button class="ui teal button leave">Leave Study Session</button>
+      <p style="display: inline">Sessions without participants will be deleted.</p>
     {{/if}}
   </div>
 

@@ -33,7 +33,10 @@
     <a class="ui big blue ribbon label">Topics</a>
     <div class="ui bulleted list">
       {{#each topic in findSession.topic}}
-        <div class="item">{{topic}}</div>
+        <div class="item">
+          {{#if isPro}}<i class="remove circle icon" id="{{topic}}"></i> {{/if}}
+          {{topic}}
+        </div>
       {{/each}}
       {{#if isPro}}
         <div class="item">
@@ -43,17 +46,6 @@
               <div style="margin-top: 5px" class="ui action input">
                 <input type="text" name="addTopic" placeholder="Additional Topic">
                 <button class="ui blue button" type="submit">Add</button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="item">
-          Or remove a topic:
-          <form class="ui form remove-topic">
-            <div class="eight wide field">
-              <div style="margin-top: 5px" class="ui action input">
-                <input type="text" name="removeTopic" placeholder="Current Topic">
-                <button class="ui red button" type="submit">Remove</button>
               </div>
             </div>
           </form>

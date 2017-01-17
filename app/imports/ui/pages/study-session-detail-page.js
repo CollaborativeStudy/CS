@@ -55,10 +55,9 @@ Template.Study_Session_Detail_Page.events({
   },
   'click .remove.circle.icon'(event){
     event.preventDefault();
-    console.log("topic: " + event.target.removeTopic.value);
-    /* Sessions.update(
+    Sessions.update(
         { _id: FlowRouter.getParam('_id') },
-        { $pull: { topic: event.target.removeTopic.value}  }); */
+        { $pull: { topic: event.target.id}  });
     FlowRouter.reload();
   },
   'click .join-pro'(event){

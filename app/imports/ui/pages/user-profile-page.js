@@ -137,7 +137,7 @@ Template.User_Profile_Page.events({
         { $push: { studs: addStud } });
     // }
   },
-  'click .remove.icon'(event){
+  'click .removePro'(event){
     event.preventDefault();
     const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
     const course = event.target.id;
@@ -145,6 +145,16 @@ Template.User_Profile_Page.events({
     Users.update(
         { _id: userID },
         { $pull: { pros: removePro }  });
+    FlowRouter.reload();
+  },
+  'click .removeStud'(event){
+    event.preventDefault();
+    const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
+    const course = event.target.id;
+    const removePro = { course };
+    Users.update(
+        { _id: userID },
+        { $pull: { studs: removePro }  });
     FlowRouter.reload();
   },
 });

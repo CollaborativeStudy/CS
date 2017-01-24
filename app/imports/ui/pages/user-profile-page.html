@@ -107,7 +107,13 @@
             <div class="ui divided selection list">
               {{#each course in prosList}}
                 <a class="item">
-                  <div class="ui large {{getProfLevelColor course.profLevel}} horizontal label">{{course.course}}</div>
+                  <div class="editProf ui big {{getProfLevelColor course.profLevel}} horizontal label">{{course.course}}</div>
+                  <div class="ui left pointing label" style="position: fixed">
+                    Change Proficiency:
+                    <div class="editProf ui red horizontal label">Low</div>
+                    <div class="editProf ui yellow horizontal label">Medium</div>
+                    <div class="editProf ui green horizontal label">High</div>
+                  </div>
                   {{getCourseTitle course.course}}
                   <i class="removePro right floated remove icon" id="{{course.course}}"></i>
                 </a>

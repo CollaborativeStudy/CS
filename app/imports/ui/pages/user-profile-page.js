@@ -144,17 +144,23 @@ Template.User_Profile_Page.events({
     const removePro = { course };
     Users.update(
         { _id: userID },
-        { $pull: { pros: removePro }  });
+        { $pull: { pros: removePro } });
     FlowRouter.reload();
   },
   'click .removeStud'(event){
     event.preventDefault();
     const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
     const course = event.target.id;
-    const removePro = { course };
+    const removeStud = { course };
     Users.update(
         { _id: userID },
-        { $pull: { studs: removePro }  });
+        { $pull: { studs: removeStud } });
+    FlowRouter.reload();
+  },
+  'click .editProf'(event){
+    event.preventDefault();
+    console.log("editProf");
+
     FlowRouter.reload();
   },
 });

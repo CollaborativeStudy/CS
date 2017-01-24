@@ -104,12 +104,12 @@
               </div>
             </div>
 
-
             <div class="ui divided selection list">
               {{#each course in prosList}}
                 <a class="item">
                   <div class="ui large {{getProfLevelColor course.profLevel}} horizontal label">{{course.course}}</div>
                   {{getCourseTitle course.course}}
+                  <i class="right floated remove icon" id="{{course.course}}"></i>
                 </a>
               {{/each}}
             </div>

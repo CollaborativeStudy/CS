@@ -113,9 +113,9 @@
                        style="background-color: #25A574; margin: 0px; position: fixed; visibility: hidden"
                        id="{{course.course}}editID">
                     Change Proficiency:
-                    <div class="editProf ui red horizontal label">Low</div>
-                    <div class="editProf ui yellow horizontal label">Medium</div>
-                    <div class="editProf ui green horizontal label">High</div>
+                    <div class="lowButton ui red horizontal label" id="{{course.course}}">Low</div>
+                    <div class="mediumButton ui yellow horizontal label" id="{{course.course}}">Medium</div>
+                    <div class="highButton ui green horizontal label" id="{{course.course}}">High</div>
                   </div>
                   {{getCourseTitle course.course}}
                   <i class="removePro right floated remove icon" id="{{course.course}}"></i>

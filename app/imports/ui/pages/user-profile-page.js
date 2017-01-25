@@ -159,15 +159,34 @@ Template.User_Profile_Page.events({
   },
   'click .editProf'(event){
     event.preventDefault();
-    console.log("edit prof");
     const editID = event.target.id + "editID";
-    console.log(editID);
     if(document.getElementById(editID).style.visibility == "hidden") {
-      console.log("is hidden");
       document.getElementById(editID).style.visibility = "visible";
     } else {
-      console.log("is not hidden");
       document.getElementById(editID).style.visibility = "hidden";
     }
+  },
+  'click .lowButton'(event){
+    event.preventDefault();
+    console.log("lowButton");
+    const course = event.target.id;
+    /*Users.update(
+        { _id: userID },
+        { $set: { studs: removeStud } });*/
+    const editID = event.target.id + "editID";
+    document.getElementById(editID).style.visibility = "hidden";
+    FlowRouter.reload();
+  },
+  'click .mediumButton'(event){
+    event.preventDefault();
+    console.log("mediumButton");
+    const editID = event.target.id + "editID";
+    document.getElementById(editID).style.visibility = "hidden";
+  },
+  'click .highButton'(event){
+    event.preventDefault();
+    console.log("highButton");
+    const editID = event.target.id + "editID";
+    document.getElementById(editID).style.visibility = "hidden";
   },
 });

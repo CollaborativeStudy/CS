@@ -59,13 +59,14 @@ Template.Edit_Group_Page.events({
     const description = event.target.description.value;
     const course =  event.target.course.value;
     let members = [];
+    let posts = []
     let image = 'images/CSLogo1.png';
     if (event.target.image.value != '' ) {
       image = event.target.image.value;
     }
 
     // const updatedGroup = { name, course, description};
-    updatedGroup = {name, course, description, members, image };
+    updatedGroup = {name, course, description, members, posts, image };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedGroup reflects what will be inserted.

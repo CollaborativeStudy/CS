@@ -37,8 +37,8 @@ Template.User_Profile_Detail_Page.helpers({
     // return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
     return Users.findOne({ _id: FlowRouter.getParam('_id') }).name;
   },
-  getUser () {
-    return Users.findOne({ _id: FlowRouter.getParam('_id') });
+  getUser(member) {
+    return Users.findOne({member});
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;

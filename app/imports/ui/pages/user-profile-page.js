@@ -159,8 +159,15 @@ Template.User_Profile_Page.events({
   },
   'click .editProf'(event){
     event.preventDefault();
-    console.log("editProf");
-
-    FlowRouter.reload();
+    console.log("edit prof");
+    const editID = event.target.id + "editID";
+    console.log(editID);
+    if(document.getElementById(editID).style.visibility == "hidden") {
+      console.log("is hidden");
+      document.getElementById(editID).style.visibility = "visible";
+    } else {
+      console.log("is not hidden");
+      document.getElementById(editID).style.visibility = "hidden";
+    }
   },
 });

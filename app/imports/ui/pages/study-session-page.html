@@ -24,34 +24,29 @@
         <div class="results"></div>
       </div>
     </form>
+  </div>
+
+  <div class="ui container">
+    <div class="ui link cards">
     {{#if Template.subscriptionsReady}}
-      <table class="ui celled table">
-        <thead>
-        <tr>
-          <th>Start Time</th>
-          <th>End Time</th>
-          <th>Created By</th>
-          <th>Course</th>
-          <th>Title</th>
-          <th>More Info</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each sessions in search}}
-          <tr>
-            <td>{{sessions.startString}}</td>
-            <td>{{sessions.endString}}</td>
-            <td>{{sessions.name}}</td>
-            <td>{{sessions.course}}</td>
-            <td>{{sessions.title}}</td>
-            <td><a href="study-session/{{sessions._id}}"><label class="ui label">More Info</label></a></td>
-          </tr>
-        {{/each}}
-        </tbody>
-      </table>
+      {{#each sessions in search}}
+        <a style="color: black" class="ui card" href="study-session/{{sessions._id}}">
+          <div class="content">
+            <div class="header">{{sessions.course}}</div>
+          </div>
+          <div class="content">
+            <p>{{sessions.title}}</p>
+            <p>{{sessions.startString}} - {{sessions.endString}}</p>
+          </div>
+          <div class="extra content">
+            <a href="study-session/{{sessions._id}}"><button class="ui button">Session Details</button></a>
+          </div>
+        </a>
+      {{/each}}
     {{else}}
       {{> Loading}}
     {{/if}}
+  </div>
   </div>
 
   <script>

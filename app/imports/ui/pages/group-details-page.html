@@ -60,10 +60,14 @@
             {{>Add_Member_Modal}}
           </div>
           <p></p>
-          <div class="ui very relaxed horizontal list">
+          <div class="ui relaxed horizontal list">
             {{#each member in membersList}}
             <div class="item">
-              <div class="header">{{member}}</div>
+              <img class="ui avatar image" src="{{ getUserAvatar }}">
+              <div class="content">
+                <a class="header">{{getUserFirst member}} {{getUserLast member}}</a>
+              </div>
+              <i class="close link icon remove-member" id="{{member}}"></i>
             </div>
             {{/each}}
           </div>
@@ -71,11 +75,13 @@
 
         <div class="ui raised segment">
           <a class="ui huge green ribbon label">Posts</a>
-          <div class="ui fluid action input" style="margin: 10px">
-            <input type="text" placeholder="What's up?">
-            <div class="ui button">Post</div>
-          </div>
-          <div class="ui comments">
+          <form class="ui reply form">
+            <div class="ui fluid action input" style="margin: 10px">
+              <input type="text" placeholder="What's up?">
+              <div class="ui submit button">Post</div>
+            </div>
+          </form>
+          <div class="ui comments new-post">
             <div class="comment">
               <a class="avatar">
                 <img src="">
@@ -89,17 +95,17 @@
                   How artistic!
                 </div>
                 <!--<div class="actions">-->
-                  <!--<a class="reply">Reply</a>-->
+                <!--<a class="reply">Reply</a>-->
                 <!--</div>-->
               </div>
             </div>
             <!--<form class="ui reply form">-->
-              <!--<div class="field">-->
-                <!--<textarea></textarea>-->
-              <!--</div>-->
-              <!--<div class="ui blue labeled submit icon button">-->
-                <!--<i class="icon edit"></i> Add Reply-->
-              <!--</div>-->
+            <!--<div class="field">-->
+            <!--<textarea></textarea>-->
+            <!--</div>-->
+            <!--<div class="ui blue labeled submit icon button">-->
+            <!--<i class="icon edit"></i> Add Reply-->
+            <!--</div>-->
             <!--</form>-->
           </div>
         </div>

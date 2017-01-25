@@ -29,6 +29,10 @@ export const GroupsSchema = new SimpleSchema({
     label: 'members',
     type: [String],
   },
+  posts: {
+    label: 'posts',
+    type: [String],
+  },
   image: {
     label: 'image',
     type: String,

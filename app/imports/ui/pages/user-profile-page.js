@@ -159,7 +159,8 @@ Template.User_Profile_Page.events({
   },
   'click .editProf'(event){
     event.preventDefault();
-    const editID = event.target.id + "editID";
+
+    const editID = event.target.id+ "editID";
     if(document.getElementById(editID).style.visibility == "hidden") {
       document.getElementById(editID).style.visibility = "visible";
     } else {
@@ -168,25 +169,102 @@ Template.User_Profile_Page.events({
   },
   'click .lowButton'(event){
     event.preventDefault();
-    console.log("lowButton");
-    const course = event.target.id;
-    /*Users.update(
-        { _id: userID },
-        { $set: { studs: removeStud } });*/
-    const editID = event.target.id + "editID";
+
+    const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
+    let course = event.target.id;
+    const editID = course + "editID";
     document.getElementById(editID).style.visibility = "hidden";
+
+    const category = course.slice(-1);
+    course = course.slice(0, -1);
+    const removeCourse = { course };
+    const profLevel = "low";
+    const addCourse = { course, profLevel };
+
+    if (category === 'P') {
+      Users.update(
+          { _id: userID },
+          { $pull: { pros: removeCourse } });
+
+      Users.update(
+          { _id: userID },
+          { $push: { pros: addCourse } });
+    } else {
+      Users.update(
+          { _id: userID },
+          { $pull: { studs: removeCourse } });
+
+      Users.update(
+          { _id: userID },
+          { $push: { studs: addCourse } });
+    }
     FlowRouter.reload();
   },
   'click .mediumButton'(event){
     event.preventDefault();
-    console.log("mediumButton");
-    const editID = event.target.id + "editID";
+
+    const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
+    let course = event.target.id;
+    const editID = course + "editID";
     document.getElementById(editID).style.visibility = "hidden";
+
+    const category = course.slice(-1);
+    course = course.slice(0, -1);
+    const removeCourse = { course };
+    const profLevel = "medium";
+    const addCourse = { course, profLevel };
+
+    if (category === 'P') {
+      Users.update(
+          { _id: userID },
+          { $pull: { pros: removeCourse } });
+
+      Users.update(
+          { _id: userID },
+          { $push: { pros: addCourse } });
+    } else {
+      Users.update(
+          { _id: userID },
+          { $pull: { studs: removeCourse } });
+
+      Users.update(
+          { _id: userID },
+          { $push: { studs: addCourse } });
+    }
+    FlowRouter.reload();
   },
   'click .highButton'(event){
     event.preventDefault();
-    console.log("highButton");
-    const editID = event.target.id + "editID";
+
+    const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
+    let course = event.target.id;
+    const editID = course + "editID";
     document.getElementById(editID).style.visibility = "hidden";
+
+    const category = course.slice(-1);
+    course = course.slice(0, -1);
+    const removeCourse = { course };
+    const profLevel = "high";
+    const addCourse = { course, profLevel };
+    console.log(category)
+
+    if (category === 'P') {
+      Users.update(
+          { _id: userID },
+          { $pull: { pros: removeCourse } });
+
+      Users.update(
+          { _id: userID },
+          { $push: { pros: addCourse } });
+    } else {
+      Users.update(
+          { _id: userID },
+          { $pull: { studs: removeCourse } });
+
+      Users.update(
+          { _id: userID },
+          { $push: { studs: addCourse } });
+    }
+    FlowRouter.reload();
   },
 });

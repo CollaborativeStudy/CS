@@ -40,4 +40,14 @@ Template.Group_Details_Page.events({
         .modal('show')
     ;
   },
+  'click .start-session'(event, instance) {
+    console.log("start-session");
+    $('#calendar').modal({ blurring: true }).modal('show');
+    /* Session.set('eventModal', { type: 'add', date: date.format() });
+    // Check if the date has already passed.
+    if(!moment(date.format()).isBefore(moment())) {
+      $('#calendar').modal({ blurring: true }).modal('show');
+    }*/
+
+  },
 });

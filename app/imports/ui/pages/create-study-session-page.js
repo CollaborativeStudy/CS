@@ -77,12 +77,11 @@ Template.Create_Study_Session_Page.events({
     const startString = f.options[f.selectedIndex].text;
     const endString = g.options[g.selectedIndex].text;
 
-    console.log(startString);
-    console.log(endString);
+    //console.log(startString);
+    //console.log(endString);
 
-    console.log("joinAs: " + event.target.join.value);
+    //console.log("joinAs: " + event.target.join.value);
     if(join === 'joinPro'){
-      //
       guestsPros.push(name);
     }else{
       guestsStuds.push(name);

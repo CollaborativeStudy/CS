@@ -97,7 +97,7 @@ Template.Create_Study_Session_Page.events({
           .modal('hide')
       ;
     } else {
-      console.log("invalid");
+      // console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },

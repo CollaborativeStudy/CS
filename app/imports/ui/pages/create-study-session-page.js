@@ -36,11 +36,6 @@ Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
   const instance = this;
   instance.$('.ui.radio.checkbox').checkbox();
   instance.$('.ui.fluid.search.dropdown').dropdown();
-  /*
-   instance.$('select.ui.dropdown').dropdown();
-   instance.$('.ui.selection.dropdown').dropdown();
-   instance.$('ui.fluid.search.dropdown').dropdown();
-  * */
 });
 
 Template.Create_Study_Session_Page.events({

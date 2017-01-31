@@ -2,11 +2,13 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Groups } from '../../api/groups/groups.js';
 import { Users } from '../../api/users/users.js';
+import { Sessions, SessionsSchema } from '../../api/sessions/sessions.js';
 
 Template.Group_Details_Page.onCreated(function onCreated() {
   this.autorun(() => {
     this.subscribe('Groups');
     this.subscribe('Users');
+    this.subscribe('Sessions');
   });
 });
 
@@ -40,14 +42,20 @@ Template.Group_Details_Page.events({
         .modal('show')
     ;
   },
-  'click .start-session'(event, instance) {
-    console.log("start-session");
+  'submit .group-session-form'(event) {
+    event.preventDefault();
+    const month = event.target.month.value;
+    const day = event.target.day.value;
+    const date = `2017-${month}-${day}`;
+
+    Session.set('eventModal', { type: 'add', date: date });
     $('#calendar').modal({ blurring: true }).modal('show');
-    /* Session.set('eventModal', { type: 'add', date: date.format() });
-    // Check if the date has already passed.
-    if(!moment(date.format()).isBefore(moment())) {
-      $('#calendar').modal({ blurring: true }).modal('show');
-    }*/
+
+
+    // console.log("month: " + month);
+    // console.log("day: " + day);
+    // console.log("date: " + date);
+    // console.log("date.format: " + date.format());
 
   },
 });

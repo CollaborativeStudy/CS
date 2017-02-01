@@ -38,6 +38,7 @@
           <div class="fluid card">
             <div class="image">
               <img class="ui fluid image" src="{{ groupDataField 'image'}}">
+
             </div>
           </div>
         </div>
@@ -63,9 +64,9 @@
           <div class="ui relaxed horizontal list">
             {{#each member in membersList}}
             <div class="item">
-              <img class="ui avatar image" src="{{ getUserAvatar }}">
+              <img class="ui avatar image" src="{{ getUserAvatar member }}">
               <div class="content">
-                <a class="header">{{getUserFirst member}} {{getUserLast member}}</a>
+                <a class="header remove-member">{{getUserFirst member}} {{getUserLast member}}</a>
               </div>
               <i class="close link icon remove-member" id="{{member}}"></i>
             </div>
@@ -75,39 +76,36 @@
 
         <div class="ui raised segment">
           <a class="ui huge green ribbon label">Posts</a>
-          <form class="ui reply form">
+
+          <form class="new-post">
             <div class="ui fluid action input" style="margin: 10px">
-              <input type="text" placeholder="What's up?">
+              <input type="text" placeholder="What's up?" id="post" name="post">
               <div class="ui submit button">Post</div>
             </div>
           </form>
-          <div class="ui comments new-post">
+
+          <div class="ui comments">
+            {{#each post in postsList}}
             <div class="comment">
               <a class="avatar">
-                <img src="">
+                <img src="{{ getUserAvatar post.author}}">
               </a>
               <div class="content">
-                <a class="author">Matt</a>
+                <a class="author">{{getUserFirst post.author}} {{getUserLast post.author}}</a>
                 <div class="metadata">
-                  <span class="date">Today at 5:42PM</span>
+                  <span class="date">{{post.date}}</span>
                 </div>
                 <div class="text">
-                  How artistic!
+                  {{post.post}}
                 </div>
                 <!--<div class="actions">-->
                 <!--<a class="reply">Reply</a>-->
                 <!--</div>-->
               </div>
             </div>
-            <!--<form class="ui reply form">-->
-            <!--<div class="field">-->
-            <!--<textarea></textarea>-->
-            <!--</div>-->
-            <!--<div class="ui blue labeled submit icon button">-->
-            <!--<i class="icon edit"></i> Add Reply-->
-            <!--</div>-->
-            <!--</form>-->
+            {{/each}}
           </div>
+
         </div>
       </div>
     </div>

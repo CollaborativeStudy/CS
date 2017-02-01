@@ -24,6 +24,11 @@ Template.Group_Details_Page.helpers({
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return groupData['members'];
   },
+  postsList(){
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    return groupData['posts'];
+  },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   },
@@ -63,19 +68,14 @@ Template.Group_Details_Page.events({
   },
   'submit .new-post'(event){
     event.preventDefault();
+    console.log('enter new post');
+    const user = Meteor.user().profile.name;
+    const post = event.target.post.value;
+    const time = new Date();
 
-    // const user = Meteor.user().profile.name;
-    // const message = event.target.message.value;
-    // const time = new Date();
-    //
-    // const newMessage = { user, message, time };
-    // // Clear out any old validation errors.
-    // // instance.context.resetValidation();
-    // // Invoke clean so that newSessionData reflects what will be inserted.
-    // MessagesSchema.clean(newMessage);
-    // Messages.insert(newMessage);
-    //
-    // clear form
-    // event.target.text = '';
+    const newPost = { user, post, time };
+
+    const id = Groups.update(FlowRouter.getParam('_id'), { $push: { post: newPost } });
+    console.log('Added Post ' + newPost);
   },
 });

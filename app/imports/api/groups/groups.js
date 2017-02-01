@@ -1,5 +1,5 @@
-import { Mongo } from 'meteor/mongo';
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import {Mongo} from 'meteor/mongo';
+import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 /* eslint-disable object-shorthand */
 
@@ -20,7 +20,7 @@ export const GroupsSchema = new SimpleSchema({
     optional: false,
     max: 20,
   },
-  description:{
+  description: {
     label: 'description',
     type: String,
     optional: false,
@@ -31,7 +31,12 @@ export const GroupsSchema = new SimpleSchema({
   },
   posts: {
     label: 'posts',
-    type: [String],
+    type:
+        [{
+          user: String,
+          post: String,
+          time: String,
+        }],
   },
   image: {
     label: 'image',

@@ -59,7 +59,7 @@ Template.Edit_Group_Page.events({
     const description = event.target.description.value;
     const course =  event.target.course.value;
     let members = [];
-    let posts = []
+    let posts = [];
     let image = 'images/CSLogo1.png';
     if (event.target.image.value != '' ) {
       image = event.target.image.value;

@@ -5,6 +5,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 export const Sessions = new Mongo.Collection('Sessions');
 
+
 /**
  * Create the schema for Sessions
  */

@@ -129,7 +129,7 @@
       {{#if groupSession}}
         <div class="field">
           <label>Add As Pro</label>
-          <select class="ui fluid search dropdown" multiple="">
+          <select class="ui fluid search dropdown" multiple="" name="groupJoin" id="groupJoin">
             <option value="">Select Members</option>
             {{#each member in findGroup.members}}
               <option value="{{member}}">{{member}}</option>
@@ -142,13 +142,13 @@
           <label>Join session</label>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="join" checked value="joinPro">
+              <input type="radio" name="indivJoin" checked value="joinPro">
               <label>As a Pro</label>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="join" value="joinStud">
+              <input type="radio" name="indivJoin" value="joinStud">
               <label>As a Stud</label>
             </div>
           </div>

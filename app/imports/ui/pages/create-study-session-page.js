@@ -56,13 +56,14 @@ Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
 Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
-    console.log(Session.get('eventModal'));
+    // console.log(Session.get('eventModal'));
     let newSession = Session.get('eventModal');
-    const join = event.target.join.value;
+    // const indivJoin = event.target.indivJoin.value;
+    // const groupJoin = event.target.groupJoin.value;
     const title = event.target.title.value;
     const name = Meteor.user().profile.name;
-    const guestsPros = [];
-    const guestsStuds = [];
+    let guestsPros = [];
+    let guestsStuds = [];
     const e = document.getElementById(event.target.course.id);
     let course = e.options[e.selectedIndex].value;
     if (course === 'Select a Course') {
@@ -90,12 +91,27 @@ Template.Create_Study_Session_Page.events({
     //console.log(startString);
     //console.log(endString);
 
-    //console.log("joinAs: " + event.target.join.value);
-    if(join === 'joinPro'){
-      guestsPros.push(name);
-    }else{
-      guestsStuds.push(name);
+    //console.log("joinAs: " + event.target.indivJoin.value);
+    // if(indivJoin === 'joinPro'){
+    //   guestsPros.push(name);
+    // }else{
+    //   guestsStuds.push(name);
+    // }
+
+    const groupJoin = document.getElementById('groupJoin');
+    const pros = [];
+    const studs = [];
+    for (let i = 0; i < groupJoin.options.length; i++) {
+      if (groupJoin.options[i].selected) {
+        pros.push(groupJoin.options[i].value);
+      }
+      else {
+        studs.push(groupJoin.options[i].value);
+      }
     }
+
+    guestsPros = pros;
+    guestsStuds = studs;
 
     // const newSession = { name, course, topic, start, end, startV, endV };
     newSession = { title, name, course, topic, start, end, startV, endV, startString, endString, guestsPros, guestsStuds };

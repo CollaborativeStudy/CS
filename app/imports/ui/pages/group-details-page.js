@@ -83,7 +83,6 @@ Template.Group_Details_Page.events({
         .modal('show')
     ;
   },
-<<<<<<< HEAD
   'submit .new-post'(event){
     event.preventDefault();
     console.log('enter new post');
@@ -95,8 +94,8 @@ Template.Group_Details_Page.events({
 
     const id = Groups.update(FlowRouter.getParam('_id'), { $push: { post: newPost } });
     console.log('Added Post ' + newPost);
-=======
-  'submit .group-session-form'(event) {
+  },
+  'submit .group-session-form'(event){
    // 'submit .group-session-form'(event, instance) {
     event.preventDefault();
     const month = event.target.month.value;
@@ -117,6 +116,5 @@ Template.Group_Details_Page.events({
       Session.set('eventModal', { type: 'add', date: date });
       $('#calendar').modal({ blurring: true }).modal('show');
     }
->>>>>>> refs/remotes/origin/master
   },
 });

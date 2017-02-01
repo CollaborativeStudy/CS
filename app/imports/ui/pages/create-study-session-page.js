@@ -43,16 +43,19 @@ Template.Create_Study_Session_Page.events({
     event.preventDefault();
     let newSession = Session.get('eventModal');
     const join = event.target.join.value;
-    const title = event.target.title.value.toUpperCase();
+    // const title = event.target.title.value.toUpperCase();
+    const title = event.target.title.value;
     const name = Meteor.user().profile.name;
     const guestsPros = [];
     const guestsStuds = [];
     const e = document.getElementById(event.target.course.id);
-    let course = e.options[e.selectedIndex].value.toUpperCase();
+    // let course = e.options[e.selectedIndex].value.toUpperCase();
+    let course = e.options[e.selectedIndex].value;
     if (course === 'Select a Course') {
       course = '';
     }
-    const topic = [event.target.topic.value].toUpperCase();
+    // const topic = [event.target.topic.value.toUpperCase()];
+    const topic = [event.target.topic.value];
     const f = document.getElementById(event.target.start.id);
     // Get the date and add the time to the end.
     let start = newSession.date+"T"+f.options[f.selectedIndex].value+"-10:00";
@@ -91,10 +94,8 @@ Template.Create_Study_Session_Page.events({
       $('#calendar')
           .modal('hide')
       ;
-      console.log("gfhajdkslad;sfsgdhh")
-      event.reset();
+      // event.reset();
     } else {
-      // console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },

@@ -4,18 +4,33 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { _ } from 'meteor/underscore';
 import { Sessions, SessionsSchema } from '../../api/sessions/sessions.js';
+import { Groups } from '../../api/groups/groups.js';
 
 /* eslint-disable no-param-reassign */
 
 const displayErrorMessages = 'displayErrorMessages';
 
 Template.Create_Study_Session_Page.onCreated(function onCreated() {
+  this.subscribe('Groups');
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displayErrorMessages, false);
   this.context = SessionsSchema.namedContext('Create_Study_Session_Page');
 });
 
 Template.Create_Study_Session_Page.helpers({
+  findGroup(){
+    return Groups.findOne(FlowRouter.getParam('_id'));
+  },
+  groupSession(){
+    console.log("Groups: " + Groups.findOne(FlowRouter.getParam('_id')));
+    console.log("typeof: " + typeof Groups.findOne(FlowRouter.getParam('_id')));
+    let isGroup = false;
+    if (typeof Groups.findOne(FlowRouter.getParam('_id') === undefined)) {
+      isGroup = true;
+    }
+    console.log("isGroup: " + isGroup);
+    return isGroup;
+  },
   errorClass() {
     return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
   },

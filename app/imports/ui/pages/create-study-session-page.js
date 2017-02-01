@@ -36,11 +36,6 @@ Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
   const instance = this;
   instance.$('.ui.radio.checkbox').checkbox();
   instance.$('.ui.fluid.search.dropdown').dropdown();
-  /*
-   instance.$('select.ui.dropdown').dropdown();
-   instance.$('.ui.selection.dropdown').dropdown();
-   instance.$('ui.fluid.search.dropdown').dropdown();
-  * */
 });
 
 Template.Create_Study_Session_Page.events({
@@ -76,8 +71,14 @@ Template.Create_Study_Session_Page.events({
     const startString = f.options[f.selectedIndex].text;
     const endString = g.options[g.selectedIndex].text;
 
+<<<<<<< HEAD
+=======
+    //console.log(startString);
+    //console.log(endString);
+
+    //console.log("joinAs: " + event.target.join.value);
+>>>>>>> master
     if(join === 'joinPro'){
-      //
       guestsPros.push(name);
     }else{
       guestsStuds.push(name);
@@ -100,7 +101,7 @@ Template.Create_Study_Session_Page.events({
       console.log("gfhajdkslad;sfsgdhh")
       event.reset();
     } else {
-      console.log("invalid");
+      // console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },

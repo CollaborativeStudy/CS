@@ -46,7 +46,6 @@ Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
 Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
-    console.log(Session.get('eventModal'));
     let newSession = Session.get('eventModal');
     const join = event.target.join.value;
     const title = event.target.title.value;
@@ -77,10 +76,6 @@ Template.Create_Study_Session_Page.events({
     const startString = f.options[f.selectedIndex].text;
     const endString = g.options[g.selectedIndex].text;
 
-    console.log(startString);
-    console.log(endString);
-
-    console.log("joinAs: " + event.target.join.value);
     if(join === 'joinPro'){
       //
       guestsPros.push(name);
@@ -102,6 +97,8 @@ Template.Create_Study_Session_Page.events({
       $('#calendar')
           .modal('hide')
       ;
+      console.log("gfhajdkslad;sfsgdhh")
+      event.reset();
     } else {
       console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);

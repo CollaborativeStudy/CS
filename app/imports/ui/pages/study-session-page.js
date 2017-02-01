@@ -21,11 +21,9 @@ Template.Study_Session_Page.helpers({
 
     // Search the Sessions collection for any sessions with the same course as searchValue and return it.
     if (searchValue) {
-      return Sessions.find({ course: searchValue.toUpperCase() });
+      searchResult = Sessions.find({ course: searchValue.toUpperCase() });
     }
-    else {
-      return Sessions.find();
-    }
+    return searchResult;
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;

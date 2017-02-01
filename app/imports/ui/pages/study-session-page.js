@@ -17,9 +17,11 @@ Template.Study_Session_Page.helpers({
   search() {
     // Get the search value that was submitted.
     let searchValue = Session.get("searchValue");
-    // Search the Sessions collection for any sessions with the same name as searchValue and return it.
+    let searchResult = Sessions.find();
+
+    // Search the Sessions collection for any sessions with the same course as searchValue and return it.
     if (searchValue) {
-      return Sessions.find({ course: searchValue });
+      return Sessions.find({ course: searchValue.toUpperCase() });
     }
     else {
       return Sessions.find();

@@ -58,8 +58,6 @@ Template.Create_Study_Session_Page.events({
     event.preventDefault();
     // console.log(Session.get('eventModal'));
     let newSession = Session.get('eventModal');
-    // const indivJoin = event.target.indivJoin.value;
-    // const groupJoin = event.target.groupJoin.value;
     const title = event.target.title.value;
     const name = Meteor.user().profile.name;
     let guestsPros = [];
@@ -91,27 +89,30 @@ Template.Create_Study_Session_Page.events({
     //console.log(startString);
     //console.log(endString);
 
-    //console.log("joinAs: " + event.target.indivJoin.value);
-    // if(indivJoin === 'joinPro'){
-    //   guestsPros.push(name);
-    // }else{
-    //   guestsStuds.push(name);
-    // }
-
-    const groupJoin = document.getElementById('groupJoin');
-    const pros = [];
-    const studs = [];
-    for (let i = 0; i < groupJoin.options.length; i++) {
-      if (groupJoin.options[i].selected) {
-        pros.push(groupJoin.options[i].value);
+    if (document.getElementById('groupJoin') === null) {
+      const indivJoin = event.target.indivJoin.value;
+      if (indivJoin === 'joinPro') {
+        guestsPros.push(name);
+      } else {
+        guestsStuds.push(name);
       }
-      else {
-        studs.push(groupJoin.options[i].value);
+    } else {
+      const groupJoin = document.getElementById('groupJoin');
+      const pros = [];
+      const studs = [];
+      for (let i = 0; i < groupJoin.options.length; i++) {
+        if (groupJoin.options[i].selected) {
+          pros.push(groupJoin.options[i].value);
+        }
+        else
+          if (groupJoin.options[i].value != '') {
+            studs.push(groupJoin.options[i].value);
+          }
       }
+      guestsPros = pros;
+      guestsStuds = studs;
     }
 
-    guestsPros = pros;
-    guestsStuds = studs;
 
     // const newSession = { name, course, topic, start, end, startV, endV };
     newSession = { title, name, course, topic, start, end, startV, endV, startString, endString, guestsPros, guestsStuds };
@@ -127,6 +128,7 @@ Template.Create_Study_Session_Page.events({
       $('#calendar')
           .modal('hide')
       ;
+      FlowRouter.go('Calendar_Page');
     } else {
       // console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);

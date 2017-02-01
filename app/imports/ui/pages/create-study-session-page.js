@@ -56,14 +56,10 @@ Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
 Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
-<<<<<<< HEAD
+
     let newSession = Session.get('eventModal');
     const join = event.target.join.value;
     // const title = event.target.title.value.toUpperCase();
-=======
-    // console.log(Session.get('eventModal'));
-    let newSession = Session.get('eventModal');
->>>>>>> master
     const title = event.target.title.value;
     const name = Meteor.user().profile.name;
     let guestsPros = [];
@@ -94,12 +90,11 @@ Template.Create_Study_Session_Page.events({
     const startString = f.options[f.selectedIndex].text;
     const endString = g.options[g.selectedIndex].text;
 
-<<<<<<< HEAD
     if(join === 'joinPro'){
       guestsPros.push(name);
-    }else{
+    }else {
       guestsStuds.push(name);
-=======
+    }
     //console.log(startString);
     //console.log(endString);
 
@@ -125,7 +120,6 @@ Template.Create_Study_Session_Page.events({
       }
       guestsPros = pros;
       guestsStuds = studs;
->>>>>>> master
     }
 
 
@@ -143,11 +137,7 @@ Template.Create_Study_Session_Page.events({
       $('#calendar')
           .modal('hide')
       ;
-<<<<<<< HEAD
-      // event.reset();
-=======
       FlowRouter.go('Calendar_Page');
->>>>>>> master
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }

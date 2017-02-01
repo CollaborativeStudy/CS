@@ -21,7 +21,7 @@ Template.Study_Session_Page.helpers({
 
     // Search the Sessions collection for any sessions with the same course as searchValue and return it.
     if (searchValue) {
-      searchResult = Sessions.find({ course: searchValue.toUpperCase() });
+      searchResult = Sessions.find({ $or: [ { course: searchValue.toUpperCase() }, { title: searchValue.toUpperCase() }, { topic: searchValue.toUpperCase()} ] } );
     }
     return searchResult;
   },

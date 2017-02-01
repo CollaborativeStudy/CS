@@ -43,16 +43,16 @@ Template.Create_Study_Session_Page.events({
     event.preventDefault();
     let newSession = Session.get('eventModal');
     const join = event.target.join.value;
-    const title = event.target.title.value;
+    const title = event.target.title.value.toUpperCase();
     const name = Meteor.user().profile.name;
     const guestsPros = [];
     const guestsStuds = [];
     const e = document.getElementById(event.target.course.id);
-    let course = e.options[e.selectedIndex].value;
+    let course = e.options[e.selectedIndex].value.toUpperCase();
     if (course === 'Select a Course') {
       course = '';
     }
-    const topic = [event.target.topic.value];
+    const topic = [event.target.topic.value].toUpperCase();
     const f = document.getElementById(event.target.start.id);
     // Get the date and add the time to the end.
     let start = newSession.date+"T"+f.options[f.selectedIndex].value+"-10:00";
@@ -71,13 +71,6 @@ Template.Create_Study_Session_Page.events({
     const startString = f.options[f.selectedIndex].text;
     const endString = g.options[g.selectedIndex].text;
 
-<<<<<<< HEAD
-=======
-    //console.log(startString);
-    //console.log(endString);
-
-    //console.log("joinAs: " + event.target.join.value);
->>>>>>> master
     if(join === 'joinPro'){
       guestsPros.push(name);
     }else{

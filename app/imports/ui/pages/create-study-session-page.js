@@ -56,21 +56,17 @@ Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
 Template.Create_Study_Session_Page.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
-
+    // console.log(Session.get('eventModal'));
     let newSession = Session.get('eventModal');
-    const join = event.target.join.value;
-    // const title = event.target.title.value.toUpperCase();
     const title = event.target.title.value;
     const name = Meteor.user().profile.name;
     let guestsPros = [];
     let guestsStuds = [];
     const e = document.getElementById(event.target.course.id);
-    // let course = e.options[e.selectedIndex].value.toUpperCase();
     let course = e.options[e.selectedIndex].value;
     if (course === 'Select a Course') {
       course = '';
     }
-    // const topic = [event.target.topic.value.toUpperCase()];
     const topic = [event.target.topic.value];
     const f = document.getElementById(event.target.start.id);
     // Get the date and add the time to the end.
@@ -90,11 +86,6 @@ Template.Create_Study_Session_Page.events({
     const startString = f.options[f.selectedIndex].text;
     const endString = g.options[g.selectedIndex].text;
 
-    if(join === 'joinPro'){
-      guestsPros.push(name);
-    }else {
-      guestsStuds.push(name);
-    }
     //console.log(startString);
     //console.log(endString);
 
@@ -139,6 +130,7 @@ Template.Create_Study_Session_Page.events({
       ;
       FlowRouter.go('Calendar_Page');
     } else {
+      // console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },

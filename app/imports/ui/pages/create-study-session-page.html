@@ -124,24 +124,37 @@
             <p>Please enter an end time for this session later than it's start time.</p>
           </div>
         {{/if}}
+      </div>
 
+      {{#if groupSession}}
+        <div class="field">
+          <label>Add As Pro</label>
+          <select class="ui fluid search dropdown" multiple="" name="groupJoin" id="groupJoin">
+            <option value="">Select Members</option>
+            {{#each member in findGroup.members}}
+              <option value="{{member}}">{{member}}</option>
+            {{/each}}
+          </select>
+          <label>*Every group member not listed above will be added to this session as a Stud.</label>
+        </div>
+      {{else}}
         <div class="grouped fields">
           <label>Join session</label>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="join" checked value="joinPro">
+              <input type="radio" name="indivJoin" checked value="joinPro">
               <label>As a Pro</label>
             </div>
           </div>
           <div class="field">
             <div class="ui radio checkbox">
-              <input type="radio" name="join" value="joinStud">
+              <input type="radio" name="indivJoin" value="joinStud">
               <label>As a Stud</label>
             </div>
           </div>
         </div>
+      {{/if}}
 
-      </div>
       <button class="ui teal button" type="submit">Create Study Session</button>
       <button class="ui red button cancel">Cancel</button>
     </form>

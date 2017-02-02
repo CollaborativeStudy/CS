@@ -3,7 +3,7 @@ import { Template } from 'meteor/templating';
 // import { ReactiveDict } from 'meteor/reactive-dict';
 // import { FlowRouter } from 'meteor/kadira:flow-router';
 // import { _ } from 'meteor/underscore';
-import { Groups } from '../../api/groups/groups.js';
+import { Groups, GroupsSchema } from '../../api/groups/groups.js';
 import { Users } from '../../api/users/users.js';
 import { Sessions, SessionsSchema } from '../../api/sessions/sessions.js';
 
@@ -41,9 +41,23 @@ Template.Group_Details_Page.helpers({
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return groupData['members'];
   },
+  postsList(){
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    return groupData['posts'];
+  },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
-  }
+  },
+  getUserFirst(member) {
+    return Users.findOne({ username: member }).firstname;
+  },
+  getUserLast(member) {
+    return Users.findOne({ username: member }).lastname;
+  },
+  getUserAvatar(member) {
+    return Users.findOne({ username: member }).profilePicture;
+  },
 });
 
 Template.Group_Details_Page.events({
@@ -52,12 +66,42 @@ Template.Group_Details_Page.events({
         .modal('show')
     ;
   },
+  'click .remove-member'(event, instance) {
+    event.preventDefault();
+    Groups.update(
+        { _id: FlowRouter.getParam('_id') },
+        { $pull: { members: event.target.id}  });
+    FlowRouter.reload();
+
+    // Console Print Data
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    console.log('remove item ' + event.target.id);
+    console.log('List: ' + groupData['members']);
+  },
   'click .add-member'(event, instance) {
     $('.ui.modal.add-member-modal')
         .modal('show')
     ;
   },
-  'submit .group-session-form'(event) {
+  'submit .new-post'(event){
+    event.preventDefault();
+    console.log('enter new post');
+    const user = Meteor.user().profile.name;
+    const post = event.target.post.value;
+    const time = new Date();
+
+    console.log('User: ' + user + ' post: ' + post + ' time: ' + time);
+
+    const newPost = { user, post, time };
+    console.log('New Post: ' + newPost);
+
+    GroupsSchema.clean(newPost);
+    Groups.posts.insert(newPost);
+
+    // const id = Groups.update(FlowRouter.getParam('_id'), { $push: { post: newPost } });
+    // console.log('Added Post ' + newPost);
+  },
+  'submit .group-session-form'(event){
    // 'submit .group-session-form'(event, instance) {
     event.preventDefault();
     const month = event.target.month.value;

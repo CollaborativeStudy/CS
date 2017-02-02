@@ -18,3 +18,4 @@ config/settings.json
 app/npm-debug.log
 
 config/settings.deployment.json
+app/.meteor/versions

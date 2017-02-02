@@ -3,7 +3,7 @@ import { Template } from 'meteor/templating';
 // import { ReactiveDict } from 'meteor/reactive-dict';
 // import { FlowRouter } from 'meteor/kadira:flow-router';
 // import { _ } from 'meteor/underscore';
-import { Groups } from '../../api/groups/groups.js';
+import { Groups, GroupsSchema } from '../../api/groups/groups.js';
 import { Users } from '../../api/users/users.js';
 import { Sessions, SessionsSchema } from '../../api/sessions/sessions.js';
 
@@ -90,10 +90,16 @@ Template.Group_Details_Page.events({
     const post = event.target.post.value;
     const time = new Date();
 
-    const newPost = { user, post, time };
+    console.log('User: ' + user + ' post: ' + post + ' time: ' + time);
 
-    const id = Groups.update(FlowRouter.getParam('_id'), { $push: { post: newPost } });
-    console.log('Added Post ' + newPost);
+    const newPost = { user, post, time };
+    console.log('New Post: ' + newPost);
+
+    GroupsSchema.clean(newPost);
+    Groups.posts.insert(newPost);
+
+    // const id = Groups.update(FlowRouter.getParam('_id'), { $push: { post: newPost } });
+    // console.log('Added Post ' + newPost);
   },
   'submit .group-session-form'(event){
    // 'submit .group-session-form'(event, instance) {

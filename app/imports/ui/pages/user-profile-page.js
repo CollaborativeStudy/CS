@@ -38,6 +38,9 @@ Template.User_Profile_Page.helpers({
     let profileCursor = Users.findOne({ username: Meteor.user().profile.name });
     return `${profileCursor.firstname} ${profileCursor.lastname}`;
   },
+  getUser(){
+    return Users.findOne({ username: Meteor.user().profile.name});
+  },
   userExists() {
     // let val = _.find(Users.find().username, function(user){ return user == Meteor.user().profile.name});
     let val = Users.findOne({ username: Meteor.user().profile.name});

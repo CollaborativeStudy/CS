@@ -33,9 +33,22 @@ export const GroupsSchema = new SimpleSchema({
     label: 'posts',
     type:
         [{
-          user: String,
-          post: String,
-          time: String,
+          user: {
+            label: 'user',
+            type: String,
+            optional: false,
+            max: 200,
+          },
+          post: {
+            label: 'post',
+            type: String,
+            optional: false,
+            max: 4000,
+          },
+          time: {
+            label: 'time',
+            type: String,
+          },
         }],
   },
   image: {

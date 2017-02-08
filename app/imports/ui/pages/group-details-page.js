@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-// import { ReactiveDict } from 'meteor/reactive-dict';
-// import { FlowRouter } from 'meteor/kadira:flow-router';
-// import { _ } from 'meteor/underscore';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { _ } from 'meteor/underscore';
 import { Groups, GroupsSchema } from '../../api/groups/groups.js';
 import { Users } from '../../api/users/users.js';
 import { Sessions, SessionsSchema } from '../../api/sessions/sessions.js';
@@ -39,11 +39,12 @@ Template.Group_Details_Page.helpers({
   membersList() {
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    console.log('Members ' + groupData['members']);
     return groupData['members'];
   },
   postsList(){
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
-    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
+    console.log('Group Data ' + groupData['posts']);
     return groupData['posts'];
   },
   hasTutorial(){
@@ -83,23 +84,21 @@ Template.Group_Details_Page.events({
         .modal('show')
     ;
   },
-  'submit .new-post'(event){
+  'submit .new-post .submit-post'(event){
     event.preventDefault();
-    console.log('enter new post');
+
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+
     const user = Meteor.user().profile.name;
     const post = event.target.post.value;
     const time = new Date();
 
-    console.log('User: ' + user + ' post: ' + post + ' time: ' + time);
-
     const newPost = { user, post, time };
     console.log('New Post: ' + newPost);
 
+    Groups.update(FlowRouter.getParam('_id'), { $push: { posts: newPost } });
     GroupsSchema.clean(newPost);
-    Groups.posts.insert(newPost);
-
-    // const id = Groups.update(FlowRouter.getParam('_id'), { $push: { post: newPost } });
-    // console.log('Added Post ' + newPost);
+    console.log('Added Post');
   },
   'submit .group-session-form'(event){
    // 'submit .group-session-form'(event, instance) {

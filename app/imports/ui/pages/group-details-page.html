@@ -148,7 +148,7 @@
           <form class="new-post">
             <div class="ui fluid action input" style="margin: 10px">
               <input type="text" placeholder="What's up?" id="post" name="post">
-              <div class="ui button submit-post">Post</div>
+              <div class="ui button submit">Post</div>
             </div>
           </form>
 
@@ -159,14 +159,12 @@
                 <img src="">
               </a>
               <div class="content">
-                <!--{{getUserFirst post.user}} {{getUserLast post.user}}-->
-                <a class="author"></a>
+                <a class="author">{{post.user}}</a>
                 <div class="metadata">
-                  <span class="date">Time</span>
+                  <span class="date">{{post.time}}</span>
                 </div>
                 <div class="text">
-                  {{post.post}}
-                  <p></p>
+                  <p>{{post.post}}</p>
                 </div>
               </div>
             </div>

@@ -15,19 +15,19 @@ Template.Group_Details_Page.onCreated(function onCreated() {
     this.subscribe('Users');
     this.subscribe('Sessions');
   });
-  // this.messageFlags = new ReactiveDict();
-  // this.messageFlags.set(displayErrorMessages, false);
-  // this.context = SessionsSchema.namedContext('Create_Study_Session_Page');
+  this.messageFlags = new ReactiveDict();
+  this.messageFlags.set(displayErrorMessages, false);
+  this.context = SessionsSchema.namedContext('Create_Study_Session_Page');
 });
 
 Template.Group_Details_Page.helpers({
-  // errorClass() {
-  //   return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
-  // },
-  // displayFieldError(fieldName) {
-  //   const errorKeys = Template.instance().context.invalidKeys();
-  //   return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
-  // },
+  errorClass() {
+    return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
+  },
+  displayFieldError(fieldName) {
+    const errorKeys = Template.instance().context.invalidKeys();
+    return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
+  },
   groupsList() {
     return Groups.find();
   },
@@ -44,7 +44,7 @@ Template.Group_Details_Page.helpers({
   },
   postsList(){
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
-    console.log('Group Data ' + groupData['posts']);
+    console.log(groupData['posts']);
     return groupData['posts'];
   },
   hasTutorial(){
@@ -84,21 +84,20 @@ Template.Group_Details_Page.events({
         .modal('show')
     ;
   },
-  'submit .new-post .submit-post'(event){
+  'submit .new-post'(event){
     event.preventDefault();
-
-    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
 
     const user = Meteor.user().profile.name;
     const post = event.target.post.value;
     const time = new Date();
+    console.log('user = ' + user + ', post = ' + post + ', time = ' + time );
 
-    const newPost = { user, post, time };
-    console.log('New Post: ' + newPost);
+    const newPost = { 'user': user, 'post': post, 'time': time };
+    console.log(newPost);
 
-    Groups.update(FlowRouter.getParam('_id'), { $push: { posts: newPost } });
-    GroupsSchema.clean(newPost);
+    const id= Groups.update(FlowRouter.getParam('_id'), { $push: { posts: newPost } });
     console.log('Added Post');
+    GroupsSchema.clean(newPost);
   },
   'submit .group-session-form'(event){
    // 'submit .group-session-form'(event, instance) {

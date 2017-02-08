@@ -66,10 +66,10 @@ Template.Calendar_Page.onRendered(() => {
     // Modal to add event when clicking on a day.
     dayClick(date, session) {
       Session.set('eventModal', { type: 'add', date: date.format() });
-      // console.log("date: " + date);
-      // console.log("date.format: " + date.format());
+      console.log("Clicked on the day.");
       // Check if the date has already passed.
       if(!moment(date.format()).isBefore(moment())) {
+        console.log("Show the modal");
         $('#calendar').modal({ blurring: true }).modal('show');
       }
     },

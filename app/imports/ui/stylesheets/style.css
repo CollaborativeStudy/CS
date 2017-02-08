@@ -40,6 +40,13 @@ a.login-close-text {
   float: right;
 }
 
+.remove-member {
+  color: white;
+}
+
+.remove-member:hover{
+  color: black;
+}
 /*Calendar Style*/
 /*.fc-event-container {*/
 /*padding: 5px !important;*/

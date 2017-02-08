@@ -87,10 +87,14 @@ Template.User_Profile_Page.helpers({
     }
   },
   prosList () {
-    return Users.findOne({ username: Meteor.user().profile.name }).pros;
+    let pro = Users.findOne({ username: Meteor.user().profile.name }).pros;
+    pro = _.sortBy(pro, function(classProf){ return classProf.course;});
+    return pro;
   },
   studsList () {
-    return Users.findOne({ username: Meteor.user().profile.name }).studs;
+    let stud = Users.findOne({ username: Meteor.user().profile.name }).studs;
+    stud = _.sortBy(stud, function(classProf){ return classProf.course;});
+    return stud;
   },
 });
 
@@ -122,16 +126,16 @@ Template.User_Profile_Page.events({
   'submit .add-stud'(event, instance) {
     event.preventDefault();
     const e = document.getElementById(event.target.course2.id);
-    let course = e.options[e.selectedIndex].value;
-    if (course === 'Select a Course') {
-      course = 0;
+    let courseAdd = e.options[e.selectedIndex].value;
+    if (courseAdd === 'Select a Course') {
+      courseAdd = 0;
     }
     const f = document.getElementById(event.target.profLevel2.id);
-    let profLevel = f.options[f.selectedIndex].value;
-    if (profLevel === 'Select a proficiency level') {
-      profLevel = 0;
+    let profLevelAdd = f.options[f.selectedIndex].value;
+    if (profLevelAdd === 'Select a proficiency level') {
+      profLevelAdd = 0;
     }
-    const addStud = { course, profLevel };
+    const addStud = { course: courseAdd, profLevel: profLevelAdd };
     // const proList = Users.findOne(FlowRouter.getParam('_id')).pros;
     // if(_.contains(proList, Meteor.user().profile.name) == false) {
     const userID = Users.findOne({ username: Meteor.user().profile.name })._id;

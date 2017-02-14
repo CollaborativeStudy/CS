@@ -94,5 +94,18 @@ Template.Study_Session_Page.events({
     event.preventDefault();
     Session.set("searchValue", "");
     FlowRouter.reload();
+  },
+  'click .item'(event){
+    event.preventDefault();
+    const sortItem = document.getElementById("sortItem").innerHTML;
+    console.log(sortItem);
+    if(sortItem === "Date"){
+      console.log("Date");
+    } else if (sortItem === "Course Number (Low to High)") {
+      console.log("Course Number (Low to High)");
+    } else if (sortItem === "Course Number (High to Low)"){
+      console.log("Course Number (High to Low)");
+    }
+    FlowRouter.reload();
   }
 });

@@ -3,6 +3,8 @@ import { Template } from 'meteor/templating';
 import { Sessions } from '../../api/sessions/sessions.js';
 import { Users } from '../../api/users/users.js';
 
+let sort = 0;
+
 /*
  *  Name:         onCreated: Study_Session_Page
  *
@@ -56,8 +58,20 @@ Template.Study_Session_Page.helpers({
     // Get the search value that was submitted.
     let searchValue = Session.get("searchValue");
 
+    let searchedSessions = null;
+    if (sort === 0){
+      searchedSessions = Sessions.find({ $or: [ { course: new RegExp(searchValue, 'i') }, { title: new RegExp(searchValue, 'i') }, { topic: new RegExp(searchValue, 'i') } ] }, {sort: {course: 1}} );
+    } else if (sort === 1) {
+      searchedSessions = Sessions.find({ $or: [ { course: new RegExp(searchValue, 'i') }, { title: new RegExp(searchValue, 'i') }, { topic: new RegExp(searchValue, 'i') } ] }, {sort: {course: 1}} );
+    } else {
+      searchedSessions = Sessions.find({ $or: [ { course: new RegExp(searchValue, 'i') }, { title: new RegExp(searchValue, 'i') }, { topic: new RegExp(searchValue, 'i') } ] }, {sort: {course: -1}} );
+    }
+
     // Search the Sessions collection for any sessions with the same course, title, or topic.
-      return Sessions.find({ $or: [ { course: new RegExp(searchValue, 'i') }, { title: new RegExp(searchValue, 'i') }, { topic: new RegExp(searchValue, 'i') } ] } );
+    return searchedSessions;
+
+    // Sorts the result by the user-selected sort order
+    //return searchedSessions.sort({Course:1});
   },
 
   /*
@@ -101,10 +115,13 @@ Template.Study_Session_Page.events({
     console.log(sortItem);
     if(sortItem === "Date"){
       console.log("Date");
+      sort = 0;
     } else if (sortItem === "Course Number (Low to High)") {
       console.log("Course Number (Low to High)");
+      sort = 1;
     } else if (sortItem === "Course Number (High to Low)"){
       console.log("Course Number (High to Low)");
+      sort = 2;
     }
     FlowRouter.reload();
   }

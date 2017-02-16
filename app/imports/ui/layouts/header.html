@@ -23,6 +23,11 @@
       {{/if}}
       {{/if}}
       {{> Cas_Login }}
+      {{#if tutorials}}
+        <a class="right item tutorials-off"><div data-tooltip="Toggle Tutorials" data-position="bottom center"><i class="large toggle off icon"></i></div></a>
+      {{else}}
+        <a class="right item tutorials-on"><div data-tooltip="Toggle Tutorials" data-position="bottom center"><i class="large toggle on icon"></i></div></a>
+      {{/if}}
 
     </div>
   </div>

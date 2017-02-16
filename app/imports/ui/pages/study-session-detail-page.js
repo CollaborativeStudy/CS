@@ -48,10 +48,15 @@ Template.Study_Session_Detail_Page.helpers({
 Template.Study_Session_Detail_Page.events({
   'submit .add-topic'(event){
     event.preventDefault();
-    Sessions.update(
-        { _id: FlowRouter.getParam('_id') },
-        { $push: { topic: event.target.addTopic.value}  });
-    FlowRouter.reload();
+    const topic = event.target.addTopic.value;
+    const topics = Sessions.findOne(FlowRouter.getParam('_id')).topic;
+    if((_.contains(topics, topic) == false) && (topic != '') && (topic != ' ')) {
+      Sessions.update(
+          { _id: FlowRouter.getParam('_id') },
+          { $push: { topic: topic}  });
+      event.target.addTopic.value = '';
+      FlowRouter.reload();
+    }
   },
   'click .remove.circle.icon'(event){
     event.preventDefault();

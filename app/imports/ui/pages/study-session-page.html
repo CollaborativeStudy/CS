@@ -49,27 +49,29 @@
     </form>
   </div>
 
-  <div class="ui container">
-    <div class="ui link cards" id="cards">
-    {{#if Template.subscriptionsReady}}
-      {{#each sessions in search}}
-        <a style="color: black" class="ui card" href="study-session/{{sessions._id}}">
-          <div class="content">
-            <div class="header">{{sessions.course}}</div>
-          </div>
-          <div class="content">
-            <p>{{sessions.title}}</p>
-            <p>{{sessions.startString}} - {{sessions.endString}}</p>
-          </div>
-          <div class="extra content">
-            <a href="study-session/{{sessions._id}}"><button class="ui button">Session Details</button></a>
-          </div>
-        </a>
-      {{/each}}
-    {{else}}
-      {{> Loading}}
-    {{/if}}
-  </div>
+  <div class="ui container" id="cards">
+    <div class="ui link cards">
+      {{#if Template.subscriptionsReady}}
+        {{#each sessions in search}}
+          <a style="color: black" class="ui card" href="study-session/{{sessions._id}}">
+            <div class="content">
+              <div class="header">{{sessions.course}}</div>
+            </div>
+            <div class="content">
+              <p>{{sessions.title}}</p>
+              <p>{{sessions.startString}} - {{sessions.endString}}</p>
+            </div>
+            <div class="extra content">
+              <a href="study-session/{{sessions._id}}">
+                <button class="ui button">Session Details</button>
+              </a>
+            </div>
+          </a>
+        {{/each}}
+      {{else}}
+        {{> Loading}}
+      {{/if}}
+    </div>
   </div>
 
   <script>

@@ -1,10 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { ReactiveDict } from 'meteor/reactive-dict';
 import { Sessions } from '../../api/sessions/sessions.js';
 import { Users } from '../../api/users/users.js';
-
-let sort = 0;
 
 /*
  *  Name:         onCreated: Study_Session_Page
@@ -44,9 +41,9 @@ Template.Study_Session_Page.helpers({
    */
   search() {
     console.log("in search");
-
     // Get the search value that was submitted.
-    let searchValue = Session.get("searchValue");
+    const searchValue = Session.get("searchValue");
+    const sort = Session.get("sort");
 
     console.log("sort in search: " + sort);
     if (sort === 0){
@@ -58,11 +55,7 @@ Template.Study_Session_Page.helpers({
     }
 
     // Search the Sessions collection for any sessions with the same course, title, or topic.
-    // //return searchedSessions;
-    // return Sessions.find({ $or: [ { course: new RegExp(searchValue, 'i') }, { title: new RegExp(searchValue, 'i') }, { topic: new RegExp(searchValue, 'i') } ] }, {sort: {sortOrder}});
 
-    // Sorts the result by the user-selected sort order
-    //return searchedSessions.sort({Course:1});
   },
 
   /*
@@ -101,7 +94,6 @@ Template.Study_Session_Page.events({
   'click .reset'(event){
     event.preventDefault();
     Session.set("searchValue", "");
-    FlowRouter.reload();
   },
   'click .item'(event){
     event.preventDefault();
@@ -110,18 +102,16 @@ Template.Study_Session_Page.events({
     if(sortItem === "Date"){
       console.log("Date");
       sort = 0;
-
+      Session.set("sort", 0);
     } else if (sortItem === "Course Number (Low to High)") {
       console.log("Course Number (Low to High)");
       sort = 1;
-
+      Session.set("sort", 1);
     } else if (sortItem === "Course Number (High to Low)"){
       console.log("Course Number (High to Low)");
       sort = 2;
-
+      Session.set("sort", 2);
     }
     console.log("sort after click: " + sort);
-
-    $('#cards').load('study-session-page.html #cards');
   }
 });

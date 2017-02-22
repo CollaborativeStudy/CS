@@ -46,4 +46,21 @@ Template.Group_Page.events({
         .modal('show')
     ;
   },
+  'click .delete-group-modal'(event, instance) {
+    $('.ui.modal.delete-modal')
+        .modal('show')
+    ;
+  },
+  'click .delete-group'(event, instance){
+    $('.ok.remove.groups')
+        .checkbox({
+          onChecked: function() {
+            var str = [];
+            $.each(".multicheck:checked",function(){
+              str.push($(this).val());
+            });
+          },
+        })
+    ;
+  }
 });

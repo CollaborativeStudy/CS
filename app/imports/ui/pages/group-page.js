@@ -17,6 +17,19 @@ Template.Group_Page.helpers({
   groupsList() {
     return Groups.find();
   },
+  isMember(group){
+    let search = _.find(group['members'], function (user) {
+      return user == Meteor.user().profile.name;
+    });
+    if (search != undefined) {
+      console.log('User is in the group.');
+      return true;
+    }
+    else{
+      console.log('User is not in group.');
+      return false;
+    }
+  },
   groupDataField(fieldName) {
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.

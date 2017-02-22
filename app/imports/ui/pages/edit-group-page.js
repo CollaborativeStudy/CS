@@ -58,8 +58,8 @@ Template.Edit_Group_Page.events({
     const name = event.target.name.value;
     const description = event.target.description.value;
     const course =  event.target.course.value;
-    let members = [];
-    let posts = [];
+    let members = Groups.findOne(FlowRouter.getParam('_id')).members;
+    let posts = Groups.findOne(FlowRouter.getParam('_id')).posts;
     let image = 'images/CSLogo1.png';
     if (event.target.image.value != '' ) {
       image = event.target.image.value;

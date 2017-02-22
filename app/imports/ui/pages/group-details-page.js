@@ -47,6 +47,9 @@ Template.Group_Details_Page.helpers({
     console.log(groupData['posts']);
     return groupData['posts'];
   },
+  postDataField(post, fieldName){
+    return post && post[fieldName];
+  },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   },
@@ -92,10 +95,11 @@ Template.Group_Details_Page.events({
     const time = new Date();
     console.log('user = ' + user + ', post = ' + post + ', time = ' + time );
 
-    const newPost = { 'user': user, 'post': post, 'time': time };
+    const newPost = {user: user, post: post, time: time };
     console.log(newPost);
 
     const id= Groups.update(FlowRouter.getParam('_id'), { $push: { posts: newPost } });
+    // Groups.posts.push(newPost);
     console.log('Added Post');
     GroupsSchema.clean(newPost);
   },

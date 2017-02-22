@@ -26,22 +26,6 @@ Template.Profile_Dropdown.events({
     $('.dropdown').dropdown('restore defaults');
 
   },
-  'click .tutorials-on'(event) {
-    event.preventDefault();
-    Users.update(
-        { _id: Users.findOne({ username: Meteor.user().profile.name })._id },
-        { $set: { tutorial: true  }}
-    );
-    $('.dropdown').dropdown('restore defaults');
-  },
-  'click .tutorials-off'(event) {
-    event.preventDefault();
-    Users.update(
-        { _id: Users.findOne({ username: Meteor.user().profile.name })._id },
-        { $set: { tutorial: false } }
-    );
-    $('.dropdown').dropdown('restore defaults');
-  },
 });
 
 // Here's how to do the required initialization for Semantic UI dropdown menus.

@@ -25,11 +25,37 @@
   {{#if Template.subscriptionsReady}}
     <div class="ui raised segment container">
       <div class="ui container">
-
         <table class="ui very basic stackable celled table">
           <thead>
           <tr>
-            <th><h2>Groups</h2></th>
+            <th>
+              <div class="ui left floated compact segment" style="border: none; box-shadow: none; padding: 5px;">
+                <h2 class="ui header">Groups</h2>
+              </div>
+              <div class="ui right floated compact segment" style="border: none; box-shadow: none; padding: 0px;">
+                <button class="ui animated fade green button create-group">
+                  <div class="visible content">
+                    <i class="icons">
+                      <i class="inverted users icon"></i>
+                      <i class="inverted corner minus icon"></i>
+                    </i>
+                  </div>
+                  <div class="hidden content">Add</div>
+                </button>
+                <div class="ui modal groups-modal">
+                  {{>Create_Group_Page}}
+                </div>
+                <button class="ui animated fade red button delete-group">
+                  <div class="visible content">
+                    <i class="icons">
+                    <i class="inverted users icon"></i>
+                    <i class="inverted corner minus icon"></i>
+                    </i>
+                  </div>
+                  <div class="hidden content">Delete</div>
+                </button>
+              </div>
+            </th>
           </tr>
           </thead>
           <tbody>
@@ -44,6 +70,12 @@
                     <div class="sub header">{{group.description}}</div>
                   </div>
                 </h3>
+                <div class="ui right floated compact segment" style="border: none; box-shadow: none;">
+                  <div class="ui fitted checkbox">
+                    <input type="checkbox">
+                    <label></label>
+                  </div>
+                </div>
                 <!--<button class="ui teal right floated labeled icon button create-session">-->
                   <!--<i class="book icon"></i>-->
                   <!--Start a Study Session-->
@@ -58,16 +90,7 @@
           </tbody>
         </table>
 
-        <button class="ui right green button create-group">
-          <i class="icons">
-            <i class="inverted users icon"></i>
-            <i class="inverted corner add icon"></i>
-          </i>
-          Create Group
-        </button>
-        <div class="ui modal groups-modal">
-          {{>Create_Group_Page}}
-        </div>
+
       </div>
     </div>
   {{else}}

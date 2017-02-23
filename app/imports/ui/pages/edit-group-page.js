@@ -26,6 +26,16 @@ Template.Edit_Group_Page.helpers({
   groupsList() {
     return Groups.find();
   },
+  isLeader(){
+    console.log(Meteor.user().profile.name);
+    console.log(FlowRouter.getParam('_id').leader);
+    if( Meteor.user().profile.name === FlowRouter.getParam('_id').leader) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  },
   groupDataField(fieldName) {
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
@@ -58,6 +68,7 @@ Template.Edit_Group_Page.events({
     const name = event.target.name.value;
     const description = event.target.description.value;
     const course =  event.target.course.value;
+    let leader = Groups.findOne(FlowRouter.getParam('_id')).leader;
     let members = Groups.findOne(FlowRouter.getParam('_id')).members;
     let posts = Groups.findOne(FlowRouter.getParam('_id')).posts;
     let image = 'images/CSLogo1.png';
@@ -65,8 +76,7 @@ Template.Edit_Group_Page.events({
       image = event.target.image.value;
     }
 
-    // const updatedGroup = { name, course, description};
-    updatedGroup = {name, course, description, members, posts, image };
+    let updatedGroup = {name, course, description, leader, members, posts, image };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedGroup reflects what will be inserted.

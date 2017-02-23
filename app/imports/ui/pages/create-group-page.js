@@ -42,6 +42,7 @@ Template.Create_Group_Page.events({
     const name = event.target.name.value;
     const description = event.target.description.value;
     const course = event.target.course.value;
+    const leader = Meteor.user().profile.name;
     let members = [];
     members.push(Meteor.user().profile.name);
     let posts = [];
@@ -51,7 +52,7 @@ Template.Create_Group_Page.events({
     }
 
     // const newGroup = { name, course, description};
-    newGroup = { name, course, description, members, posts, image };
+    newGroup = { name, course, description, leader, members, posts, image };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newGroup reflects what will be inserted.

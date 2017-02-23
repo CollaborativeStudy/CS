@@ -25,13 +25,13 @@ export const GroupsSchema = new SimpleSchema({
     type: String,
     optional: false,
   },
-  members: {
-    label: 'members',
-    type: [String],
-  },
   leader: {
     label: 'leader',
     type: String,
+  },
+  members: {
+    label: 'members',
+    type: [String],
   },
   posts: {
     label: 'posts',

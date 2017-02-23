@@ -60,7 +60,52 @@
         </div>
       </div>
       <button class="ui teal button" type="submit">Edit Group</button>
-      <button class="ui red button cancel">Cancel</button>
+
+      <!--Admins can delete whole group-->
+      <button class="ui red delete-group button">Delete</button>
+      <div class="ui basic modal delete-group-modal">
+        <div class="ui icon header">
+          <i class="warning sign icon"></i>
+          Delete Group
+        </div>
+        <div class="content">
+          <p>Are you sure you want to delete this group?</p>
+        </div>
+        <div class="actions">
+          <div class="ui red cancel button">
+            <i class="remove icon"></i>
+            No
+          </div>
+          <div class="ui green ok button">
+            <i class="checkmark icon"></i>
+            Yes
+          </div>
+        </div>
+      </div>
+
+      <!--Regular members can only leave group-->
+      <button class="ui red leave-group button">Leave</button>
+      <div class="ui basic modal leave-group-modal">
+        <div class="ui icon header">
+          <i class="warning sign icon"></i>
+          Leave Group
+        </div>
+        <div class="content">
+          <p>Are you sure you want to leave this group?</p>
+        </div>
+        <div class="actions">
+          <div class="ui red cancel button">
+            <i class="remove icon"></i>
+            No
+          </div>
+          <div class="ui green ok button">
+            <i class="checkmark icon"></i>
+            Yes
+          </div>
+        </div>
+      </div>
+
+      <button class="ui red right floated button cancel">Cancel</button>
     </form>
   </div>
 

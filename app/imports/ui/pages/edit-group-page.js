@@ -79,7 +79,6 @@ Template.Edit_Group_Page.events({
       $('.ui.modal.edit-modal')
           .modal('hide')
       ;
-      //FlowRouter.go('Public_Landing_Page');
     } else {
       console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);
@@ -93,5 +92,33 @@ Template.Edit_Group_Page.events({
         .modal('hide')
     ;
     FlowRouter.reload();
+  },
+  'click .delete-group.button'(event, instance) {
+    // $('.ui.modal.delete-group-modal')
+    //     .modal('show')
+    // ;
+    Groups.remove(FlowRouter.getParam('_id'));
+    console.log('Removed group');
+    $('.ui.modal.edit-modal')
+        .modal('hide')
+    ;
+    FlowRouter.go('/group-page');
+  },
+  'click .leave-group.button'(event, instance){
+    event.preventDefault();
+    // $('.ui.modal.delete-group-modal')
+    //     .modal('show')
+    // ;
+    Groups.update(
+        { _id: FlowRouter.getParam('_id') },
+        { $pull: { members: Meteor.user().profile.name }
+        });
+    FlowRouter.reload();
+
+    console.log('Left group');
+    $('.ui.modal.edit-modal')
+        .modal('hide')
+    ;
+    FlowRouter.go('/group-page');
   },
 });

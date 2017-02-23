@@ -71,7 +71,7 @@ Template.Group_Details_Page.events({
     ;
   },
   'click .remove-member'(event, instance) {
-    event.preventDefault();
+
     Groups.update(
         { _id: FlowRouter.getParam('_id') },
         { $pull: { members: event.target.id}  });
@@ -95,10 +95,13 @@ Template.Group_Details_Page.events({
     const time = new Date();
     console.log('user = ' + user + ', post = ' + post + ', time = ' + time );
 
-    const newPost = {user: user, post: post, time: time };
+    const newPost = {'user': user, 'post': post, 'time': time };
     console.log(newPost);
 
-    const id= Groups.update(FlowRouter.getParam('_id'), { $push: { posts: newPost } });
+    Groups.update(
+        { _id: FlowRouter.getParam('_id') },
+        { $push: {posts: newPost } });
+    FlowRouter.reload();
     // Groups.posts.push(newPost);
     console.log('Added Post');
     GroupsSchema.clean(newPost);

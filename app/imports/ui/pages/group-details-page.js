@@ -36,14 +36,22 @@ Template.Group_Details_Page.helpers({
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return groupData && groupData[fieldName];
   },
+  isLeader(){
+    if( Meteor.user().profile.name === Groups.findOne(FlowRouter.getParam('_id')).leader) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  },
   membersList() {
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
-    console.log('Members ' + groupData['members']);
     return groupData['members'];
   },
   postsList(){
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    console.log('Posts:');
     console.log(groupData['posts']);
     return groupData['posts'];
   },
@@ -71,16 +79,30 @@ Template.Group_Details_Page.events({
     ;
   },
   'click .remove-member'(event, instance) {
+    if(event.target.id === Meteor.user().profile.name){
+      console.log('Cannot remove: ' + Meteor.user().profile.name);
+      $('.ui.modal.cannot-remove-modal')
+          .modal('show')
+      ;
+    }
+    else {
+      $('.ui.modal.confirm-remove-modal')
+          .modal('show')
+          .modal({
+            onApprove: function(){
+              Groups.update(
+                  { _id: FlowRouter.getParam('_id') },
+                  { $pull: { members: event.target.id } });
 
-    Groups.update(
-        { _id: FlowRouter.getParam('_id') },
-        { $pull: { members: event.target.id}  });
-    FlowRouter.reload();
-
-    // Console Print Data
-    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
-    console.log('remove item ' + event.target.id);
-    console.log('List: ' + groupData['members']);
+              // Console Print Data
+              console.log('remove item ' + event.target.id);
+            },
+            onDeny: function(){
+              console.log('cancel remove');
+            }
+          })
+      ;
+    }
   },
   'click .add-member'(event, instance) {
     $('.ui.modal.add-member-modal')

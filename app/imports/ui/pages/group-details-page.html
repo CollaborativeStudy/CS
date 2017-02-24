@@ -16,10 +16,10 @@
   {{/if}}
 
   {{#if Template.subscriptionsReady}}
-  <div class="ui three column grid container">
+  <div class="ui grid container">
 
-    <div class="row">
-      <div class="ui raised segment container">
+    <div class="one column row">
+      <div class="ui column raised segment container">
 
         <div class="ui animated fade teal button right floated edit-group" tabindex="0">
           <div class="visible content"><i class="large edit icon"></i></div>
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="three column row">
       <div class="ui four wide column">
         <div class="ui raised segment container">
           <div class="fluid card">
@@ -136,9 +136,45 @@
               <div class="content">
                 <a class="header remove-member">{{getUserFirst member}} {{getUserLast member}}</a>
               </div>
+              {{#if isLeader}}
               <i class="close link icon remove-member" id="{{member}}"></i>
+              {{/if}}
             </div>
             {{/each}}
+
+            <div class="ui basic modal confirm-remove-modal">
+              <div class="ui icon header">
+                <i class="warning sign icon"></i>
+                Remove Member
+              </div>
+              <div class="content">
+                <p>Are you sure you want to remove this member?</p>
+              </div>
+              <div class="actions">
+                <div class="ui red cancel confirm-leave-group button">
+                  <i class="remove icon"></i>
+                  No
+                </div>
+                <div class="ui green ok confirm-leave-group button">
+                  <i class="checkmark icon"></i>
+                  Yes
+                </div>
+              </div>
+            </div>
+
+            <div class="ui basic modal cannot-remove-modal">
+              <div class="ui icon header">
+                <i class="warning sign icon"></i>
+                Cannot Remove Member
+              </div>
+              <div class="actions">
+                <div class="ui green ok confirm-leave-group button">
+                  <i class="checkmark icon"></i>
+                  Okay
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 

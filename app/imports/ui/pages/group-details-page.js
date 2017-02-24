@@ -55,6 +55,12 @@ Template.Group_Details_Page.helpers({
     console.log(groupData['posts']);
     return groupData['posts'];
   },
+  printPost(post) {
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    const postList = groupData['posts'];
+    console.log('First: ' + _.first(postList).user);
+    return post;
+  },
   postDataField(post, fieldName){
     return post && post[fieldName];
   },
@@ -70,6 +76,19 @@ Template.Group_Details_Page.helpers({
   getUserAvatar(member) {
     return Users.findOne({ username: member }).profilePicture;
   },
+  getPostUsername(post){
+    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
+    const postList = groupData['posts'];
+    const returnValue = _.first(postList).user;
+    console.log('returnValue ' + returnValue);
+    return returnValue;
+  },
+  gePostPost(post) {
+    return true;
+  },
+  getPostDate(post){
+    return true;
+  }
 });
 
 Template.Group_Details_Page.events({
@@ -118,15 +137,14 @@ Template.Group_Details_Page.events({
     console.log('user = ' + user + ', post = ' + post + ', time = ' + time );
 
     const newPost = {'user': user, 'post': post, 'time': time };
+    console.log('New Post:')
     console.log(newPost);
 
     Groups.update(
         { _id: FlowRouter.getParam('_id') },
         { $push: {posts: newPost } });
     FlowRouter.reload();
-    // Groups.posts.push(newPost);
     console.log('Added Post');
-    GroupsSchema.clean(newPost);
   },
   'submit .group-session-form'(event){
    // 'submit .group-session-form'(event, instance) {

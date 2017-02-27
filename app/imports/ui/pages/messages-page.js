@@ -48,6 +48,7 @@ Template.Messages_Page.events({
     const time = new Date();
 
     const newMessage = { user, message, time };
+
     // Clear out any old validation errors.
     // instance.context.resetValidation();
     // Invoke clean so that newSessionData reflects what will be inserted.

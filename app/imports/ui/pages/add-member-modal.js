@@ -50,9 +50,6 @@ Template.Add_Member_Modal.events({
     //update the member values
     const newMember = event.target.member.value;
 
-    /////////////////////////////////////////////////////////////
-    //This section below would be great if we can find users
-    //
     //determine if user exists
     let userExists = true;
     let val = Users.findOne({username: newMember});
@@ -73,7 +70,6 @@ Template.Add_Member_Modal.events({
       console.log('User is already in group.');
       alreadyIn = true;
     }
-    ////////////////////////////////////////////////////////////////
 
     if (userExists && !alreadyIn) {
       //Add the new member

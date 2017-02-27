@@ -36,6 +36,7 @@ export const GroupsSchema = new SimpleSchema({
   posts: {
     label: 'posts',
     type: [Object],
+    blackbox: true,
   },
   image: {
     label: 'image',

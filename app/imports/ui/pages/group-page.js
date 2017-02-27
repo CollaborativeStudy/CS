@@ -22,11 +22,9 @@ Template.Group_Page.helpers({
       return user == Meteor.user().profile.name;
     });
     if (search != undefined) {
-      console.log('User is in the group.');
       return true;
     }
     else{
-      console.log('User is not in group.');
       return false;
     }
   },

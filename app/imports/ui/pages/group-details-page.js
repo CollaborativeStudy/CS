@@ -51,44 +51,20 @@ Template.Group_Details_Page.helpers({
   },
   postsList(){
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
-    console.log('Posts:');
-    console.log(groupData['posts']);
-    return groupData['posts'];
-  },
-  printPost(post) {
-    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
-    const postList = groupData['posts'];
-    console.log('First: ' + _.first(postList).user);
-    return post;
-  },
-  postDataField(post, fieldName){
-    return post && post[fieldName];
+    return groupData.posts;
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   },
-  getUserFirst(member) {
-    return Users.findOne({ username: member }).firstname;
+  getUserFirst(user) {
+    return Users.findOne({ username: user }).firstname;
   },
-  getUserLast(member) {
-    return Users.findOne({ username: member }).lastname;
+  getUserLast(user) {
+    return Users.findOne({ username: user }).lastname;
   },
-  getUserAvatar(member) {
-    return Users.findOne({ username: member }).profilePicture;
+  getUserAvatar(user) {
+    return Users.findOne({ username: user }).profilePicture;
   },
-  getPostUsername(post){
-    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
-    const postList = groupData['posts'];
-    const returnValue = _.first(postList).user;
-    console.log('returnValue ' + returnValue);
-    return returnValue;
-  },
-  gePostPost(post) {
-    return true;
-  },
-  getPostDate(post){
-    return true;
-  }
 });
 
 Template.Group_Details_Page.events({
@@ -99,7 +75,6 @@ Template.Group_Details_Page.events({
   },
   'click .remove-member'(event, instance) {
     if(event.target.id === Meteor.user().profile.name){
-      console.log('Cannot remove: ' + Meteor.user().profile.name);
       $('.ui.modal.cannot-remove-modal')
           .modal('show')
       ;
@@ -112,12 +87,8 @@ Template.Group_Details_Page.events({
               Groups.update(
                   { _id: FlowRouter.getParam('_id') },
                   { $pull: { members: event.target.id } });
-
-              // Console Print Data
-              console.log('remove item ' + event.target.id);
             },
             onDeny: function(){
-              console.log('cancel remove');
             }
           })
       ;
@@ -134,17 +105,13 @@ Template.Group_Details_Page.events({
     const user = Meteor.user().profile.name;
     const post = event.target.post.value;
     const time = new Date();
-    console.log('user = ' + user + ', post = ' + post + ', time = ' + time );
 
-    const newPost = {'user': user, 'post': post, 'time': time };
-    console.log('New Post:')
-    console.log(newPost);
+    const newPost = {user, post, time};
 
+    const groupID = FlowRouter.getParam('_id');
     Groups.update(
-        { _id: FlowRouter.getParam('_id') },
-        { $push: {posts: newPost } });
-    FlowRouter.reload();
-    console.log('Added Post');
+        { _id: groupID },
+        { $push: { posts: newPost } });
   },
   'submit .group-session-form'(event){
    // 'submit .group-session-form'(event, instance) {

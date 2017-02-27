@@ -183,7 +183,7 @@
           <form class="new-post">
             <div class="ui fluid action input" style="margin: 10px">
               <input type="text" placeholder="What's up?" id="post" name="post">
-              <div class="ui teal button submit">Post</div>
+              <div class="ui teal button submit new-post">Post</div>
             </div>
           </form>
 
@@ -191,15 +191,15 @@
             {{#each post in postsList}}
             <div class="comment">
               <a class="avatar">
-                <img src="">
+                <img src="{{getUserAvatar post.user}}">
               </a>
               <div class="content">
-                <a class="author">{{getPostUsername post}}</a>
+                <a class="author">{{getUserFirst post.user}} {{getUserLast post.user}}</a>
                 <div class="metadata">
                   <span class="date">{{post.time}}</span>
                 </div>
                 <div class="text">
-                  <p>{{printPost post}}</p>
+                  <p>{{post.post}}</p>
                 </div>
               </div>
             </div>

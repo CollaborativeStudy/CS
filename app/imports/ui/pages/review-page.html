@@ -9,18 +9,20 @@
       <p>Here other users can rate you and leave reviews. Make sure to leave a good impression!</p>
     </div>
   {{/if}}
+  {{#if Template.subscriptionsReady}}
 
   <div class="ui container">
-    <a href="create-review">
-      <button id="create-review-button" class="ui labeled icon button">
+      <button style="background-color:#25A574; margin: 10px;" class="ui labeled icon button create-review-button">
         <i class="star icon"></i>
         Submit a Review
       </button>
-    </a>
-    {{#if Template.subscriptionsReady}}
+
+    <div class="ui modal create-review-modal">
+      {{>Create_Review_Page}}
+    </div>
     <div class="ui four stackable cards">
       {{#each review in reviewsList}}
-      <div class="ui card">
+      <div class="ui card" style="margins: 10px">
         <div class="content">
           <div class="header">{{review.title}}</div>
           <div class="description"><p>{{review.review}}</p></div>
@@ -38,9 +40,7 @@
       </script>
       {{/each}}
     </div>
-    {{else}}
-    {{> Loading}}
-    {{/if}}
+
   </div>
 
   <script>
@@ -53,5 +53,7 @@
         })
     ;
   </script>
-
+  {{else}}
+  {{> Loading}}
+  {{/if}}
 </template>

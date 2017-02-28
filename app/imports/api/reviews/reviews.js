@@ -9,28 +9,38 @@ export const Reviews = new Mongo.Collection('Reviews');
  * Create the schema for Reviews
  */
 export const ReviewsSchema = new SimpleSchema({
-  rating: {
-    label: 'rating',
-    type: Number,
-    optional: false,
-    max: 5,
-  },
-  title: {
-    label: 'title',
+  // rating: {
+  //   label: 'rating',
+  //   type: Number,
+  //   optional: false,
+  //   max: 5,
+  // },
+  // title: {
+  //   label: 'title',
+  //   type: String,
+  //   optional: false,
+  //   max: 200,
+  // },
+  // review: {
+  //   label: 'review',
+  //   type: String,
+  //   optional: false,
+  //   max: 4000,
+  // },
+  // checked: {
+  //   label: 'checked',
+  //   type: Number,
+  //   optional: false,
+  // },
+  forUser: {
+    label: 'forUser',
     type: String,
     optional: false,
-    max: 200,
   },
-  review: {
-    label: 'review',
-    type: String,
-    optional: false,
-    max: 4000,
-  },
-  checked: {
-    label: 'checked',
-    type: Number,
-    optional: false,
+  userReviews: {
+    label: 'userReviews',
+    type: [Object],
+    blackbox: true,
   },
 });
 

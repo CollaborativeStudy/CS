@@ -16,12 +16,12 @@
   {{/if}}
 
   {{#if Template.subscriptionsReady}}
-  <div class="ui three column grid container">
+  <div class="ui grid container">
 
-    <div class="row">
-      <div class="ui raised segment container">
+    <div class="one column row">
+      <div class="ui column raised segment container">
 
-        <div class="ui animated fade button right floated edit-group" tabindex="0">
+        <div class="ui animated fade teal button right floated edit-group" tabindex="0">
           <div class="visible content"><i class="large edit icon"></i></div>
           <div class="hidden content">Edit</div>
         </div>
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="three column row">
       <div class="ui four wide column">
         <div class="ui raised segment container">
           <div class="fluid card">
@@ -121,7 +121,7 @@
       <div class="ui twelve wide column">
         <div class="ui raised segment">
           <a class="ui huge green ribbon label">Members</a>
-          <div class="ui animated fade button right floated add-member" tabindex="0">
+          <div class="ui animated fade teal button right floated add-member" tabindex="0">
             <div class="visible content"><i class="large add square icon"></i></div>
             <div class="hidden content">Add</div>
           </div>
@@ -136,19 +136,54 @@
               <div class="content">
                 <a class="header remove-member">{{getUserFirst member}} {{getUserLast member}}</a>
               </div>
+              {{#if isLeader}}
               <i class="close link icon remove-member" id="{{member}}"></i>
+              {{/if}}
             </div>
             {{/each}}
+
+            <div class="ui basic modal confirm-remove-modal">
+              <div class="ui icon header">
+                <i class="warning sign icon"></i>
+                Remove Member
+              </div>
+              <div class="content">
+                <p>Are you sure you want to remove this member?</p>
+              </div>
+              <div class="actions">
+                <div class="ui red cancel confirm-leave-group button">
+                  <i class="remove icon"></i>
+                  No
+                </div>
+                <div class="ui green ok confirm-leave-group button">
+                  <i class="checkmark icon"></i>
+                  Yes
+                </div>
+              </div>
+            </div>
+
+            <div class="ui basic modal cannot-remove-modal">
+              <div class="ui icon header">
+                <i class="warning sign icon"></i>
+                Cannot Remove Member
+              </div>
+              <div class="actions">
+                <div class="ui green ok confirm-leave-group button">
+                  <i class="checkmark icon"></i>
+                  Okay
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
         <div class="ui raised segment">
           <a class="ui huge green ribbon label">Posts</a>
-
           <form class="new-post">
             <div class="ui fluid action input" style="margin: 10px">
               <input type="text" placeholder="What's up?" id="post" name="post">
-              <div class="ui submit button">Post</div>
+              <div class="ui teal button submit new-post">Post</div>
             </div>
           </form>
 
@@ -156,16 +191,15 @@
             {{#each post in postsList}}
             <div class="comment">
               <a class="avatar">
-                <img src="{{ getUserAvatar post.author}}">
+                <img src="{{getUserAvatar post.user}}">
               </a>
               <div class="content">
-                <a class="author">{{getUserFirst post.author}} {{getUserLast post.author}}</a>
+                <a class="author">{{getUserFirst post.user}} {{getUserLast post.user}}</a>
                 <div class="metadata">
-                  <span class="date">{{post.date}}</span>
+                  <span class="date">{{post.time}}</span>
                 </div>
                 <div class="text">
-                  {{post.post}}
-                  <p></p>
+                  <p>{{post.post}}</p>
                 </div>
               </div>
             </div>

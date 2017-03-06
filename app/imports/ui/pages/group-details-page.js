@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-// import { ReactiveDict } from 'meteor/reactive-dict';
-// import { FlowRouter } from 'meteor/kadira:flow-router';
-// import { _ } from 'meteor/underscore';
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { _ } from 'meteor/underscore';
 import { Groups, GroupsSchema } from '../../api/groups/groups.js';
 import { Users } from '../../api/users/users.js';
 import { Sessions, SessionsSchema } from '../../api/sessions/sessions.js';
@@ -15,19 +15,19 @@ Template.Group_Details_Page.onCreated(function onCreated() {
     this.subscribe('Users');
     this.subscribe('Sessions');
   });
-  // this.messageFlags = new ReactiveDict();
-  // this.messageFlags.set(displayErrorMessages, false);
-  // this.context = SessionsSchema.namedContext('Create_Study_Session_Page');
+  this.messageFlags = new ReactiveDict();
+  this.messageFlags.set(displayErrorMessages, false);
+  this.context = SessionsSchema.namedContext('Create_Study_Session_Page');
 });
 
 Template.Group_Details_Page.helpers({
-  // errorClass() {
-  //   return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
-  // },
-  // displayFieldError(fieldName) {
-  //   const errorKeys = Template.instance().context.invalidKeys();
-  //   return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
-  // },
+  errorClass() {
+    return Template.instance().messageFlags.get(displayErrorMessages) ? 'error' : '';
+  },
+  displayFieldError(fieldName) {
+    const errorKeys = Template.instance().context.invalidKeys();
+    return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
+  },
   groupsList() {
     return Groups.find();
   },
@@ -36,6 +36,14 @@ Template.Group_Details_Page.helpers({
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
     return groupData && groupData[fieldName];
   },
+  isLeader(){
+    if( Meteor.user().profile.name === Groups.findOne(FlowRouter.getParam('_id')).leader) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  },
   membersList() {
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
@@ -43,20 +51,19 @@ Template.Group_Details_Page.helpers({
   },
   postsList(){
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
-    // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
-    return groupData['posts'];
+    return groupData.posts;
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
   },
-  getUserFirst(member) {
-    return Users.findOne({ username: member }).firstname;
+  getUserFirst(user) {
+    return Users.findOne({ username: user }).firstname;
   },
-  getUserLast(member) {
-    return Users.findOne({ username: member }).lastname;
+  getUserLast(user) {
+    return Users.findOne({ username: user }).lastname;
   },
-  getUserAvatar(member) {
-    return Users.findOne({ username: member }).profilePicture;
+  getUserAvatar(user) {
+    return Users.findOne({ username: user }).profilePicture;
   },
 });
 
@@ -67,16 +74,25 @@ Template.Group_Details_Page.events({
     ;
   },
   'click .remove-member'(event, instance) {
-    event.preventDefault();
-    Groups.update(
-        { _id: FlowRouter.getParam('_id') },
-        { $pull: { members: event.target.id}  });
-    FlowRouter.reload();
-
-    // Console Print Data
-    const groupData = Groups.findOne(FlowRouter.getParam('_id'));
-    console.log('remove item ' + event.target.id);
-    console.log('List: ' + groupData['members']);
+    if(event.target.id === Meteor.user().profile.name){
+      $('.ui.modal.cannot-remove-modal')
+          .modal('show')
+      ;
+    }
+    else {
+      $('.ui.modal.confirm-remove-modal')
+          .modal('show')
+          .modal({
+            onApprove: function(){
+              Groups.update(
+                  { _id: FlowRouter.getParam('_id') },
+                  { $pull: { members: event.target.id } });
+            },
+            onDeny: function(){
+            }
+          })
+      ;
+    }
   },
   'click .add-member'(event, instance) {
     $('.ui.modal.add-member-modal')
@@ -85,21 +101,17 @@ Template.Group_Details_Page.events({
   },
   'submit .new-post'(event){
     event.preventDefault();
-    console.log('enter new post');
+
     const user = Meteor.user().profile.name;
     const post = event.target.post.value;
     const time = new Date();
 
-    console.log('User: ' + user + ' post: ' + post + ' time: ' + time);
+    const newPost = {user, post, time};
 
-    const newPost = { user, post, time };
-    console.log('New Post: ' + newPost);
-
-    GroupsSchema.clean(newPost);
-    Groups.posts.insert(newPost);
-
-    // const id = Groups.update(FlowRouter.getParam('_id'), { $push: { post: newPost } });
-    // console.log('Added Post ' + newPost);
+    const groupID = FlowRouter.getParam('_id');
+    Groups.update(
+        { _id: groupID },
+        { $push: { posts: newPost } });
   },
   'submit .group-session-form'(event){
    // 'submit .group-session-form'(event, instance) {

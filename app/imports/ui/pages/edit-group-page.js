@@ -26,6 +26,14 @@ Template.Edit_Group_Page.helpers({
   groupsList() {
     return Groups.find();
   },
+  isLeader(){
+    if( Meteor.user().profile.name === Groups.findOne(FlowRouter.getParam('_id')).leader) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  },
   groupDataField(fieldName) {
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
     // See https://dweldon.silvrback.com/guards to understand '&&' in next line.
@@ -58,15 +66,15 @@ Template.Edit_Group_Page.events({
     const name = event.target.name.value;
     const description = event.target.description.value;
     const course =  event.target.course.value;
-    let members = [];
-    let posts = [];
+    let leader = Groups.findOne(FlowRouter.getParam('_id')).leader;
+    let members = Groups.findOne(FlowRouter.getParam('_id')).members;
+    let posts = Groups.findOne(FlowRouter.getParam('_id')).posts;
     let image = 'images/CSLogo1.png';
     if (event.target.image.value != '' ) {
       image = event.target.image.value;
     }
 
-    // const updatedGroup = { name, course, description};
-    updatedGroup = {name, course, description, members, posts, image };
+    let updatedGroup = {name, course, description, leader, members, posts, image };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that updatedGroup reflects what will be inserted.
@@ -79,7 +87,6 @@ Template.Edit_Group_Page.events({
       $('.ui.modal.edit-modal')
           .modal('hide')
       ;
-      //FlowRouter.go('Public_Landing_Page');
     } else {
       console.log("invalid");
       instance.messageFlags.set(displayErrorMessages, true);
@@ -93,5 +100,41 @@ Template.Edit_Group_Page.events({
         .modal('hide')
     ;
     FlowRouter.reload();
+  },
+  'click .delete-group.button'(event, instance) {
+    $('.ui.modal.delete-group-modal')
+        .modal('show')
+        .modal({
+          onApprove: function(){
+            Groups.remove(FlowRouter.getParam('_id'));
+            console.log('Removed group');
+            FlowRouter.go('/group-page');
+          },
+          onDeny: function(){
+            console.log('cancel delete');
+          }
+        })
+    ;
+  },
+  'click .leave-group.button'(event, instance){
+    event.preventDefault();
+    $('.ui.modal.leave-group-modal')
+        .modal('show')
+        .modal({
+          onApprove: function(){
+            Groups.update(
+                { _id: FlowRouter.getParam('_id') },
+                { $pull: { members: Meteor.user().profile.name }
+                });
+            FlowRouter.reload();
+            console.log('Left group');
+            FlowRouter.go('/group-page');
+          },
+          onDeny: function(){
+            console.log('cancel leave');
+          }
+        })
+    ;
+
   },
 });

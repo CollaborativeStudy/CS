@@ -24,7 +24,6 @@ Template.Study_Session_Page.onRendered(function enableSemantic() {
   this.$('.ui.dropdown').dropdown();
 });
 
-
 Template.Study_Session_Page.helpers({
   /*
    *  Function name:    search
@@ -47,7 +46,7 @@ Template.Study_Session_Page.helpers({
 
     console.log("sort in search: " + sort);
     if (sort === 0){
-      return Sessions.find({ $or: [ { course: new RegExp(searchValue, 'i') }, { title: new RegExp(searchValue, 'i') }, { topic: new RegExp(searchValue, 'i') } ] }, {sort: {course: 1}} );
+      return Sessions.find({ $or: [ { course: new RegExp(searchValue, 'i') }, { title: new RegExp(searchValue, 'i') }, { topic: new RegExp(searchValue, 'i') } ] }, {sort: {date: 1}} );
     } else if (sort === 1) {
       return Sessions.find({ $or: [ { course: new RegExp(searchValue, 'i') }, { title: new RegExp(searchValue, 'i') }, { topic: new RegExp(searchValue, 'i') } ] }, {sort: {course: 1}} );
     } else {

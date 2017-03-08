@@ -32,6 +32,11 @@ export const SessionsSchema = new SimpleSchema({
     type: [String],
     optional: false,
   },
+  date: {
+    label: 'Date',
+    type: String,
+    optional: false,
+  },
   // "start" is required by fullcalendar.
   // Start is the start time of the event.
   start: {

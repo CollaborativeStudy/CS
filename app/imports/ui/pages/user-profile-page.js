@@ -23,7 +23,7 @@ Template.User_Profile_Page.helpers({
     let totalRate = 0;
     let size = 0;
     let averageRate = 0;
-    let allReviews = Reviews.find();
+    let allReviews = Reviews.findOne({forUser: Meteor.user().profile.name}).userReviews;
     allReviews.forEach(function (review) {
       totalRate = totalRate + review.rating;
       size++;

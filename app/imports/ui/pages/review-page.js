@@ -16,6 +16,8 @@ Template.Review_Page.onCreated(function onCreated() {
 Template.Review_Page.helpers({
   reviewsList() {
     const reviewData = Reviews.findOne(FlowRouter.getParam('_id'));
+    console.log('Review List');
+    console.log(reviewData.userReviews);
     return reviewData.userReviews;
   },
   hasTutorial(){

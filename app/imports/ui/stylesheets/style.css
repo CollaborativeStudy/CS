@@ -43,6 +43,31 @@ a.login-close-text {
 .remove-member:hover{
   color: black;
 }
+
+.fc-event-container {
+  /*padding: 5px !important;*/
+}
+
+.fc-event {
+  padding: 1px 3px;
+  border-color: #ddd;
+  background: #25A574 !important;
+}
+
+.fc-content {
+  color: white;
+}
+
+.calendar-course {
+  margin: 0;
+  font-weight: normal;
+}
+
+.calendar-topic {
+  margin: 0;
+}
+
+
 /*Calendar Style*/
 /*.fc-event-container {*/
 /*padding: 5px !important;*/

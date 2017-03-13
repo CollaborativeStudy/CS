@@ -38,8 +38,8 @@ Template.Calendar_Page.onRendered(() => {
     },
     eventRender(session, element) {
       element.find('.fc-content').html(
-          `<h4 class="course">${ session.course }</h4>
-         <p class="topic">${ session.topic }</p>
+          `<h4 class="calendar-course">${ session.course }</h4>
+         <p class="calendar-topic">${ session.topic }</p>
         `
       );
     },

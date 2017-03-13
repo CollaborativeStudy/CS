@@ -12,8 +12,8 @@ import './create-group-page.js';
 import './create-new-user-modal.html';
 import './create-new-user-modal.js';
 
-import './create-study-session-page.html';
-import './create-study-session-page.js';
+import './create-study-session-modal.html';
+import './create-study-session-modal.js';
 
 import './create-review-page.html';
 import './create-review-page.js';

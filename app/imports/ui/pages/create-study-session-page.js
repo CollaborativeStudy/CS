@@ -127,7 +127,7 @@ Template.Create_Study_Session_Page.events({
     if (instance.context.isValid()) {
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      $('#calendar')
+      $('#create-study-session-modal')
           .modal('hide')
       ;
       FlowRouter.go('Calendar_Page');
@@ -138,7 +138,7 @@ Template.Create_Study_Session_Page.events({
 
   'click .cancel'(event, instance){
     event.preventDefault();
-    $('#calendar')
+    $('#create-study-session-modal')
         .modal('hide')
     ;
   },

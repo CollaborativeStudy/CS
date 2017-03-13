@@ -18,7 +18,7 @@ Meteor.methods({
   //     throw new Meteor.Error( '500', `${ exception }` );
   //   }
   // },
-  
+
   editEvent( event ) {
     check( event, {
       _id: String,

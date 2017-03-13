@@ -10,14 +10,14 @@ import { Groups } from '../../api/groups/groups.js';
 
 const displayErrorMessages = 'displayErrorMessages';
 
-Template.Create_Study_Session_Page.onCreated(function onCreated() {
+Template.Create_Study_Session_Modal.onCreated(function onCreated() {
   this.subscribe('Groups');
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displayErrorMessages, false);
-  this.context = SessionsSchema.namedContext('Create_Study_Session_Page');
+  this.context = SessionsSchema.namedContext('Create_Study_Session_Modal');
 });
 
-Template.Create_Study_Session_Page.helpers({
+Template.Create_Study_Session_Modal.helpers({
   findGroup(){
     return Groups.findOne(FlowRouter.getParam('_id'));
   },
@@ -47,13 +47,13 @@ Template.Create_Study_Session_Page.helpers({
   }
 });
 
-Template.Create_Study_Session_Page.onRendered(function enableSemantic() {
+Template.Create_Study_Session_Modal.onRendered(function enableSemantic() {
   const instance = this;
   instance.$('.ui.radio.checkbox').checkbox();
   instance.$('.ui.fluid.search.dropdown').dropdown();
 });
 
-Template.Create_Study_Session_Page.events({
+Template.Create_Study_Session_Modal.events({
   'submit .session-data-form'(event, instance) {
     event.preventDefault();
     let newSession = Session.get('eventModal');
@@ -127,7 +127,7 @@ Template.Create_Study_Session_Page.events({
     if (instance.context.isValid()) {
       Sessions.insert(newSession);
       instance.messageFlags.set(displayErrorMessages, false);
-      $('#calendar')
+      $('#create-study-session-modal')
           .modal('hide')
       ;
       FlowRouter.go('Calendar_Page');
@@ -138,7 +138,7 @@ Template.Create_Study_Session_Page.events({
 
   'click .cancel'(event, instance){
     event.preventDefault();
-    $('#calendar')
+    $('#create-study-session-modal')
         .modal('hide')
     ;
   },

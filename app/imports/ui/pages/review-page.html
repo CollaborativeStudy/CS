@@ -1,22 +1,28 @@
 <template name="Review_Page">
   {{#if hasTutorial}}
-    <div class="ui yellow message transition container">
-      <p style="font-size: 14px;">Want to turn off tutorials? Change the tutorial settings in the Profile dropdown.</p>
-      <i class="close icon"></i>
-      <div class="header">
-        <h1>Tutorial</h1>
-      </div>
-      <p>Here other users can rate you and leave reviews. Make sure to leave a good impression!</p>
+  <div class="ui yellow message transition container">
+    <p style="font-size: 14px;">Want to turn off tutorials? Change the tutorial settings in the Profile dropdown.</p>
+    <i class="close icon"></i>
+    <div class="header">
+      <h1>Tutorial</h1>
     </div>
+    <p>Here other users can rate you and leave reviews. Make sure to leave a good impression!</p>
+  </div>
   {{/if}}
   {{#if Template.subscriptionsReady}}
 
   <div class="ui container">
-      <button style="background-color:#25A574; margin: 10px;" class="ui labeled icon button create-review-button">
-        <i class="star icon"></i>
-        Submit a Review
-      </button>
-
+    {{#if isForUser}}
+    <button style="margin: 10px;" class="ui disabled button">
+      <i class="star icon"></i>
+      Submit a Review
+    </button>
+    {{else}}
+    <button style="background-color:#25A574; margin: 10px;" class="ui labeled icon button create-review-button">
+      <i class="star icon"></i>
+      Submit a Review
+    </button>
+    {{/if}}
     <div class="ui modal create-review-modal">
       {{>Create_Review_Page}}
     </div>
@@ -29,14 +35,11 @@
         </div>
         <div class="extra">
           <!--Rating:-->
-          <div class="ui centered huge star rating" data-rating={{review.rating}} data-max-rating="5"></div>
+          <div class="ui centered huge star disable rating" data-rating={{review.rating}} data-max-rating="5"></div>
         </div>
       </div>
-
       <script>
-        $('.ui.star.rating')
-            .rating('disable')
-        ;
+        $('.ui.disable.rating').rating('disable');
       </script>
       {{/each}}
     </div>
@@ -45,11 +48,16 @@
 
   <script>
     $('.message .close')
-        .on('click', function() {
+        .on('click', function () {
           $(this)
               .closest('.message')
               .transition('fade')
           ;
+        })
+    ;
+    $('.coupled.modal')
+        .modal({
+          allowMultiple: false
         })
     ;
   </script>

@@ -22,7 +22,15 @@ Template.Review_Page.helpers({
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
-  }
+  },
+  isForUser(){
+    if( Meteor.user().profile.name === Reviews.findOne(FlowRouter.getParam('_id')).forUser) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  },
 });
 
 Template.Review_Page.events({

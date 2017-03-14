@@ -33,21 +33,19 @@ Template.Create_Review_Page.helpers({
 
 Template.Create_Review_Page.onRendered(function enableSemantic() {
   const instance = this;
-  instance.$('.ui.rating').rating(
-  //     {
-  //   onRate: function (value) {
-  //     const rate = value;
-  //     value = 0;
-  //     return rate;
-  //   }
-  // }
+  instance.$('.ui.enable.rating').rating({
+    onRate: function (value) {
+      const rate = value;
+      return rate;
+    }
+  }
   );
 });
 
 Template.Create_Review_Page.events({
   'submit .review-data-form'(event, instance) {
     event.preventDefault();
-    const rating = $('.ui.rating').rating('get rating');
+    const rating = $('.ui.enable.rating').rating('get rating');
     const title = event.target.title.value;
     const review = event.target.review.value;
     const checked = 0;
@@ -61,9 +59,9 @@ Template.Create_Review_Page.events({
     if (review === "") {reviewError = true;}
 
     // Clear out any old validation errors.
-    instance.context.resetValidation();
+    // instance.context.resetValidation();
     // Invoke clean so that newSessionData reflects what will be inserted.
-    ReviewsSchema.clean(newReview);
+    // ReviewsSchema.clean(newReview);
     // Determine validity.
     // instance.context.validate(newReview);
 
@@ -72,13 +70,14 @@ Template.Create_Review_Page.events({
           { _id: FlowRouter.getParam('_id') },
           { $push: { userReviews: newReview } });
       instance.messageFlags.set(displayErrorMessages, false);
-      $('.ui.modal.create-review-modal')
-          .modal('hide')
-      ;
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }
     console.log(Reviews.find());
+    event.target.reset();
+    $('.ui.modal.create-review-modal')
+        .modal('hide')
+    ;
   },
 });
 

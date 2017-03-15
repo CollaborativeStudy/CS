@@ -9,6 +9,11 @@ p {
   font-size: medium;
 }
 
+.border {
+  border-color: white;
+  border-style: solid;
+}
+
 .ui.segment {
   border-radius: 0px;
 }

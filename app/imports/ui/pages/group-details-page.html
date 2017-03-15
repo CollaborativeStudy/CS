@@ -134,7 +134,7 @@
             <div class="item">
               <img class="ui avatar image" src="{{ getUserAvatar member }}">
               <div class="content">
-                <a class="header remove-member">{{getUserFirst member}} {{getUserLast member}}</a>
+                <a class="header" href="/user-profile/{{getUserId member}}">{{getUserFirst member}} {{getUserLast member}}</a>
               </div>
               {{#if isLeader}}
               <i class="close link icon remove-member" id="{{member}}"></i>

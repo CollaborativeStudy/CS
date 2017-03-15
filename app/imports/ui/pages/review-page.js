@@ -15,10 +15,28 @@ Template.Review_Page.onCreated(function onCreated() {
 
 Template.Review_Page.helpers({
   reviewsList() {
-    return Reviews.find();
+    const reviewData = Reviews.findOne(FlowRouter.getParam('_id'));
+    console.log('Review List');
+    console.log(reviewData.userReviews);
+    return reviewData.userReviews;
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
-  }
+  },
+  isForUser(){
+    if( Meteor.user().profile.name === Reviews.findOne(FlowRouter.getParam('_id')).forUser) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  },
 });
 
+Template.Review_Page.events({
+  'click .create-review-button'(event, instance) {
+    $('.ui.modal.create-review-modal')
+        .modal('show')
+    ;
+  },
+});

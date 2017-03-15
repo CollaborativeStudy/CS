@@ -65,6 +65,9 @@ Template.Group_Details_Page.helpers({
   getUserAvatar(user) {
     return Users.findOne({ username: user }).profilePicture;
   },
+  getUserId(user){
+    return Users.findOne({ username: user })._id;
+  },
 });
 
 Template.Group_Details_Page.events({

@@ -1,5 +1,6 @@
 import {Template} from 'meteor/templating';
 import {Users, UsersSchema} from '../../api/users/users.js';
+import {Reviews, ReviewsSchema} from '../../api/reviews/reviews.js';
 import {_} from 'meteor/underscore';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { ReactiveDict } from 'meteor/reactive-dict';
@@ -46,6 +47,13 @@ Template.Create_New_User_Modal.events({
 
     const newUser = { firstname, lastname, username, profilePicture, terms, admin, tutorial, interests}
 
+    // Create new reviews
+    let forUser = Meteor.user().profile.name;
+    let userReviews = [];
+    const newReviews = { forUser, userReviews };
+
+    Reviews.insert(newReviews);
+
     instance.context.resetValidation();
     UsersSchema.clean(newUser);
     instance.context.validate(newUser);
@@ -63,5 +71,6 @@ Template.Create_New_User_Modal.events({
     // const l = _.map(_.filter(f, function(checkbox) { return checkbox.checked == true }), function(checkbox) {return checkbox.value;});
     // const pros = f[0].value;
     // console.log(l);
+
   },
 });

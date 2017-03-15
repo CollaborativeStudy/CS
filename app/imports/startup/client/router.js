@@ -65,7 +65,7 @@ FlowRouter.route('/reports-page', {
   },
 });
 
-FlowRouter.route('/reviews', {
+FlowRouter.route('/reviews/:_id', {
   name: 'Review_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Review_Page' });

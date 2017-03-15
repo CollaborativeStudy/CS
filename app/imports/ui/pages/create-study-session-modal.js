@@ -64,9 +64,7 @@ Template.Create_Study_Session_Modal.events({
     let guestsStuds = [];
     const e = document.getElementById(event.target.course.id);
     let course = e.options[e.selectedIndex].value;
-    if (course === 'Select a Course') {
-      course = '';
-    }
+
     const initialTopic = event.target.topic.value;
     if (initialTopic === '' || initialTopic === ' '){
       topic = [];
@@ -76,13 +74,14 @@ Template.Create_Study_Session_Modal.events({
 
     const f = document.getElementById(event.target.start.id);
     // Get the date and add the time to the end.
-    let start = newSession.date+"T"+f.options[f.selectedIndex].value+"-10:00";
-    if (start === 'Select a Start Time') {
+    let start = `${newSession.date}T${f.options[f.selectedIndex].value}-10:00`;
+    if (f.options[f.selectedIndex].value === 'Select a Start Time') {
       start = '';
     }
+
     const g = document.getElementById(event.target.end.id);
-    let end = newSession.date+"T"+g.options[g.selectedIndex].value+"-10:00";
-    if (end === 'Select an End Time') {
+    let end = `${newSession.date}T${g.options[g.selectedIndex].value}-10:00`;
+    if (g.options[g.selectedIndex].value === 'Select an End Time') {
       end = '';
     }
     const startV = parseInt(event.target.start.value);

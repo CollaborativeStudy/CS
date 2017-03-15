@@ -28,7 +28,7 @@ Template.User_Profile_Page.helpers({
       totalRate = totalRate + review.rating;
       size++;
     });
-    averageRate = parseInt(Math.round(totalRate / size));
+    averageRate = parseInt(Math.floor(totalRate / size));
     return averageRate;
   },
   getUserName : function user() {

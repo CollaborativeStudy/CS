@@ -45,6 +45,7 @@ Template.Create_Review_Page.onRendered(function enableSemantic() {
 Template.Create_Review_Page.events({
   'submit .review-data-form'(event, instance) {
     event.preventDefault();
+
     const rating = $('.ui.enable.rating').rating('get rating');
     const title = event.target.title.value;
     const review = event.target.review.value;
@@ -65,19 +66,18 @@ Template.Create_Review_Page.events({
     // Determine validity.
     // instance.context.validate(newReview);
 
-    if (ratingError == false || titleError == false || reviewError == false ){
+    if (titleError === false && reviewError === false ){
       Reviews.update(
           { _id: FlowRouter.getParam('_id') },
           { $push: { userReviews: newReview } });
       instance.messageFlags.set(displayErrorMessages, false);
+      $('.ui.modal.create-review-modal')
+          .modal('hide')
+      ;
+      event.target.reset();
     } else {
       instance.messageFlags.set(displayErrorMessages, true);
     }
-    console.log(Reviews.find());
-    event.target.reset();
-    $('.ui.modal.create-review-modal')
-        .modal('hide')
-    ;
   },
 });
 

@@ -6,7 +6,7 @@ import { Users } from '../../api/users/users.js';
 let isPast = (date) => {
   // Get access to today's moment
   let today = moment().format();
-  return !moment(date).isSameOrAfter(moment(), 'day');
+  return moment(today).isAfter(date);
 };
 
 // Subscribe to the "events" collection.
@@ -72,7 +72,7 @@ Template.Calendar_Page.onRendered(() => {
     eventDrop(session, delta, revert) {
       let date = session.start.format();
 
-      if (!isPast(date)) {
+      if (moment(date).isSameOrAfter(moment(), 'day')) {
         let update = {
           _id: session._id,
           start: date,
@@ -90,7 +90,7 @@ Template.Calendar_Page.onRendered(() => {
     dayClick(date, session) {
       Session.set('eventModal', { type: 'add', date: date.format() });
       // Check if the date has already passed.
-      if(!isPast(date)) {
+      if(moment(date.format()).isSameOrAfter(moment(), 'day')) {
         $('#create-study-session-modal').modal({ blurring: true }).modal('show');
       }
     },

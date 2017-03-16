@@ -46,6 +46,11 @@ Template.Create_Review_Page.events({
   'submit .review-data-form'(event, instance) {
     event.preventDefault();
 
+    //Resets all old validation errors
+    ratingError = false;
+    titleError = false;
+    reviewError = false;
+
     const rating = $('.ui.enable.rating').rating('get rating');
     const title = event.target.title.value;
     const review = event.target.review.value;
@@ -55,16 +60,10 @@ Template.Create_Review_Page.events({
     console.log('New Review');
     console.log(newReview);
 
+    //check validity
     if (rating === 0) {ratingError = true;}
     if (title === "") {titleError = true;}
     if (review === "") {reviewError = true;}
-
-    // Clear out any old validation errors.
-    // instance.context.resetValidation();
-    // Invoke clean so that newSessionData reflects what will be inserted.
-    // ReviewsSchema.clean(newReview);
-    // Determine validity.
-    // instance.context.validate(newReview);
 
     if (titleError === false && reviewError === false ){
       Reviews.update(

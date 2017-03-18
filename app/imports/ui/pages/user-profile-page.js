@@ -19,19 +19,16 @@ Template.User_Profile_Page.onCreated(function onCreated() {
 });
 
 Template.User_Profile_Page.helpers({
-  reviewsList() {
-    return Reviews.find();
-  },
   getAverageRate(){
     let totalRate = 0;
     let size = 0;
     let averageRate = 0;
-    let allReviews = Reviews.find();
+    let allReviews = Reviews.findOne({forUser: Meteor.user().profile.name}).userReviews;
     allReviews.forEach(function (review) {
       totalRate = totalRate + review.rating;
       size++;
     });
-    averageRate = parseInt(Math.round(totalRate / size));
+    averageRate = parseInt(Math.floor(totalRate / size));
     return averageRate;
   },
   getUserName : function user() {
@@ -95,6 +92,9 @@ Template.User_Profile_Page.helpers({
     let stud = Users.findOne({ username: Meteor.user().profile.name }).studs;
     stud = _.sortBy(stud, function(classProf){ return classProf.course;});
     return stud;
+  },
+  getUserReview(){
+    return Reviews.findOne({forUser: Meteor.user().profile.name});
   },
 });
 

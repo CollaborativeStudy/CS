@@ -41,11 +41,13 @@
             <div class="extra">Rate:
               <div class="ui centered huge star rating" data-rating={{getAverageRate}} data-max-rating="5"></div>
             </div>
-            <a href="reviews">
-              <div class="ui bottom attached button" href="reviews">
+            {{#with getUserReview}}
+            <a href="{{pathFor 'Review_Page' _id=_id }}">
+              <div class="ui bottom attached reviews button">
                 Reviews
               </div>
             </a>
+            {{/with}}
           </div>
           {{#if hasTutorial}}
             <div class="ui yellow message transition container">

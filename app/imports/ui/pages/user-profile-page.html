@@ -1,7 +1,7 @@
 <template name="User_Profile_Page">
   {{#if hasTutorial}}
     <div class="ui yellow message transition container">
-      <p style="font-size: 14px;">Want to turn off tutorials? Change the tutorial settings in the Profile dropdown.</p>
+      <p style="font-size: 14px;">Want to turn off tutorials? Toggle the tutorials on and off with the rightmost button of the top menu. </p>
       <i class="close icon"></i>
       <div class="header">
         <h1>Tutorial</h1>
@@ -10,10 +10,12 @@
       <h2 style="margin: 0px;">What's a Pro and Stud?</h2>
       <h3>"Pros" = Professionals</h3>
       <p>List the courses you're strong in under "Pros". Make sure they're classes you're comfortable teaching, since
-        others may ask you to lead a study session on it! You can change these at any time by clicking "Edit Pros".</p>
+        others may ask you to lead a study session on it!</p>
       <h3>"Studs" = Students</h3>
-      <p>List the courses you're weak in under "Studs". Pros may reach out to you to help you with these courses. You
-        can change these at any time by clicking "Edit Studs".</p>
+      <p>List the courses you're weak in under "Studs". Pros may reach out to you to help you with these courses.</p>
+      <h3>Editing Courses You've Listed</h3>
+      <p>To edit the proficiency of a course you've listed, click the course number and select the proficiency you'd
+        like to replace it with. Click the x to the right of the course to delete it.</p>
     </div>
   {{/if}}
 

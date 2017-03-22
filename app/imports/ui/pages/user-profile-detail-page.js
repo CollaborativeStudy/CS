@@ -33,9 +33,11 @@ Template.User_Profile_Detail_Page.helpers({
     averageRate = parseInt(Math.round(totalRate / size));
     return averageRate;
   },
-  name: function user() {
+  getUserName: function user() {
     // return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
-    return Users.findOne({ _id: FlowRouter.getParam('_id') }).name;
+    let profileCursor = Users.findOne({ _id: FlowRouter.getParam('_id')});
+
+    return `${profileCursor.firstname} ${profileCursor.lastname}`;
   },
   getUser(member) {
     return Users.findOne({member});
@@ -45,7 +47,35 @@ Template.User_Profile_Detail_Page.helpers({
   },
   prosList () {
     return Users.findOne({ _id: FlowRouter.getParam('_id') }).pros;
-  }
+  },
+  getUserReview(){
+    return Reviews.findOne({forUser: Meteor.user().profile.name});
+  },
+  getCourseTitle (course) {
+      switch(course) {
+        case "ICS 111":
+          return "Introduction to Computer Science I";
+        case "ICS 141":
+          return "Discrete Mathematics for Computer Science I";
+        case "ICS 211":
+          return "Introduction to Computer Science II";
+        case "ICS 241":
+          return "Discrete Mathematics for Computer Science II";
+        case "ICS 314":
+          return "Software Engineering I";
+        case "MATH 241":
+          return "Calculus I";
+        case "MATH 242":
+          return "Calculus II";
+        case "MATH 371":
+          return "Elementary Probability Theory";
+      }
+    },
+    studsList () {
+      let stud = Users.findOne({ username: Meteor.user().profile.name }).studs;
+      stud = _.sortBy(stud, function(classProf){ return classProf.course;});
+      return stud;
+    },
 });
 
 Template.User_Profile_Detail_Page.events({

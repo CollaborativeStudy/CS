@@ -114,14 +114,17 @@ Template.User_Profile_Page.events({
       profLevel = 0;
     }
     const addPro = {course, profLevel};
-    // const proList = Users.findOne(FlowRouter.getParam('_id')).pros;
-    // if(_.contains(proList, Meteor.user().profile.name) == false) {
-    // console.log(addPro);
     const userID = Users.findOne({ username: Meteor.user().profile.name })._id;
-    Users.update(
-      { _id: userID },
-      { $push: { pros: addPro } });
-    // }
+    // const prosList = Users.findOne({_id: userID}).pros;
+    // console.log("prosList: " + prosList);
+    // console.log("contains: " + _.contains(prosList, addPro));
+    // if((_.contains(prosList, addPro) == null) && (course != 0) && (profLevel != 0)) {
+    if((course != 0) && (profLevel != 0)) {
+      console.log(addPro);
+      Users.update(
+          { _id: userID },
+          { $push: { pros: addPro } });
+    }
   },
   'submit .add-stud'(event, instance) {
     event.preventDefault();

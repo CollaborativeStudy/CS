@@ -115,6 +115,8 @@ Template.Group_Details_Page.events({
     Groups.update(
         { _id: groupID },
         { $push: { posts: newPost } });
+    
+    event.target.reset();
   },
   'submit .group-session-form'(event){
    // 'submit .group-session-form'(event, instance) {

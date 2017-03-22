@@ -51,7 +51,7 @@ Template.Group_Details_Page.helpers({
   },
   postsList(){
     const groupData = Groups.findOne(FlowRouter.getParam('_id'));
-    return groupData.posts;
+    return groupData.posts.reverse();
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
@@ -115,7 +115,7 @@ Template.Group_Details_Page.events({
     Groups.update(
         { _id: groupID },
         { $push: { posts: newPost } });
-    
+
     event.target.reset();
   },
   'submit .group-session-form'(event){

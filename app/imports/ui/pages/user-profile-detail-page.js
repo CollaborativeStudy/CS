@@ -35,12 +35,12 @@ Template.User_Profile_Detail_Page.helpers({
   },
   getUserName: function user() {
     // return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
-    let profileCursor = Users.findOne({ _id: FlowRouter.getParam('_id')});
+    let profileCursor = Users.findOne({ _id: FlowRouter.getParam('_id') });
 
     return `${profileCursor.firstname} ${profileCursor.lastname}`;
   },
   getUser(member) {
-    return Users.findOne({member});
+    return Users.findOne({ _id: FlowRouter.getParam('_id') });
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
@@ -49,6 +49,7 @@ Template.User_Profile_Detail_Page.helpers({
     return Users.findOne({ _id: FlowRouter.getParam('_id') }).pros;
   },
   getUserReview(){
+    // TODO
     return Reviews.findOne({forUser: Meteor.user().profile.name});
   },
   getCourseTitle (course) {
@@ -69,6 +70,16 @@ Template.User_Profile_Detail_Page.helpers({
           return "Calculus II";
         case "MATH 371":
           return "Elementary Probability Theory";
+      }
+    },
+    getProfLevelColor(level){
+      switch(level){
+        case "low":
+          return "red";
+        case "medium":
+          return "yellow";
+        case "high":
+          return "green";
       }
     },
     studsList () {

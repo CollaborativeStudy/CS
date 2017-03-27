@@ -59,7 +59,7 @@
             <div class="ui divided selection list">
               {{#each course in prosList}}
                 <a class="item">
-                  <div class="ui large green horizontal label">{{course.course}}</div>
+                  <div class="ui big {{ getProfLevelColor course.profLevel }} horizontal label">{{course.course}}</div>
                   {{getCourseTitle course.course}}
                 </a>
               {{/each}}
@@ -73,12 +73,12 @@
 
                   {{#each course in studsList}}
                     <a class="item">
-                        <div class="ui big red horizontal label">{{course.course}}</div>
+                        <div class="ui big {{ getProfLevelColor course.profLevel }} horizontal label">{{course.course}}</div>
                         {{getCourseTitle course.course}}
                     </a>
                   {{/each}}
                 </div>
-            </div>  
+            </div>
       </div>
         </div>
       </div>

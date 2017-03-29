@@ -21,25 +21,26 @@ Template.User_Profile_Detail_Page.helpers({
   reviewsList() {
     return Reviews.find();
   },
-  getAverageRate(){
+  getAverageRate() {
+    let username = Users.findOne(({ _id: FlowRouter.getParam('_id') })).username;
+    let allReviews = Reviews.findOne({ forUser: username }).userReviews;
+
     let totalRate = 0;
     let size = 0;
     let averageRate = 0;
-    let allReviews = Reviews.find();
     allReviews.forEach(function (review) {
       totalRate = totalRate + review.rating;
       size++;
     });
-    averageRate = parseInt(Math.round(totalRate / size));
+    averageRate = parseInt(Math.floor(totalRate / size));
     return averageRate;
   },
-  getUserName: function user() {
+  getUserName() {
     // return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
     let profileCursor = Users.findOne({ _id: FlowRouter.getParam('_id') });
-
     return `${profileCursor.firstname} ${profileCursor.lastname}`;
   },
-  getUser(member) {
+  getUser() {
     return Users.findOne({ _id: FlowRouter.getParam('_id') });
   },
   hasTutorial(){
@@ -49,8 +50,8 @@ Template.User_Profile_Detail_Page.helpers({
     return Users.findOne({ _id: FlowRouter.getParam('_id') }).pros;
   },
   getUserReview(){
-    // TODO
-    return Reviews.findOne({forUser: Meteor.user().profile.name});
+    let username = Users.findOne(({ _id: FlowRouter.getParam('_id') })).username;
+    return Reviews.findOne({forUser: username});
   },
   getCourseTitle (course) {
       switch(course) {
@@ -86,6 +87,14 @@ Template.User_Profile_Detail_Page.helpers({
       let stud = Users.findOne({ username: Meteor.user().profile.name }).studs;
       stud = _.sortBy(stud, function(classProf){ return classProf.course;});
       return stud;
+    },
+    userExists() {
+        let username = Users.findOne(({ _id: FlowRouter.getParam('_id') })).username;
+        if(username === undefined) {
+            return false;
+        } else {
+            return true;
+        }
     },
 });
 

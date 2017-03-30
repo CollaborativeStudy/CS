@@ -7,7 +7,7 @@
 # Basic packages and utilities for most Meteor app development
 meteor-base@1.0.4
 mobile-experience@1.0.4
-mongo@1.1.15
+mongo@1.1.16
 blaze-html-templates@1.0.4
 session@1.1.7
 jquery@1.11.10
@@ -16,9 +16,9 @@ es5-shim@4.6.15
 ecmascript@0.6.3
 underscore@1.0.10
 ejson@1.0.13
-check@1.2.4
-standard-minifier-js@1.2.2
-shell-server@0.2.2
+check@1.2.5
+standard-minifier-js@1.2.3
+shell-server@0.2.3
 
 # Collection utilities
 aldeed:collection2

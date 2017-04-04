@@ -65,7 +65,7 @@ Template.Create_Group_Page.events({
       $('.ui.modal.groups-modal')
           .modal('hide')
       ;
-      let id = Groups.findOne(FlowRouter.getParam('_id'));
+      let id = Groups.findOne({name: name})._id;
       FlowRouter.go('/group-details/' + id);
     } else {
       console.log("invalid");

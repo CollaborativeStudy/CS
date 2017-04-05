@@ -25,8 +25,8 @@ Template.Messages_Page.helpers({
     }
   },
   updateScroll(){
-    var element = document.getElementById('message-scrolling');
-    element.scrollTop = element.scrollHeight;
+    var element = document.getElementById('message-container');
+    element.scrollTop = element.scrollHeight + 1;
   },
   clearThis(){
     var target = document.getElementById('message');
@@ -36,11 +36,7 @@ Template.Messages_Page.helpers({
   },
   hasTutorial(){
     return Users.findOne({ username: Meteor.user().profile.name }).tutorial;
-  },
-  getUserAvatar(user) {
-    console.log(Users.findOne({ username: user }).profilePicture);
-    return Users.findOne({ username: user }).profilePicture;
-  },
+  }
 });
 
 Template.Messages_Page.events({
@@ -61,9 +57,5 @@ Template.Messages_Page.events({
 
     //clear form
     event.target.text = '';
-
-    //reset scroll
-    var element = document.getElementById('message-scrolling');
-    element.scrollTop = element.scrollHeight;
   }
 });

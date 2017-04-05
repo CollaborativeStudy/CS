@@ -70,3 +70,8 @@ a.login-close-text {
 .calendar-topic {
   margin: 0;
 }
+
+#message-scrolling {
+  overflow: scroll;
+  height: 500px;
+}

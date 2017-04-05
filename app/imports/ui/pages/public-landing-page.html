@@ -1,9 +1,15 @@
 <template name="Public_Landing_Page">
-  <div class="ui grid" style="text-align: center; color: white">
+  <!--<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Aladin" />-->
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
+  <!--<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Satisfy" />-->
+
+  <div class="ui grid white-text">
     <div class="three column row">
       <div class="column">
-        <div class="ui container" style="padding: 50px 100px 50px 100px; border-color: white; color: white">
+        <div class="ui container white-border">
           <h1 class="ui header">About</h1>
+          <img class="ui medium floated left image"xx
+               src="/images/header1.png ">
           <p class="border">ICS students often spend more time than they need on their homework and don’t learn the
             material as effectively as they could, because they study alone and do not leverage the power of
             face-to-face study groups with peer mentors. Collaborative Study (CS) is an application for UHM ICS students
@@ -12,14 +18,14 @@
         
       </div>
       <div class="column">
-        <div class="ui container" style="padding: 50px 100px 50px 100px; border-color: white;">
+        <div class="ui container white-border">
           <img class="ui medium floated right image" src="/images/CSLogo1W.png">
-          <h1 class="ui header" style="color: white">CollaborativeStudy</h1>
+          <h1 class="ui header white-text">CollaborativeStudy</h1>
           <button class="ui teal button" type="button">Login</button>
         </div>
       </div>
       <div class="column">
-        <div class="ui container" style="padding: 50px 100px 50px 100px; border-color: white; color: white">
+        <div class="ui container white-border">
           <h1 class="ui header">Location</h1>
           <img class="ui medium floated left image"
                src="http://www.ics.hawaii.edu/wp-content/uploads/2015/09/post318b.jpg">
@@ -33,12 +39,27 @@
     </div>
   </div>
 
-  <img style="max-height: 300px" class="ui fluid image" src="/images/header1.png">
+  <!--<img style="max-height: 300px" class="ui fluid image" src="/images/header1.png">-->
 
   <style>
-    /*body{*/
-      /*background: url('images/header1.png');*/
-      /*background-size: cover;*/
-    /*}*/
+    .ui.header {
+      font-family: Pacifico;
+      font-weight: normal;
+      color: white;
+    }
+
+    h1.ui.header {
+      font-size: 2.5rem;
+    }
+
+    .white-text {
+      text-align: center;
+      color: white;
+    }
+
+    .white-border {
+      padding: 50px 100px 50px 100px;
+      border-color: white;
+    }
   </style>
 </template>

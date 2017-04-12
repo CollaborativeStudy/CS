@@ -8,33 +8,42 @@
       <div class="column">
         <div class="ui container white-border">
           <h1 class="ui header">About</h1>
-          <img class="ui medium floated left image"xx
-               src="/images/header1.png ">
-          <p class="border">ICS students often spend more time than they need on their homework and don’t learn the
-            material as effectively as they could, because they study alone and do not leverage the power of
-            face-to-face study groups with peer mentors. Collaborative Study (CS) is an application for UHM ICS students
-            to self-organize face-to-face study groups around a course and/or specific homework or project topic.</p>
+
+          <div class="ui container">
+            <img class="ui fluid image" src="/images/header1.png ">
+            <img class="ui small left floated image border-image" src="/images/curlyBraceL.png">
+            <img class="ui small right floated image border-image" src="/images/curlyBraceR.png"></div>
+          <p> ICS students often spend more time than they need on their homework and don’t
+            learn the material as effectively as they could, because they study alone and do not leverage the power of
+            face-to-face study groups with peer mentors. Collaborative Study (CS) is an application for UHM ICS
+            students to self-organize face-to-face study groups around a course and/or specific homework or project
+            topic.</p>
         </div>
-        
+
       </div>
-      <div class="column">
-        <div class="ui container white-border">
-          <img class="ui medium floated right image" src="/images/CSLogo1W.png">
-          <h1 class="ui header white-text">CollaborativeStudy</h1>
+      <div class="four wide column">
+        <div class="ui container">
+          <img class="ui medium centered image" src="/images/CSLogo1W.png">
+          <h1 class="ui center aligned header white-text">CollaborativeStudy</h1>
           <button class="ui teal button" type="button">Login</button>
         </div>
       </div>
+
       <div class="column">
         <div class="ui container white-border">
           <h1 class="ui header">Location</h1>
-          <img class="ui medium floated left image"
-               src="http://www.ics.hawaii.edu/wp-content/uploads/2015/09/post318b.jpg">
-          <p class="border">All CS meetings are held in the
-            ICSpace located in POST 318B, which is open 24/7/365. The ICSpace is an
-            interactive classroom intended for the use of the ICS Community. Click <a
-                href="http://www.ics.hawaii.edu/community/post-318b/">here</a> for more information about the ICSpace.
+
+          <div class="ui container">
+            <img class="ui fluid image" src="/images/header1.png ">
+            <img class="ui small left floated image border-image"
+                 src="http://www.ics.hawaii.edu/wp-content/uploads/2015/09/post318b.jpg">
+            <img class="ui small right floated image border-image" src="/images/curlyBraceR.png"></div>
+          <p> All CS meetings are held in the ICSpace located in POST 318B, which is open 24/7/365. The ICSpace is an
+            interactive classroom intended for the use of the ICS Community. Click
+            <a href="http://www.ics.hawaii.edu/community/post-318b/">here</a> for more information about the ICSpace.
           </p>
         </div>
+
       </div>
     </div>
   </div>
@@ -52,14 +61,23 @@
       font-size: 2.5rem;
     }
 
+    img.ui.small.image {
+      width: auto;
+      height: 300px;
+    }
+
     .white-text {
       text-align: center;
       color: white;
     }
 
     .white-border {
-      padding: 50px 100px 50px 100px;
+      padding: 50px;
       border-color: white;
+    }
+
+    .border-image {
+      height: 500px;
     }
   </style>
 </template>
